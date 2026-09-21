@@ -1,0 +1,260 @@
+[
+  {
+    "route": "/",
+    "slug": "home",
+    "title": "Connecting Donors with NGOs",
+    "metaDescription": " Help poor and needy by Donating your old clothes, furnitures, appliances, toys, books, bicycles etc to NGOs near you. Register your donations online and sevadeep volunteers will assist you in finding the right NGO for your donations.",
+    "sectionCount": 2,
+    "sectionHeadings": [
+      "Your NGO has registered succesfully. Please wait for admin confirmation.",
+      "(untitled section)"
+    ],
+    "imageCount": 27,
+    "forms": 0
+  },
+  {
+    "route": "/ngos",
+    "slug": "ngos",
+    "title": "NGO List",
+    "metaDescription": " Help poor and needy by Donating your old clothes, furnitures, appliances, toys, books, bicycles etc to NGOs near you. Register your donations online and sevadeep volunteers will assist you in finding the right NGO for your donations.",
+    "sectionCount": 1,
+    "sectionHeadings": [
+      "Lift For Upliftment"
+    ],
+    "imageCount": 10,
+    "forms": 1
+  },
+  {
+    "route": "/ngo-needs",
+    "slug": "ngo-needs",
+    "title": "NGO Needs",
+    "metaDescription": " Help poor and needy by Donating your old clothes, furnitures, appliances, toys, books, bicycles etc to NGOs near you. Register your donations online and sevadeep volunteers will assist you in finding the right NGO for your donations.",
+    "sectionCount": 1,
+    "sectionHeadings": [
+      "Compassion Charitable Trust"
+    ],
+    "imageCount": 15,
+    "forms": 1
+  },
+  {
+    "route": "/donation-bucket",
+    "slug": "donation-bucket",
+    "title": "Donate Old Items, Food, Clothes to Charity",
+    "metaDescription": " Help poor and needy by Donating your old clothes, furnitures, appliances, toys, books, bicycles etc to NGOs near you. Register your donations online and sevadeep volunteers will assist you in finding the right NGO for your donations.",
+    "sectionCount": 1,
+    "sectionHeadings": [
+      "Donation Form"
+    ],
+    "imageCount": 1,
+    "forms": 0
+  },
+  {
+    "route": "/blog",
+    "slug": "blog",
+    "title": "Sevadeep Blog | #1 donation Platform in Pune",
+    "metaDescription": " Help poor and needy by Donating your old clothes, furnitures, appliances, toys, books, bicycles etc to NGOs near you. Register your donations online and sevadeep volunteers will assist you in finding the right NGO for your donations.",
+    "sectionCount": 1,
+    "sectionHeadings": [
+      "(untitled section)"
+    ],
+    "imageCount": 11,
+    "forms": 0
+  },
+  {
+    "route": "/ngo-login",
+    "slug": "ngo-login",
+    "title": "NGO Login | SevaDeep",
+    "metaDescription": " Help poor and needy by Donating your old clothes, furnitures, appliances, toys, books, bicycles etc to NGOs near you. Register your donations online and sevadeep volunteers will assist you in finding the right NGO for your donations.",
+    "sectionCount": 1,
+    "sectionHeadings": [
+      "Your NGO has not approved. Please wait for admin confirmation."
+    ],
+    "imageCount": 2,
+    "forms": 0
+  },
+  {
+    "route": "/donor-login",
+    "slug": "donor-login",
+    "title": "Donor Login- The Best Way to Donate the Needy",
+    "metaDescription": " Help poor and needy by Donating your old clothes, furnitures, appliances, toys, books, bicycles etc to NGOs near you. Register your donations online and sevadeep volunteers will assist you in finding the right NGO for your donations.",
+    "sectionCount": 1,
+    "sectionHeadings": [
+      "Connecting Donors with NGO's"
+    ],
+    "imageCount": 4,
+    "forms": 0
+  },
+  {
+    "route": "/ngo-registration",
+    "slug": "ngo-registration",
+    "title": "NGO Sign Up | Sevadeep",
+    "metaDescription": " Help poor and needy by Donating your old clothes, furnitures, appliances, toys, books, bicycles etc to NGOs near you. Register your donations online and sevadeep volunteers will assist you in finding the right NGO for your donations.",
+    "sectionCount": 1,
+    "sectionHeadings": [
+      "No data available"
+    ],
+    "imageCount": 1,
+    "forms": 0
+  },
+  {
+    "route": "/volunteer-register",
+    "slug": "volunteer-register",
+    "title": "Become a Volunteer at Sevadeep",
+    "metaDescription": " Help poor and needy by Donating your old clothes, furnitures, appliances, toys, books, bicycles etc to NGOs near you. Register your donations online and sevadeep volunteers will assist you in finding the right NGO for your donations.",
+    "sectionCount": 1,
+    "sectionHeadings": [
+      "Join Our Sevadeep Family"
+    ],
+    "imageCount": 2,
+    "forms": 0
+  },
+  {
+    "route": "/narayan-seva",
+    "slug": "narayan-seva",
+    "title": "Narayan Seva",
+    "metaDescription": " Help poor and needy by Donating your old clothes, furnitures, appliances, toys, books, bicycles etc to NGOs near you. Register your donations online and sevadeep volunteers will assist you in finding the right NGO for your donations.",
+    "sectionCount": 6,
+    "sectionHeadings": [
+      "(untitled section)",
+      "(untitled section)",
+      "(untitled section)",
+      "(untitled section)",
+      "(untitled section)",
+      "(untitled section)"
+    ],
+    "imageCount": 2,
+    "forms": 0
+  },
+  {
+    "route": "/blog/title/donate-items-this-chrismas",
+    "slug": "blog_title_donate-items-this-chrismas",
+    "title": "Connecting Donors with NGOs",
+    "metaDescription": " Help poor and needy by Donating your old clothes, furnitures, appliances, toys, books, bicycles etc to NGOs near you. Register your donations online and sevadeep volunteers will assist you in finding the right NGO for your donations.",
+    "sectionCount": 1,
+    "sectionHeadings": [
+      "Recent Comments"
+    ],
+    "imageCount": 1,
+    "forms": 0
+  },
+  {
+    "route": "/blog/title/donate-food",
+    "slug": "blog_title_donate-food",
+    "title": "Join the SevaDeep Sponsor a Meal Program",
+    "metaDescription": "The SevaDeep Sponsor a Meal Program has helped hundreds of individuals and continues to do so thanks to your support. Learn more about it here. ",
+    "sectionCount": 1,
+    "sectionHeadings": [
+      "Recent Comments"
+    ],
+    "imageCount": 2,
+    "forms": 0
+  },
+  {
+    "route": "/blog/title/donate-your-old-stuff-this-diwali",
+    "slug": "blog_title_donate-your-old-stuff-this-diwali",
+    "title": "Five Ways To Make Diwali Really Special",
+    "metaDescription": "This Diwali, help those in need by donating to the NGO near you. Find out how you can help on SevaDeep",
+    "sectionCount": 1,
+    "sectionHeadings": [
+      "Recent Comments"
+    ],
+    "imageCount": 2,
+    "forms": 0
+  },
+  {
+    "route": "/blog/title/donate-food-money-old-items",
+    "slug": "blog_title_donate-food-money-old-items",
+    "title": "Donate To The NGO Near You | Needs of NGO | Sevadeep | Nonprofit Organization",
+    "metaDescription": "Donate to NGOs in pune with Sevadeep. Check the list of NGO & NGO needs. You can Donate to NGO of your choice. Schedule your Donation to the NGO near you now on Sevadeep.",
+    "sectionCount": 1,
+    "sectionHeadings": [
+      "Recent Comments"
+    ],
+    "imageCount": 2,
+    "forms": 0
+  },
+  {
+    "route": "/blog/title/how-to-donate-old-items-to-charity",
+    "slug": "blog_title_how-to-donate-old-items-to-charity",
+    "title": "How To Donate To The NGO Near You | Donate Old Items | Sevadeep | Nonprofit Organization",
+    "metaDescription": "Donated to the NGO near me through Sevadeep. You can Donate food, old books, toys, clothes, blankets, stationery, furniture, electronics & more..! Call to Donate 9657932355.",
+    "sectionCount": 1,
+    "sectionHeadings": [
+      "Recent Comments"
+    ],
+    "imageCount": 2,
+    "forms": 0
+  },
+  {
+    "route": "/blog/title/ngo-needs-in-pune",
+    "slug": "blog_title_ngo-needs-in-pune",
+    "title": "Donate Used Items To Orphanages Home, Old Age Home | NGO Needs in Pune | SevaDeep | Nonprofit Organization",
+    "metaDescription": "Donate used items to orphanages home, old age homes to the ngo of your choice. Schedule your donation on sevadeep. You can donate food, old books, clothes, blankets, stationery, furniture & more.",
+    "sectionCount": 1,
+    "sectionHeadings": [
+      "Recent Comments"
+    ],
+    "imageCount": 2,
+    "forms": 0
+  },
+  {
+    "route": "/blog/title/support-donate-to-old-age-homes",
+    "slug": "blog_title_support-donate-to-old-age-homes",
+    "title": "Donate & Support To Old Age Home | SevaDeep | Nonprofit Organization",
+    "metaDescription": "Donate to Old Age Home & support to NGOs near you. Discover a list of items you can Donate To Old Age Homes that will uplift everyone's spirits! Call 9657932355.",
+    "sectionCount": 1,
+    "sectionHeadings": [
+      "Recent Comments"
+    ],
+    "imageCount": 2,
+    "forms": 0
+  },
+  {
+    "route": "/blog/title/best-things-to-donate-to-orphanage",
+    "slug": "blog_title_best-things-to-donate-to-orphanage",
+    "title": "Connecting Donors with NGOs",
+    "metaDescription": " Help poor and needy by Donating your old clothes, furnitures, appliances, toys, books, bicycles etc to NGOs near you. Register your donations online and sevadeep volunteers will assist you in finding the right NGO for your donations.",
+    "sectionCount": 1,
+    "sectionHeadings": [
+      "Recent Comments"
+    ],
+    "imageCount": 1,
+    "forms": 0
+  },
+  {
+    "route": "/blog/title/donate-to-people-in-need",
+    "slug": "blog_title_donate-to-people-in-need",
+    "title": "Donate Used Items | Donate Old Items | SevaDeep | Nonprofit Organization",
+    "metaDescription": "SevaDeep is now making it easier than ever to donate to an NGO near you! You can now donate to individuals on the platform. Donate Old & Used Items. Call 9657932355.",
+    "sectionCount": 1,
+    "sectionHeadings": [
+      "Recent Comments"
+    ],
+    "imageCount": 2,
+    "forms": 0
+  },
+  {
+    "route": "/blog/title/help-the-ngos-in-pune",
+    "slug": "blog_title_help-the-ngos-in-pune",
+    "title": "Donate To The NGO Near You | Donate Old Items | Sevadeep | Nonprofit Organization",
+    "metaDescription": "Donate used items to the NGOs in pune through Sevadeep. Check the list of NGO & NGO needs. Donate old items to the NGO of your choice. Call 9657932355.",
+    "sectionCount": 1,
+    "sectionHeadings": [
+      "Recent Comments"
+    ],
+    "imageCount": 2,
+    "forms": 0
+  },
+  {
+    "route": "/gallery",
+    "slug": "gallery",
+    "title": "Connecting Donors with NGOs",
+    "metaDescription": " Help poor and needy by Donating your old clothes, furnitures, appliances, toys, books, bicycles etc to NGOs near you. Register your donations online and sevadeep volunteers will assist you in finding the right NGO for your donations.",
+    "sectionCount": 1,
+    "sectionHeadings": [
+      "Confirm"
+    ],
+    "imageCount": 7,
+    "forms": 0
+  }
+]

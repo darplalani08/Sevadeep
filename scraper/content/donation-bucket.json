@@ -1,0 +1,78 @@
+{
+  "route": "/donation-bucket",
+  "meta": {
+    "title": "Donate Old Items, Food, Clothes to Charity",
+    "metaDescription": " Help poor and needy by Donating your old clothes, furnitures, appliances, toys, books, bicycles etc to NGOs near you. Register your donations online and sevadeep volunteers will assist you in finding the right NGO for your donations.",
+    "metaKeywords": "Sevadeep Donation Platform, Donate Old Items, Donate Clothes, Donate Food, Donate Shoes, Donate Toys, Donate Stationery, Donate Furniture, Donate Electronics, NGOs Near Me.",
+    "ogTitle": "Donate Old Items, Food, Clothes to Charity",
+    "ogDescription": "Sevadeep is organization that helps you to donate food to needy people. Donate food items to orphanages and old age homes. Find NGOs that accept donations.",
+    "ogImage": "https://sevadeep.org/assets/img/logo-big.png"
+  },
+  "sections": [
+    {
+      "tag": "DIV",
+      "className": "card-body text-left",
+      "heading": "Donation Form",
+      "headings": [
+        {
+          "tag": "H3",
+          "text": "Donation Form"
+        }
+      ],
+      "paragraphs": [],
+      "buttons": [],
+      "lists": [],
+      "imgAlts": [],
+      "fullText": "Donation Form\nMobile\nFull Name\nEnter your location/city\nSelect Donation Category\nDonation Item Quantity\nDonation Details\n Want to Donate to Specific Ngo\nUpload Donation Item Image",
+      "role": "content"
+    },
+    {
+      "tag": "DIV",
+      "className": "card-footer",
+      "heading": "",
+      "headings": [],
+      "paragraphs": [],
+      "buttons": [
+        {
+          "text": "CONFIRM DONATION",
+          "href": ""
+        }
+      ],
+      "lists": [],
+      "imgAlts": [],
+      "fullText": "CONFIRM DONATION",
+      "role": "content"
+    }
+  ],
+  "forms": [],
+  "links": [
+    {
+      "href": "tel:+919175099256",
+      "text": ""
+    },
+    {
+      "href": "https://sevadeep.org",
+      "text": ""
+    },
+    {
+      "href": "tel:+919175099256",
+      "text": "+91-9175099256"
+    },
+    {
+      "href": "/donor-login",
+      "text": "Home"
+    },
+    {
+      "href": "/ngo-login",
+      "text": "NGO Registration/Login"
+    }
+  ],
+  "images": [
+    {
+      "src": "https://sevadeep.org/assets/img/sevadeep-r-logo.png",
+      "alt": "",
+      "localPath": "/images/donation-bucket/sevadeep-r-logo.png",
+      "isBackground": false
+    }
+  ]
+}

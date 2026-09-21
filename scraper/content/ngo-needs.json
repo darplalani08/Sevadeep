@@ -1,0 +1,748 @@
+{
+  "route": "/ngo-needs",
+  "meta": {
+    "title": "NGO Needs",
+    "metaDescription": " Help poor and needy by Donating your old clothes, furnitures, appliances, toys, books, bicycles etc to NGOs near you. Register your donations online and sevadeep volunteers will assist you in finding the right NGO for your donations.",
+    "metaKeywords": "Sevadeep Donation Platform, Donate Old Items, Donate Clothes, Donate Food, Donate Shoes, Donate Toys, Donate Stationery, Donate Furniture, Donate Electronics, NGOs Near Me.",
+    "ogTitle": "NGO Needs",
+    "ogDescription": "",
+    "ogImage": "https://sevadeep.org/assets/img/logo-big.png"
+  },
+  "sections": [
+    {
+      "tag": "DIV",
+      "className": "col-lg-4 col-sm-6 my-2",
+      "heading": "",
+      "headings": [
+        {
+          "tag": "H5",
+          "text": "Compassion Charitable Trust"
+        },
+        {
+          "tag": "H5",
+          "text": "Compassion Charitable Trust"
+        }
+      ],
+      "paragraphs": [
+        "we need this for children's to grow in k ...See All"
+      ],
+      "buttons": [
+        {
+          "text": "×",
+          "href": ""
+        },
+        {
+          "text": "Close",
+          "href": ""
+        },
+        {
+          "text": "View NGO",
+          "href": ""
+        }
+      ],
+      "lists": [],
+      "imgAlts": [
+        "logo",
+        "logo",
+        "logo"
+      ],
+      "fullText": "Compassion Charitable Trust\nCompassion Charitable Trust is a Non-Profit Organization, started in 2 ...Read More\nNeedElectronics Computer Laptop\nQty 4\n\nwe need this for children's to grow in k ...See All",
+      "role": "content"
+    },
+    {
+      "tag": "DIV",
+      "className": "col-lg-4 col-sm-6 my-2",
+      "heading": "",
+      "headings": [
+        {
+          "tag": "H5",
+          "text": "Bidkar Foundation"
+        },
+        {
+          "tag": "H5",
+          "text": "Bidkar Foundation"
+        }
+      ],
+      "paragraphs": [
+        "BIDKAR FOUNDATION is teaching coding to ...See All"
+      ],
+      "buttons": [
+        {
+          "text": "×",
+          "href": ""
+        },
+        {
+          "text": "Close",
+          "href": ""
+        },
+        {
+          "text": "View NGO",
+          "href": ""
+        }
+      ],
+      "lists": [],
+      "imgAlts": [
+        "logo",
+        "logo",
+        "logo"
+      ],
+      "fullText": "Bidkar Foundation\nBIDKAR FUNDATION is a grass root Non Government Organization working i ...Read More\nNeedElectronics Computer Laptop\nQty 5\n\nBIDKAR FOUNDATION is teaching coding to ...See All",
+      "role": "content"
+    },
+    {
+      "tag": "DIV",
+      "className": "col-lg-4 col-sm-6 my-2",
+      "heading": "",
+      "headings": [
+        {
+          "tag": "H5",
+          "text": "Sulabh Jivan Foundation"
+        },
+        {
+          "tag": "H5",
+          "text": "Sulabh Jivan Foundation"
+        }
+      ],
+      "paragraphs": [
+        "We required vehicles for field visit. As ...See All"
+      ],
+      "buttons": [
+        {
+          "text": "×",
+          "href": ""
+        },
+        {
+          "text": "Close",
+          "href": ""
+        },
+        {
+          "text": "View NGO",
+          "href": ""
+        }
+      ],
+      "lists": [],
+      "imgAlts": [
+        "logo",
+        "logo",
+        "logo"
+      ],
+      "fullText": "Sulabh Jivan Foundation\nSulabh Jivan Foundation is the registered organization with goverment ...Read More\nNeedVehicles\nQty 1\n\nWe required vehicles for field visit. As ...See All",
+      "role": "content"
+    },
+    {
+      "tag": "DIV",
+      "className": "col-lg-4 col-sm-6 my-2",
+      "heading": "",
+      "headings": [
+        {
+          "tag": "H5",
+          "text": "Rising Star Foundation"
+        },
+        {
+          "tag": "H5",
+          "text": "Rising Star Foundation"
+        }
+      ],
+      "paragraphs": [
+        "Laptops and computers for our office wor ...See All"
+      ],
+      "buttons": [
+        {
+          "text": "×",
+          "href": ""
+        },
+        {
+          "text": "Close",
+          "href": ""
+        },
+        {
+          "text": "View NGO",
+          "href": ""
+        }
+      ],
+      "lists": [],
+      "imgAlts": [
+        "logo",
+        "logo",
+        "logo"
+      ],
+      "fullText": "Rising Star Foundation\nRising Star Foundation an in-house residential treatment center. We of ...Read More\nNeedElectronics Computer Laptop\nQty 3\n\nLaptops and computers for our office wor ...See All",
+      "role": "content"
+    },
+    {
+      "tag": "DIV",
+      "className": "col-lg-4 col-sm-6 my-2",
+      "heading": "",
+      "headings": [
+        {
+          "tag": "H5",
+          "text": "SOLOMON MEMORIAL TRUST"
+        },
+        {
+          "tag": "H5",
+          "text": "SOLOMON MEMORIAL TRUST"
+        }
+      ],
+      "paragraphs": [
+        "Need 100 school bags for Orphans and wid ...See All"
+      ],
+      "buttons": [
+        {
+          "text": "×",
+          "href": ""
+        },
+        {
+          "text": "Close",
+          "href": ""
+        },
+        {
+          "text": "View NGO",
+          "href": ""
+        }
+      ],
+      "lists": [],
+      "imgAlts": [
+        "logo",
+        "logo",
+        "logo"
+      ],
+      "fullText": "SOLOMON MEMORIAL TRUST\nThe Solomon Memorial Trust was established in 2016, which is regularly ...Read More\nNeedEducational Bag\nQty 100\n\nNeed 100 school bags for Orphans and wid ...See All",
+      "role": "content"
+    },
+    {
+      "tag": "DIV",
+      "className": "col-lg-4 col-sm-6 my-2",
+      "heading": "",
+      "headings": [
+        {
+          "tag": "H5",
+          "text": "Welcare India Social Welfare Foundation"
+        },
+        {
+          "tag": "H5",
+          "text": "Welcare India Social Welfare Foundation"
+        }
+      ],
+      "paragraphs": [
+        "Your Donated Oxygen Cylinder Can Be Some ...See All"
+      ],
+      "buttons": [
+        {
+          "text": "×",
+          "href": ""
+        },
+        {
+          "text": "Close",
+          "href": ""
+        },
+        {
+          "text": "View NGO",
+          "href": ""
+        }
+      ],
+      "lists": [],
+      "imgAlts": [
+        "logo",
+        "logo",
+        "logo"
+      ],
+      "fullText": "Welcare India Social Welfare Foundation\nWelcare India Social Welfare is a non-governmental organisation (NGO) ...Read More\nNeedOxygen cylinder\nQty 5\n\nYour Donated Oxygen Cylinder Can Be Some ...See All",
+      "role": "content"
+    },
+    {
+      "tag": "DIV",
+      "className": "col-lg-4 col-sm-6 my-2",
+      "heading": "",
+      "headings": [
+        {
+          "tag": "H5",
+          "text": "Adivasi adim samajik Sanstha"
+        },
+        {
+          "tag": "H5",
+          "text": "Adivasi adim samajik Sanstha"
+        }
+      ],
+      "paragraphs": [
+        "Through the ongoing service work through ...See All"
+      ],
+      "buttons": [
+        {
+          "text": "×",
+          "href": ""
+        },
+        {
+          "text": "Close",
+          "href": ""
+        },
+        {
+          "text": "View NGO",
+          "href": ""
+        }
+      ],
+      "lists": [],
+      "imgAlts": [
+        "logo",
+        "logo",
+        "logo"
+      ],
+      "fullText": "Adivasi adim samajik Sanstha\nHello, Adivasi Primitive Social Organization was established by the yo ...Read More\nNeedConstruction\nQty 1\n\nThrough the ongoing service work through ...See All",
+      "role": "content"
+    },
+    {
+      "tag": "DIV",
+      "className": "col-lg-4 col-sm-6 my-2",
+      "heading": "",
+      "headings": [
+        {
+          "tag": "H5",
+          "text": "ReLifeFoundation"
+        },
+        {
+          "tag": "H5",
+          "text": "ReLifeFoundation"
+        }
+      ],
+      "paragraphs": [
+        "Please do the needful. Re-life foundatio ...See All"
+      ],
+      "buttons": [
+        {
+          "text": "×",
+          "href": ""
+        },
+        {
+          "text": "Close",
+          "href": ""
+        },
+        {
+          "text": "View NGO",
+          "href": ""
+        }
+      ],
+      "lists": [],
+      "imgAlts": [
+        "logo",
+        "logo",
+        "logo"
+      ],
+      "fullText": "ReLifeFoundation\nNA\nNeedAmbulance\nQty 1\n\nPlease do the needful. Re-life foundatio ...See All",
+      "role": "content"
+    },
+    {
+      "tag": "DIV",
+      "className": "col-lg-4 col-sm-6 my-2",
+      "heading": "",
+      "headings": [
+        {
+          "tag": "H5",
+          "text": "SAGAR SEVA TRUST"
+        },
+        {
+          "tag": "H5",
+          "text": "SAGAR SEVA TRUST"
+        }
+      ],
+      "paragraphs": [
+        "Please give us for our new project of ed ...See All"
+      ],
+      "buttons": [
+        {
+          "text": "×",
+          "href": ""
+        },
+        {
+          "text": "Close",
+          "href": ""
+        },
+        {
+          "text": "View NGO",
+          "href": ""
+        }
+      ],
+      "lists": [],
+      "imgAlts": [
+        "logo",
+        "logo",
+        "logo"
+      ],
+      "fullText": "SAGAR SEVA TRUST\nBacho key education our health per kaam kar rahey hai hamara group hai ...Read More\nNeedEducational Note books\nQty 250\n\nPlease give us for our new project of ed ...See All",
+      "role": "content"
+    },
+    {
+      "tag": "DIV",
+      "className": "col-lg-4 col-sm-6 my-2",
+      "heading": "",
+      "headings": [
+        {
+          "tag": "H5",
+          "text": "AKSHAR PAAUL"
+        },
+        {
+          "tag": "H5",
+          "text": "AKSHAR PAAUL"
+        }
+      ],
+      "paragraphs": [
+        "We need water purifier at our Smiling Bo ...See All"
+      ],
+      "buttons": [
+        {
+          "text": "×",
+          "href": ""
+        },
+        {
+          "text": "Close",
+          "href": ""
+        },
+        {
+          "text": "View NGO",
+          "href": ""
+        }
+      ],
+      "lists": [],
+      "imgAlts": [
+        "logo",
+        "logo",
+        "logo"
+      ],
+      "fullText": "AKSHAR PAAUL\nAkshar Paaul was established in Pune, India in 2013 and later expanded ...Read More\nNeedHome appliances Water purifier\nQty 3\n\nWe need water purifier at our Smiling Bo ...See All",
+      "role": "content"
+    },
+    {
+      "tag": "DIV",
+      "className": "col-lg-4 col-sm-6 my-2",
+      "heading": "",
+      "headings": [
+        {
+          "tag": "H5",
+          "text": "Arise Vishwa Society"
+        },
+        {
+          "tag": "H5",
+          "text": "Arise Vishwa Society"
+        }
+      ],
+      "paragraphs": [
+        "Support Our Mission for greenary. We nee ...See All"
+      ],
+      "buttons": [
+        {
+          "text": "×",
+          "href": ""
+        },
+        {
+          "text": "Close",
+          "href": ""
+        },
+        {
+          "text": "View NGO",
+          "href": ""
+        }
+      ],
+      "lists": [],
+      "imgAlts": [
+        "logo",
+        "logo",
+        "logo"
+      ],
+      "fullText": "Arise Vishwa Society\nArise Vishwa Society is a non government, constitutional rights based ...Read More\nNeedTree Guard\nQty 10\n\nSupport Our Mission for greenary. We nee ...See All",
+      "role": "content"
+    },
+    {
+      "tag": "DIV",
+      "className": "col-lg-4 col-sm-6 my-2",
+      "heading": "",
+      "headings": [
+        {
+          "tag": "H5",
+          "text": "SARVA SEVA SANGH"
+        },
+        {
+          "tag": "H5",
+          "text": "SARVA SEVA SANGH"
+        }
+      ],
+      "paragraphs": [
+        "needed to keep the vegetables, fruits, a ...See All"
+      ],
+      "buttons": [
+        {
+          "text": "×",
+          "href": ""
+        },
+        {
+          "text": "Close",
+          "href": ""
+        },
+        {
+          "text": "View NGO",
+          "href": ""
+        }
+      ],
+      "lists": [],
+      "imgAlts": [
+        "logo",
+        "logo",
+        "logo"
+      ],
+      "fullText": "SARVA SEVA SANGH\nSarva Seva Sangh had its beginning in the second half of 1970s and off ...Read More\nNeedHome Appliances Refrigerators\nQty 1\n\nneeded to keep the vegetables, fruits, a ...See All",
+      "role": "content"
+    },
+    {
+      "tag": "DIV",
+      "className": "",
+      "heading": "",
+      "headings": [],
+      "paragraphs": [],
+      "buttons": [],
+      "lists": [
+        [
+          "Previous\npage",
+          "1 / 39",
+          "You're on page\n1",
+          "page\n2",
+          "page\n3",
+          "page\n4",
+          "page\n5",
+          "page\n...",
+          "page\n39",
+          "Next \npage"
+        ]
+      ],
+      "imgAlts": [],
+      "fullText": "Previous\npage\nYou're on page\n1\npage\n2\npage\n3\npage\n4\npage\n5\npage\n...\npage\n39\nNext \npage",
+      "role": "content"
+    }
+  ],
+  "forms": [
+    {
+      "action": "https://sevadeep.org/ngo-needs",
+      "fields": [
+        {
+          "tag": "INPUT",
+          "type": "search",
+          "name": "search",
+          "placeholder": "Search By NGO Needs",
+          "label": "",
+          "required": false,
+          "options": []
+        }
+      ]
+    }
+  ],
+  "links": [
+    {
+      "href": "tel:+919175099256",
+      "text": ""
+    },
+    {
+      "href": "#needs0",
+      "text": "...See All"
+    },
+    {
+      "href": "#needs1",
+      "text": "...See All"
+    },
+    {
+      "href": "#needs2",
+      "text": "...See All"
+    },
+    {
+      "href": "#needs3",
+      "text": "...See All"
+    },
+    {
+      "href": "#needs4",
+      "text": "...See All"
+    },
+    {
+      "href": "#needs5",
+      "text": "...See All"
+    },
+    {
+      "href": "#needs6",
+      "text": "...See All"
+    },
+    {
+      "href": "#needs7",
+      "text": "...See All"
+    },
+    {
+      "href": "#needs8",
+      "text": "...See All"
+    },
+    {
+      "href": "#needs9",
+      "text": "...See All"
+    },
+    {
+      "href": "#needs10",
+      "text": "...See All"
+    },
+    {
+      "href": "#needs11",
+      "text": "...See All"
+    },
+    {
+      "href": "#collapseNeed0",
+      "text": "NeedElectronics Computer LaptopQty4 we need this for children's to grow in k  ... See All  expand"
+    },
+    {
+      "href": "#collapseNeed1",
+      "text": "NeedElectronics Computer LaptopQty5 BIDKAR FOUNDATION is teaching coding to   ... See All  expand"
+    },
+    {
+      "href": "#collapseNeed2",
+      "text": "NeedVehiclesQty1 We required vehicles for field visit. As  ... See All  expand"
+    },
+    {
+      "href": "#collapseNeed3",
+      "text": "NeedElectronics Computer LaptopQty3 Laptops and computers for our office wor  ... See All  expand"
+    },
+    {
+      "href": "#collapseNeed4",
+      "text": "NeedEducational BagQty100 Need 100 school bags for Orphans and wid  ... See All  expand"
+    },
+    {
+      "href": "#collapseNeed5",
+      "text": "NeedOxygen cylinderQty5 Your Donated Oxygen Cylinder Can Be Some  ... See All  expand"
+    },
+    {
+      "href": "#collapseNeed6",
+      "text": "NeedConstruction Qty1 Through the ongoing service work through  ... See All  expand"
+    },
+    {
+      "href": "#collapseNeed7",
+      "text": "NeedAmbulanceQty1 Please do the needful.\nRe-life foundatio  ... See All  expand"
+    },
+    {
+      "href": "#collapseNeed8",
+      "text": "NeedEducational Note booksQty250 Please give us for our new project of ed  ... See All  expand"
+    },
+    {
+      "href": "#collapseNeed9",
+      "text": "NeedHome appliances Water purifierQty3 We need water purifier at our Smiling Bo  ... See All  expand"
+    },
+    {
+      "href": "#collapseNeed10",
+      "text": "NeedTree GuardQty10 Support Our Mission for greenary. We nee  ... See All  expand"
+    },
+    {
+      "href": "#collapseNeed11",
+      "text": "NeedHome Appliances RefrigeratorsQty1 needed to keep the vegetables, fruits, a  ... See All  expand"
+    },
+    {
+      "href": "https://wa.me/?text=",
+      "text": "Share"
+    },
+    {
+      "href": "https://sevadeep.org",
+      "text": ""
+    },
+    {
+      "href": "tel:+919175099256",
+      "text": "+91-9175099256"
+    },
+    {
+      "href": "/donor-login",
+      "text": "Home"
+    },
+    {
+      "href": "/ngo-login",
+      "text": "NGO Registration/Login"
+    }
+  ],
+  "images": [
+    {
+      "src": "https://sevadeep.org/assets/icons/location.png",
+      "alt": "",
+      "localPath": "/images/ngo-needs/location.png",
+      "isBackground": false
+    },
+    {
+      "src": "https://sevadeep.org/assets/icons/need_icon.png",
+      "alt": "NeedICON",
+      "localPath": "/images/ngo-needs/need_icon.png",
+      "isBackground": false
+    },
+    {
+      "src": "https://sevadeep.org/assets/icons/ngo_icon.png",
+      "alt": "logo",
+      "localPath": "/images/ngo-needs/ngo_icon.png",
+      "isBackground": false
+    },
+    {
+      "src": "https://firebasestorage.googleapis.com/v0/b/sevadeep-prod.appspot.com/o/assets%2Fitemcategories%2FElectrons%20-%20Computers%20%26%20laptop.jpg?alt=media&token=c03a9c9d-6a67-4d5b-9ee0-999ce2558fc5",
+      "alt": "logo",
+      "localPath": "/images/ngo-needs/assets%2Fitemcategories%2FElectrons%20-%20Computers%20%26%20laptop.jpg",
+      "isBackground": false
+    },
+    {
+      "src": "https://sevadeep.org/assets/img/logo-big.png",
+      "alt": "logo",
+      "localPath": "/images/ngo-needs/logo-big.png",
+      "isBackground": false
+    },
+    {
+      "src": "https://firebasestorage.googleapis.com/v0/b/sevadeep-prod.appspot.com/o/assets%2Fitemcategories%2Fpic1639131980636.jpg?alt=media&token=ab42c893-18c3-435c-bf22-cb02d05b1122",
+      "alt": "logo",
+      "localPath": "/images/ngo-needs/assets%2Fitemcategories%2Fpic1639131980636.jpg",
+      "isBackground": false
+    },
+    {
+      "src": "https://firebasestorage.googleapis.com/v0/b/sevadeep-prod.appspot.com/o/assets%2Fitemcategories%2FEducatitonal%20-%20Bag.jpg?alt=media&token=a61a9360-2eb8-4d0c-95a8-cd46a0e13dad",
+      "alt": "logo",
+      "localPath": "/images/ngo-needs/assets%2Fitemcategories%2FEducatitonal%20-%20Bag.jpg",
+      "isBackground": false
+    },
+    {
+      "src": "https://firebasestorage.googleapis.com/v0/b/sevadeep-prod.appspot.com/o/assets%2Fitemcategories%2Fpic1644493583886.jpg?alt=media&token=3494901c-2f4e-425a-a184-14f5c92ed4fb",
+      "alt": "logo",
+      "localPath": "/images/ngo-needs/assets%2Fitemcategories%2Fpic1644493583886.jpg",
+      "isBackground": false
+    },
+    {
+      "src": "https://firebasestorage.googleapis.com/v0/b/sevadeep-prod.appspot.com/o/assets%2Fitemcategories%2Fpic1646910181204.jpg?alt=media&token=708047d1-37b9-45d3-b8d2-ac3eb660282b",
+      "alt": "logo",
+      "localPath": "/images/ngo-needs/assets%2Fitemcategories%2Fpic1646910181204.jpg",
+      "isBackground": false
+    },
+    {
+      "src": "https://firebasestorage.googleapis.com/v0/b/sevadeep-prod.appspot.com/o/assets%2Fitemcategories%2Fpic1650621769871.jpg?alt=media&token=4d53499f-ee56-41bc-a123-c18fca23c07c",
+      "alt": "logo",
+      "localPath": "/images/ngo-needs/assets%2Fitemcategories%2Fpic1650621769871.jpg",
+      "isBackground": false
+    },
+    {
+      "src": "https://firebasestorage.googleapis.com/v0/b/sevadeep-prod.appspot.com/o/assets%2Fitemcategories%2Fnote_books.jpeg?alt=media&token=3f10d97a-715a-4f54-ad48-4def13439b5c",
+      "alt": "logo",
+      "localPath": "/images/ngo-needs/assets%2Fitemcategories%2Fnote_books.jpeg",
+      "isBackground": false
+    },
+    {
+      "src": "https://firebasestorage.googleapis.com/v0/b/sevadeep-prod.appspot.com/o/assets%2Fitemcategories%2Fpic1646724191969.jpg?alt=media&token=652b0bec-2739-4b48-a389-f423240b06bb",
+      "alt": "logo",
+      "localPath": "/images/ngo-needs/assets%2Fitemcategories%2Fpic1646724191969.jpg",
+      "isBackground": false
+    },
+    {
+      "src": "https://firebasestorage.googleapis.com/v0/b/sevadeep-prod.appspot.com/o/assets%2Fitemcategories%2Fpic1649658787260.jpg?alt=media&token=c1427aab-9464-4ba7-b0a7-e3426a68c0b9",
+      "alt": "logo",
+      "localPath": "/images/ngo-needs/assets%2Fitemcategories%2Fpic1649658787260.jpg",
+      "isBackground": false
+    },
+    {
+      "src": "https://firebasestorage.googleapis.com/v0/b/sevadeep-prod.appspot.com/o/assets%2Fitemcategories%2FHome%20Appliances%20-Refrigerator.jpg?alt=media&token=029e3b09-a724-4328-a7b4-cf00fffc46e2",
+      "alt": "logo",
+      "localPath": "/images/ngo-needs/assets%2Fitemcategories%2FHome%20Appliances%20-Refrigerator.jpg",
+      "isBackground": false
+    },
+    {
+      "src": "https://sevadeep.org/assets/img/sevadeep-r-logo.png",
+      "alt": "",
+      "localPath": "/images/ngo-needs/sevadeep-r-logo.png",
+      "isBackground": false
+    }
+  ]
+}

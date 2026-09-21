@@ -1,0 +1,121 @@
+{
+  "route": "/narayan-seva",
+  "meta": {
+    "title": "Narayan Seva",
+    "metaDescription": " Help poor and needy by Donating your old clothes, furnitures, appliances, toys, books, bicycles etc to NGOs near you. Register your donations online and sevadeep volunteers will assist you in finding the right NGO for your donations.",
+    "metaKeywords": "ngoinfo,Donate Old Books, Donate Old Toys, Donate Old Clothes, Donate old Blankets,  Donate Old Stationery,  Donate Old Furniture,  Donate Old Electronics, ngo",
+    "ogTitle": "Donate Food To The Poor | Sevadeep",
+    "ogDescription": "Donate food to hungry and needy people near you. Find the most trusted NGO to donate food,clothes,stationery, furniture, & electronics.Become a patron today!",
+    "ogImage": "https://sevadeep.org/assets/img/narayanseva.jpg"
+  },
+  "sections": [
+    {
+      "tag": "DIV",
+      "className": "px-3 col-lg-7 col-md-6 col-12 narayanseva-content",
+      "heading": "",
+      "headings": [],
+      "paragraphs": [
+        "We are on a mission to feed people who might otherwise go hungry or starve because they cannot pay for their daily meals while their families undergo medical treatment.",
+        "The Foundation distributes khichadi to 250 people at the Sassoon Hospital daily. This Khichadi is prepared under strict hygiene conditions at the Baner office of Relfor foundation.",
+        "During the covid pandemic Relfor Foundation also distributed free food to laborers' camps.This initiative benefitted thousand of migrated laborers and relatives of patients from a rural background",
+        "Your one time charity can feed a hundred of hungry masses."
+      ],
+      "buttons": [],
+      "lists": [],
+      "imgAlts": [],
+      "fullText": "We are on a mission to feed people who might otherwise go hungry or starve because they cannot pay for their daily meals while their families undergo medical treatment.\n\nThe Foundation distributes khichadi to 250 people at the Sassoon Hospital daily. This Khichadi is prepared under strict hygiene conditions at the Baner office of Relfor foundation.\n\nDuring the covid pandemic Relfor Foundation also distributed free food to laborers' camps.This initiative benefitted thousand of migrated laborers and relatives of patients from a rural background\n\nYour one time charity can feed a hundred of hungry masses.",
+      "role": "content"
+    },
+    {
+      "tag": "DIV",
+      "className": "my-2 p-3 col-lg-5 col-md-6 col-12  table",
+      "heading": "Sponsor a meal for people",
+      "headings": [
+        {
+          "tag": "H4",
+          "text": "Sponsor a meal for people"
+        }
+      ],
+      "paragraphs": [
+        "meal for 4 people",
+        "meal for 20 people",
+        "meal for 40 people",
+        "meal for 80 people",
+        "meal for 120 people",
+        "meal for 160 people",
+        "Other Amount"
+      ],
+      "buttons": [
+        {
+          "text": "100/-",
+          "href": ""
+        },
+        {
+          "text": "500/-",
+          "href": ""
+        },
+        {
+          "text": "1000/-",
+          "href": ""
+        },
+        {
+          "text": "2000/-",
+          "href": ""
+        },
+        {
+          "text": "3000/-",
+          "href": ""
+        },
+        {
+          "text": "4000/-",
+          "href": ""
+        },
+        {
+          "text": "Contribute",
+          "href": ""
+        }
+      ],
+      "lists": [],
+      "imgAlts": [],
+      "fullText": "Sponsor a meal for people\n100/-\n\nmeal for 4 people\n\n500/-\n\nmeal for 20 people\n\n1000/-\n\nmeal for 40 people\n\n2000/-\n\nmeal for 80 people\n\n3000/-\n\nmeal for 120 people\n\n4000/-\n\nmeal for 160 people\n\nOther Amount\n\nRs. \nContribute",
+      "role": "content"
+    }
+  ],
+  "forms": [],
+  "links": [
+    {
+      "href": "tel:+919175099256",
+      "text": ""
+    },
+    {
+      "href": "https://sevadeep.org",
+      "text": ""
+    },
+    {
+      "href": "tel:+919175099256",
+      "text": "+91-9175099256"
+    },
+    {
+      "href": "/donor-login",
+      "text": "Home"
+    },
+    {
+      "href": "/ngo-login",
+      "text": "NGO Registration/Login"
+    }
+  ],
+  "images": [
+    {
+      "src": "https://firebasestorage.googleapis.com/v0/b/sevadeep-prod.appspot.com/o/uploads%2FAzaURJgfkvOp6MZEcVLn%2Fpic1654516487569.jpg?alt=media&token=f94c92cd-058a-4ab2-85d6-c8791dab1dc3",
+      "alt": "",
+      "localPath": "/images/narayan-seva/uploads%2FAzaURJgfkvOp6MZEcVLn%2Fpic1654516487569.jpg",
+      "isBackground": false
+    },
+    {
+      "src": "https://sevadeep.org/assets/img/sevadeep-r-logo.png",
+      "alt": "",
+      "localPath": "/images/narayan-seva/sevadeep-r-logo.png",
+      "isBackground": false
+    }
+  ]
+}

@@ -1,0 +1,570 @@
+{
+  "route": "/",
+  "meta": {
+    "title": "Connecting Donors with NGOs",
+    "metaDescription": " Help poor and needy by Donating your old clothes, furnitures, appliances, toys, books, bicycles etc to NGOs near you. Register your donations online and sevadeep volunteers will assist you in finding the right NGO for your donations.",
+    "metaKeywords": "Sevadeep Donation Platform, Donate Old Items, Donate Clothes, Donate Food, Donate Shoes, Donate Toys, Donate Stationery, Donate Furniture, Donate Electronics, NGOs Near Me.",
+    "ogTitle": "Connecting Donors with NGOs",
+    "ogDescription": "Help poor and needy by Donating your old clothes, furnitures, appliances, toys, books, bicycles etc to NGOs near you. Register your donations online and sevadeep volunteers will assist you in finding the right NGO for your donations.",
+    "ogImage": "https://sevadeep.org/assets/img/logo-big.png"
+  },
+  "sections": [
+    {
+      "tag": "HEADER",
+      "className": "",
+      "heading": "Your NGO has registered succesfully. Please wait for admin confirmation.",
+      "headings": [
+        {
+          "tag": "H4",
+          "text": "Your NGO has registered succesfully. Please wait for admin confirmation."
+        }
+      ],
+      "paragraphs": [],
+      "buttons": [
+        {
+          "text": "OK",
+          "href": ""
+        }
+      ],
+      "lists": [
+        [
+          "About Us",
+          "How It Works",
+          "Blog",
+          "NGO",
+          "Login",
+          "Sponsor A Meal"
+        ],
+        [
+          "NGO Login",
+          "NGO SignUp"
+        ]
+      ],
+      "imgAlts": [],
+      "fullText": "About Us\nHow It Works\nBlog\nNGO\nLogin\nSponsor A Meal",
+      "role": "header"
+    },
+    {
+      "tag": "DIV",
+      "className": "gridbanner ng-star-inserted",
+      "heading": "",
+      "headings": [],
+      "paragraphs": [],
+      "buttons": [
+        {
+          "text": "Search NGO",
+          "href": ""
+        },
+        {
+          "text": "View NGO\nNeeds",
+          "href": ""
+        },
+        {
+          "text": "Donate",
+          "href": ""
+        }
+      ],
+      "lists": [],
+      "imgAlts": [],
+      "fullText": "Search NGO\nView NGO\nNeeds\nDonate",
+      "role": "content"
+    },
+    {
+      "tag": "DIV",
+      "className": "intro row",
+      "heading": "",
+      "headings": [],
+      "paragraphs": [
+        "Many families want to donate their household goods but don’t know how to go about their donation. Through the Sevadeep digital platform, www.sevadeep.org, the donor can not only see the various NGOs listed along with their address but they also get to see what each NGOs needs are, and accordingly match their needs. Sevadeep is a user-friendly and unique digital platform that connects donors with needy NGOs across India. Significantly creating a tangible difference in the lives of orphanages, old age homes, and other social organizations. On this platform, people can donate used and new items such as furniture, clothes, appliances, household items, and more to NGOs of their choice (Sevadeep does not accept cash, only physical good). A thorough screening of recipient NGOs is carried out ensuring that only the genuine social organizations are onboarded. Once people make the donation, the system keeps a track of the entire donation cycle and updates donors accordingly on the outcome. For Pune city, Sevadeep even goes the extra mile by arranging doorstep pick-up of all household items.\nSevadeep is an initiative of the Relfor Foundation, the philanthropic arm of Relfor Lab Pvt. Ltd spearheaded by Mr. Deepak Nathani. In keeping with the company’s core vision of “Innovate to make a better tomorrow”, Sevadeep aims to encourage and enhance the culture of giving, leading to the multiplication of social impact. Another noble mission is feeding the poor through Narayanseva, inspired by Ms. Pushpa Nathani. Started during the COVID-19 lockdown, Narayanseva, an initiative powered by Sevadeep is committed to providing over 250 nutritious meals daily to the needy relatives of patients at the Sassoon Hospital, Pune. With over 2.5 lakh meals served till date, Narayanseva continues its impactful journey in the community. The meals are prepared under strict hygiene conditions at the Relfor Foundation, Baner office in Pune."
+      ],
+      "buttons": [],
+      "lists": [],
+      "imgAlts": [],
+      "fullText": "Many families want to donate their household goods but don’t know how to go about their donation. Through the Sevadeep digital platform, www.sevadeep.org, the donor can not only see the various NGOs listed along with their address but they also get to see what each NGOs needs are, and accordingly match their needs. Sevadeep is a user-friendly and unique digital platform that connects donors with needy NGOs across India. Significantly creating a tangible difference in the lives of orphanages, old age homes, and other social organizations. On this platform, people can donate used and new items such as furniture, clothes, appliances, household items, and more to NGOs of their choice (Sevadeep does not accept cash, only physical good). A thorough screening of recipient NGOs is carried out ensuring that only the genuine social organizations are onboarded. Once people make the donation, the system keeps a track of the entire donation cycle and updates donors accordingly on the outcome. For Pune city, Sevadeep even goes the extra mile by arranging doorstep pick-up of all household items.\nSevadeep is an initiative of the Relfor Foundation, the philanthropic arm of Relfor Lab Pvt. Ltd spearheaded by Mr. Deepak Nathani. In keeping with the company’s core vision of “Innovate to make a better tomorrow”, Sevadeep aims to encourage and enhance the culture of giving, leading to the multiplication of social impact. Another noble mission is feeding the poor through Narayanseva, inspired by Ms. Pushpa Nathani. Started during the COVID-19 lockdown, Narayanseva, an initiative powered by Sevadeep is committed to providing over 250 nutritious meals daily to the needy relatives of patients at the Sassoon Hospital, Pune. With over 2.5 lakh meals served till date, Narayanseva continues its impactful journey in the community. The meals are prepared under strict hygiene conditions at the Relfor Foundation, Baner office in Pune.",
+      "role": "content"
+    },
+    {
+      "tag": "DIV",
+      "className": "divPadding ng-star-inserted",
+      "heading": "",
+      "headings": [],
+      "paragraphs": [
+        "LET'S HELP TOGETHER",
+        "Sevadeep In Action",
+        "Narayanseva (Food Distribution) :",
+        "Thank you Harnish Sheth. We appreciate your contribution for needy once.",
+        "Thank you Anil Chachar. We appreciate your contribution for needy once.",
+        "Thank you Sneha Choudhari. We appreciate your contribution for needy once.",
+        "Thank you Gayatri Agarwal. We appreciate your contribution for needy once.",
+        "See More",
+        "Inkind Donations :",
+        "Thank you Sneha Karanam for your great generosity! We, at Sevadeep, greatly appreciate your donation.",
+        "Thank you Rukhsheen Vajifdar for your great generosity! We, at Sevadeep, greatly appreciate your donation.",
+        "Thank you Prajakta Amberkar for your great generosity! We, at Sevadeep, greatly appreciate your donation.",
+        "Thank you Andrea for your great generosity! We, at Sevadeep, greatly appreciate your donation.",
+        "See More"
+      ],
+      "buttons": [],
+      "lists": [],
+      "imgAlts": [],
+      "fullText": "LET'S HELP TOGETHER\n\nSevadeep In Action\n\nNarayanseva (Food Distribution) :\n\nThank you Harnish Sheth. We appreciate your contribution for needy once.\n\nThank you Anil Chachar. We appreciate your contribution for needy once.\n\nThank you Sneha Choudhari. We appreciate your contribution for needy once.\n\nThank you Gayatri Agarwal. We appreciate your contribution for needy once.\n\nSee More\n\nInkind Donations :\n\nThank you Sneha Karanam for your great generosity! We, at Sevadeep, greatly appreciate your donation.\n\nThank you Rukhsheen Vajifdar for your great generosity! We, at Sevadeep, greatly appreciate your donation.\n\nThank you Prajakta Amberkar for your great generosity! We, at Sevadeep, greatly appreciate your donation.\n\nThank you Andrea for your great generosity! We, at Sevadeep, greatly appreciate your donation.\n\nSee More",
+      "role": "content"
+    },
+    {
+      "tag": "DIV",
+      "className": "divPadding number",
+      "heading": "Numbers Speak !",
+      "headings": [
+        {
+          "tag": "H5",
+          "text": "SOME FACTS ABOUT SEVADEEP INITIATIVE!"
+        },
+        {
+          "tag": "H1",
+          "text": "Numbers Speak !"
+        }
+      ],
+      "paragraphs": [
+        "1230",
+        "NGOs Onboarded",
+        "6546",
+        "Total Donations",
+        "1851",
+        "Current Needs"
+      ],
+      "buttons": [],
+      "lists": [],
+      "imgAlts": [],
+      "fullText": "SOME FACTS ABOUT SEVADEEP INITIATIVE!\nNumbers Speak !\n\n1230\n\nNGOs Onboarded\n\n6546\n\nTotal Donations\n\n1851\n\nCurrent Needs",
+      "role": "content"
+    },
+    {
+      "tag": "DIV",
+      "className": "divPadding py-3",
+      "heading": "",
+      "headings": [],
+      "paragraphs": [
+        "WHERE SOUND BECOMES VISION",
+        "Reviews that Inspire Us!",
+        "Swati Deshpande - Pune",
+        "Sangita Desai - Goa",
+        "Swati Deshpande - Pune",
+        "Sangita Desai - Goa"
+      ],
+      "buttons": [],
+      "lists": [],
+      "imgAlts": [
+        "Testimonial Icon",
+        "Testimonial Icon",
+        "Testimonial Icon",
+        "Testimonial Icon"
+      ],
+      "fullText": "WHERE SOUND BECOMES VISION\n\nReviews that Inspire Us!\n\nAkshay from SevaDeep was responsive, prompt and very very helpful. He arranged the pick of my donations in 24 hours and Connected me with Shubham for the pick up. Contact numbers were provided promptly. Shubham came with a van and collected all my donations on time. I am very impressed with the... Read More\n\nSwati Deshpande - Pune\n\na month ago\n\nSevadeep is doing very good work. I recently donated some textiles . I must say they have a very good process set Online which is very rare to see in Goa. I am really feeling good after donating and I am looking forward to donating some more. Also, the kids made me some cards which are awesome. I... Read More\n\nSangita Desai - Goa\n\n6 months ago\n\nAkshay from SevaDeep was responsive, prompt and very very helpful. He arranged the pick of my donations in 24 hours and Connected me with Shubham for the pick up. Contact numbers were provided promptly. Shubham came with a van and collected all my donations on time. I am very impressed with the... Read More\n\nSwati Deshpande - Pune\n\na month ago\n\nSevadeep is doing very good work. I recently donated some textiles . I must say they have a very good process set Online which is very rare to see in Goa. I am really feeling good after donating and I am looking forward to donating some more. Also, the kids made me some cards which are awesome. I... Read More\n\nSangita Desai - Goa\n\n6 months ago\n\n<>",
+      "role": "content"
+    },
+    {
+      "tag": "DIV",
+      "className": "awards",
+      "heading": "Sevasadan NGO Visit",
+      "headings": [
+        {
+          "tag": "H3",
+          "text": "Sevasadan NGO Visit"
+        },
+        {
+          "tag": "H3",
+          "text": "Maha-Awas Abhiyan Purskar 2020-21"
+        },
+        {
+          "tag": "H3",
+          "text": "Heartwarming moments with Shri Anna Hajare"
+        },
+        {
+          "tag": "H3",
+          "text": "Act of Compassion award 2024"
+        },
+        {
+          "tag": "H3",
+          "text": "Sevasadan NGO Visit"
+        },
+        {
+          "tag": "H3",
+          "text": "Maha-Awas Abhiyan Purskar 2020-21"
+        },
+        {
+          "tag": "H3",
+          "text": "Heartwarming moments with Shri Anna Hajare"
+        },
+        {
+          "tag": "H3",
+          "text": "Act of Compassion award 2024"
+        },
+        {
+          "tag": "H3",
+          "text": "Sevasadan NGO Visit"
+        }
+      ],
+      "paragraphs": [
+        "AWARDS AND RECOGNITION TO SEVADEEP",
+        "Sevadeep In News",
+        "Relfor CSR team met with Rajya Sabha MP Medhatai Kulkarni, briefed her about the social initiatives carried out by the Relfor Foundation. This time, Medhatai introduced the Sevasadan Society, where she has served as principal for the last twenty five years. The team spent some time with schoolchildren, and then Raj Nathani handed over an educational assistance fund to the Sevasadan Society, with a promise to continue supporting their efforts in the future. The Sevasadan Society expressed gratitude for the support and discussed potential collaboration opportunities with the Relfor Foundation.",
+        "Gram Vikas Department, Government of Maharastra, has Awarded Relfor Foundation for its Tribal Housing projects in various tribal areas . Maha Awas Abhiyan Puraskar 2020-21 was given to the Relfor Foundation for its excellent work. Honourable Ajit Pawar felicitated Deepak Nathani (Founder - Relfor Foundation) by giving this best NGO award for its impactful work in rural housing category.",
+        "Deepak Nathani visited Padma Bhushan, a social activist and anti-corruption movement founder, Shri Anna Hajare, in Ralegaon Siddhi. The discussion focused on water conservation and environmental sustainability. Deepak highlighted the Relfor Foundation's efforts in these areas, which have improved livelihoods for thousands of village people and farmers. Shri Anna Hajare appreciated Deepak's efforts and wished him well. He also emphasized the importance of community involvement and spreading awareness for long-term success in these areas. He encouraged others to follow in Deepak's footsteps and contribute to a sustainable future.",
+        "Relfor Foundation Director Sheena Nathani and Raj Nathani received the award from Chief Guest Shri Nitin Gadkari - Cabinet Minister for Road, Highways and Transport of India at a grand function. There were 120 corporations nominated with 9 different categories like Women Empowerment, Watershed Management and Water Conservation, Skill Development and Entrepreneurship, Environment Protection, Disaster Management / Response etc. The event was organized by Times of India, partnered with Ruby Hall Clinic and program processed by EY (Earnest Young - An International Organisation)",
+        "Relfor CSR team met with Rajya Sabha MP Medhatai Kulkarni, briefed her about the social initiatives carried out by the Relfor Foundation. This time, Medhatai introduced the Sevasadan Society, where she has served as principal for the last twenty five years. The team spent some time with schoolchildren, and then Raj Nathani handed over an educational assistance fund to the Sevasadan Society, with a promise to continue supporting their efforts in the future. The Sevasadan Society expressed gratitude for the support and discussed potential collaboration opportunities with the Relfor Foundation.",
+        "Gram Vikas Department, Government of Maharastra, has Awarded Relfor Foundation for its Tribal Housing projects in various tribal areas . Maha Awas Abhiyan Puraskar 2020-21 was given to the Relfor Foundation for its excellent work. Honourable Ajit Pawar felicitated Deepak Nathani (Founder - Relfor Foundation) by giving this best NGO award for its impactful work in rural housing category.",
+        "Deepak Nathani visited Padma Bhushan, a social activist and anti-corruption movement founder, Shri Anna Hajare, in Ralegaon Siddhi. The discussion focused on water conservation and environmental sustainability. Deepak highlighted the Relfor Foundation's efforts in these areas, which have improved livelihoods for thousands of village people and farmers. Shri Anna Hajare appreciated Deepak's efforts and wished him well. He also emphasized the importance of community involvement and spreading awareness for long-term success in these areas. He encouraged others to follow in Deepak's footsteps and contribute to a sustainable future.",
+        "Relfor Foundation Director Sheena Nathani and Raj Nathani received the award from Chief Guest Shri Nitin Gadkari - Cabinet Minister for Road, Highways and Transport of India at a grand function. There were 120 corporations nominated with 9 different categories like Women Empowerment, Watershed Management and Water Conservation, Skill Development and Entrepreneurship, Environment Protection, Disaster Management / Response etc. The event was organized by Times of India, partnered with Ruby Hall Clinic and program processed by EY (Earnest Young - An International Organisation)",
+        "Relfor CSR team met with Rajya Sabha MP Medhatai Kulkarni, briefed her about the social initiatives carried out by the Relfor Foundation. This time, Medhatai introduced the Sevasadan Society, where she has served as principal for the last twenty five years. The team spent some time with schoolchildren, and then Raj Nathani handed over an educational assistance fund to the Sevasadan Society, with a promise to continue supporting their efforts in the future. The Sevasadan Society expressed gratitude for the support and discussed potential collaboration opportunities with the Relfor Foundation."
+      ],
+      "buttons": [],
+      "lists": [],
+      "imgAlts": [],
+      "fullText": "AWARDS AND RECOGNITION TO SEVADEEP\n\nSevadeep In News\n\nSevasadan NGO Visit\n\nRelfor CSR team met with Rajya Sabha MP Medhatai Kulkarni, briefed her about the social initiatives carried out by the Relfor Foundation. This time, Medhatai introduced the Sevasadan Society, where she has served as principal for the last twenty five years. The team spent some time with schoolchildren, and then Raj Nathani handed over an educational assistance fund to the Sevasadan Society, with a promise to continue supporting their efforts in the future. The Sevasadan Society expressed gratitude for the support and discussed potential collaboration opportunities with the Relfor Foundation.\n\nMaha-Awas Abhiyan Purskar 2020-21\n\nGram Vikas Department, Government of Maharastra, has Awarded Relfor Foundation for its Tribal Housing projects in various tribal areas . Maha Awas Abhiyan Puraskar 2020-21 was given to the Relfor Foundation for its excellent work. Honourable Ajit Pawar felicitated Deepak Nathani (Founder - Relfor Foundation) by giving this best NGO award for its impactful work in rural housing category.\n\nHeartwarming moments with Shri Anna Hajare\n\nDeepak Nathani visited Padma Bhushan, a social activist and anti-corruption movement founder, Shri Anna Hajare, in Ralegaon Siddhi. The discussion focused on water conservation and environmental sustainability. Deepak highlighted the Relfor Foundation's efforts in these areas, which have improved livelihoods for thousands of village people and farmers. Shri Anna Hajare appreciated Deepak's efforts and wished him well. He also emphasized the importance of community involvement and spreading awareness for long-term success in these areas. He encouraged others to follow in Deepak's footsteps and contribute to a sustainable future.\n\nAct of Compassion award 2024\n\nRelfor Foundation Director Sheena Nathani and Raj Nathani received the award from Chief Guest Shri Nitin Gadkari - Cabinet Minister for Road, Highways and Transport of India at a grand function. There were 120 corporations nominated with 9 different categories like Women Empowerment, Watershed Management and Water Conservation, Skill Development and Entrepreneurship, Environment Protection, Disaster Management / Response etc. The event was organized by Times of India, partnered with Ruby Hall Clinic and program processed by EY (Earnest Young - An International Organisation)\n\nSevasadan NGO Visit\n\nRelfor CSR team met with Rajya Sabha MP Medhatai Kulkarni, briefed her about the social initiatives carried out by the Relfor Foundation. This time, Medhatai introduced the Sevasadan Society, where she has served as principal for the last twenty five years. The team spent some time with schoolchildren, and then Raj Nathani handed over an educational assistance fund to the Sevasadan Society, with a promise to continue supporting their efforts in the future. The Sevasadan Society expressed gratitude for the support and discussed potential collaboration opportunities with the Relfor Foundation.\n\nMaha-Awas Abhiyan Purskar 2020-21\n\nGram Vikas Department, Government of Maharastra, has Awarded Relfor Foundation for its Tribal Housing projects in various tribal areas . Maha Awas Abhiyan Puraskar 2020-21 was given to the Relfor Foundation for its excellent work. Honourable Ajit Pawar felicitated Deepak Nathani (Founder - Relfor Foundation) by giving this best NGO award for its impactful work in rural housing category.\n\nHeartwarming moments with Shri Anna Hajare\n\nDeepak Nathani visited Padma Bhushan, a social activist and anti-corruption movement founder, Shri Anna Hajare, in Ralegaon Siddhi. The discussion focused on water conservation and environmental sustainability. Deepak highlighted the Relfor Foundation's efforts in these areas, which have improved livelihoods for thousands of village people and farmers. Shri Anna Hajare appreciated Deepak's efforts and wished him well. He also emphasized the importance of community involvement and spreading awareness for long-term success in these areas. He encouraged others to follow in Deepak's footsteps and contribute to a sustainable future.\n\nAct of Compassion award 2024\n\nRelfor Foundation Director Sheena Nathani and Raj Nathani received the award from Chief Guest Shri Nitin Gadkari - Cabinet Minister for Road, Highways and Transport of India at a grand function. There were 120 corporations nominated with 9 different categories like Women Empowerment, Watershed Management and Water Conservation, Skill Development and Entrepreneurship, Environment Protection, Disaster Management / Response etc. The event was organized by Times of India, partnered with Ruby Hall Clinic and program processed by EY (Earnest Young - An International Organisation)\n\nSevasadan NGO Visit\n\nRelfor CSR team met with Rajya Sabha MP Medhatai Kulkarni, briefed her about the social initiatives carried out by the Relfor Foundation. This time, Medhatai introduced the Sevasadan Society, where she has served as principal for the last twenty five years. The team spent some time with schoolchildren, and then Raj Nathani handed over an educational assistance fund to the Sevasadan Society, with a promise to continue supporting their efforts in the future. The Sevasadan Society expressed gratitude for the support and discussed potential collaboration opportunities with the Relfor Foundation.",
+      "role": "content"
+    },
+    {
+      "tag": "DIV",
+      "className": "divPadding ng-star-inserted",
+      "heading": "Authenticate",
+      "headings": [
+        {
+          "tag": "H4",
+          "text": "Authenticate"
+        },
+        {
+          "tag": "H4",
+          "text": "Donate"
+        },
+        {
+          "tag": "H4",
+          "text": "Co-ordinate"
+        },
+        {
+          "tag": "H4",
+          "text": "Acknowledge, Spread Smiles"
+        }
+      ],
+      "paragraphs": [
+        "EASY 4 STEPS TO DONATE",
+        "How Sevadeep Works",
+        "Every member NGO of SevaDeep is duly verified before it is on-boarded. These NGOs now list their needs. Donor can search the NGOs as per the category and need.",
+        "You can either choose to donate as per the NGO needs, or simply make a general donation. In case you have no preference of NGO, the system will match-make for you.",
+        "Donor can arrange to either deliver the selected items to the NGO’s address or have them collected by the NGO. Decide as per your mutual convenience.",
+        "Donors are kept informed of the difference made by the donations. Now you may spread the good word on social media and invite friends to join the movement."
+      ],
+      "buttons": [],
+      "lists": [],
+      "imgAlts": [
+        "Step Icon",
+        "Step Icon",
+        "Step Icon",
+        "Step Icon"
+      ],
+      "fullText": "EASY 4 STEPS TO DONATE\n\nHow Sevadeep Works\n\nAuthenticate\n\nEvery member NGO of SevaDeep is duly verified before it is on-boarded. These NGOs now list their needs. Donor can search the NGOs as per the category and need.\n\nDonate\n\nYou can either choose to donate as per the NGO needs, or simply make a general donation. In case you have no preference of NGO, the system will match-make for you.\n\nCo-ordinate\n\nDonor can arrange to either deliver the selected items to the NGO’s address or have them collected by the NGO. Decide as per your mutual convenience.\n\nAcknowledge, Spread Smiles\n\nDonors are kept informed of the difference made by the donations. Now you may spread the good word on social media and invite friends to join the movement.",
+      "role": "content"
+    },
+    {
+      "tag": "DIV",
+      "className": "missionGrid ng-star-inserted",
+      "heading": "",
+      "headings": [],
+      "paragraphs": [
+        "The Mission Man: Deepak Nathani",
+        "Founder & CEO Relfor Labs, Co-founder and former COO, Cybage Software, Pune’s premier IT consultancy firm.",
+        "Deepak Nathani has always based his life and work on a simple credo: “Live it up.” Passionate, committed and fully invested in everything he takes up, Deepak believes in giving back to society at every juncture.",
+        "An active investor in start-up ecosystems to encourage new ideas and talent, Deepak also invests considerable time and resources in social change through the Relfor Foundation, the CSR arm of Relfor Labs. The focus has been to positively change the quality of life of the underserved sections of society through infrastructure development. Various projects undertaken over the years with passion and zeal include desilting of lakes, building concrete homes for tribals living in pre-historic conditions, upgrading the facilities of old-age homes and orphanages, and renovating toilets in rural schools.",
+        "Sevadeep.org is another ingenious creation of Deepak dedicated to creating an ecosystem of giving through a user-friendly platform that connects NGOs with donors."
+      ],
+      "buttons": [],
+      "lists": [],
+      "imgAlts": [],
+      "fullText": "The Mission Man: Deepak Nathani\n\nFounder & CEO Relfor Labs, Co-founder and former COO, Cybage Software, Pune’s premier IT consultancy firm.\n\nDeepak Nathani has always based his life and work on a simple credo: “Live it up.” Passionate, committed and fully invested in everything he takes up, Deepak believes in giving back to society at every juncture.\n\nAn active investor in start-up ecosystems to encourage new ideas and talent, Deepak also invests considerable time and resources in social change through the Relfor Foundation, the CSR arm of Relfor Labs. The focus has been to positively change the quality of life of the underserved sections of society through infrastructure development. Various projects undertaken over the years with passion and zeal include desilting of lakes, building concrete homes for tribals living in pre-historic conditions, upgrading the facilities of old-age homes and orphanages, and renovating toilets in rural schools.\n\nSevadeep.org is another ingenious creation of Deepak dedicated to creating an ecosystem of giving through a user-friendly platform that connects NGOs with donors.",
+      "role": "content"
+    },
+    {
+      "tag": "FOOTER",
+      "className": "getInTouchWrapper ng-star-inserted",
+      "heading": "",
+      "headings": [],
+      "paragraphs": [
+        "LET'S MAKE A DIFFERENCE",
+        "Get In Touch",
+        "Sevadeep Head Office",
+        "14th floor, Sky One, KalyaniNagar, Pune 411006, MH India",
+        "Tel : +91 9175099256",
+        "Email : contact@sevadeep.com",
+        "Connect With Us",
+        "Copyright @2021 Sevadeep"
+      ],
+      "buttons": [],
+      "lists": [
+        [
+          "About Us",
+          "How Sevadeep Works",
+          "Leadership",
+          "Sevadeep Brochure",
+          "FAQs"
+        ]
+      ],
+      "imgAlts": [],
+      "fullText": "LET'S MAKE A DIFFERENCE\n\nGet In Touch\n\nAbout Us\nHow Sevadeep Works\nLeadership\nSevadeep Brochure\nFAQs\n\nSevadeep Head Office\n\n14th floor, Sky One, KalyaniNagar, Pune 411006, MH India\n\nTel : +91 9175099256\n\nEmail : contact@sevadeep.com\n\nConnect With Us\n\nCopyright @2021 Sevadeep",
+      "role": "footer"
+    }
+  ],
+  "forms": [],
+  "links": [
+    {
+      "href": "tel:+919175099256",
+      "text": ""
+    },
+    {
+      "href": "/blog",
+      "text": "Blog"
+    },
+    {
+      "href": "#",
+      "text": "NGO"
+    },
+    {
+      "href": "/ngo-login",
+      "text": "NGO Login"
+    },
+    {
+      "href": "/ngo-registration",
+      "text": "NGO SignUp"
+    },
+    {
+      "href": "/donor-login",
+      "text": "Login"
+    },
+    {
+      "href": "/narayan-seva",
+      "text": "Sponsor A Meal"
+    },
+    {
+      "href": "/ngos",
+      "text": "Search NGO"
+    },
+    {
+      "href": "/ngo-needs",
+      "text": "View NGO\nNeeds"
+    },
+    {
+      "href": "/donation-bucket",
+      "text": "Donate"
+    },
+    {
+      "href": "/gallery",
+      "text": "See More"
+    },
+    {
+      "href": "/gallery",
+      "text": "See More"
+    },
+    {
+      "href": "https://drive.google.com/file/d/1Zvzciwxezc-f-UzCO1IizCnH4QdcdlJG/view?usp=sharing",
+      "text": "Sevadeep Brochure"
+    },
+    {
+      "href": "https://www.facebook.com/Sevadeep-2299903280247561/",
+      "text": ""
+    },
+    {
+      "href": "https://www.linkedin.com/company/sevadeep-non-profit",
+      "text": ""
+    },
+    {
+      "href": "https://instagram.com/sevadeep.nonprofit?igshid=ryhvnlwj7s1k",
+      "text": ""
+    },
+    {
+      "href": "https://twitter.com/SevadeepNgos",
+      "text": ""
+    },
+    {
+      "href": "https://wa.me/919175099256?text=Hello",
+      "text": ""
+    },
+    {
+      "href": "https://sevadeep.org",
+      "text": ""
+    },
+    {
+      "href": "tel:+919175099256",
+      "text": "+91-9175099256"
+    },
+    {
+      "href": "/donor-login",
+      "text": "Home"
+    },
+    {
+      "href": "/ngo-login",
+      "text": "NGO Registration/Login"
+    }
+  ],
+  "images": [
+    {
+      "src": "https://sevadeep.org/assets/img/sevadeep-r-logo.png",
+      "alt": "",
+      "localPath": "/images/home/sevadeep-r-logo.png",
+      "isBackground": false
+    },
+    {
+      "src": "https://sevadeep.org/assets/img/newbanner/4.png",
+      "alt": "",
+      "localPath": "/images/home/4.png",
+      "isBackground": false
+    },
+    {
+      "src": "https://sevadeep.org/assets/img/newbanner/6.png",
+      "alt": "",
+      "localPath": "/images/home/6.png",
+      "isBackground": false
+    },
+    {
+      "src": "https://sevadeep.org/assets/img/newbanner/3.png",
+      "alt": "",
+      "localPath": "/images/home/3.png",
+      "isBackground": false
+    },
+    {
+      "src": "https://sevadeep.org/assets/img/newbanner/5.png",
+      "alt": "",
+      "localPath": "/images/home/5.png",
+      "isBackground": false
+    },
+    {
+      "src": "https://sevadeep.org/assets/img/images/sevadeep.webp",
+      "alt": "",
+      "localPath": "/images/home/sevadeep.webp",
+      "isBackground": false
+    },
+    {
+      "src": "https://sevadeep.org/assets/img/donation/seva1.jpg",
+      "alt": "",
+      "localPath": "/images/home/seva1.jpg",
+      "isBackground": false
+    },
+    {
+      "src": "https://sevadeep.org/assets/img/donation/seva2.jpg",
+      "alt": "",
+      "localPath": "/images/home/seva2.jpg",
+      "isBackground": false
+    },
+    {
+      "src": "https://sevadeep.org/assets/img/donation/seva3.jpg",
+      "alt": "",
+      "localPath": "/images/home/seva3.jpg",
+      "isBackground": false
+    },
+    {
+      "src": "https://sevadeep.org/assets/img/donation/seva5.jpg",
+      "alt": "",
+      "localPath": "/images/home/seva5.jpg",
+      "isBackground": false
+    },
+    {
+      "src": "https://sevadeep.org/assets/img/donation/donate8.jpg",
+      "alt": "",
+      "localPath": "/images/home/donate8.jpg",
+      "isBackground": false
+    },
+    {
+      "src": "https://sevadeep.org/assets/img/donation/donate9.jpg",
+      "alt": "",
+      "localPath": "/images/home/donate9.jpg",
+      "isBackground": false
+    },
+    {
+      "src": "https://sevadeep.org/assets/img/donation/donate5.jpg",
+      "alt": "",
+      "localPath": "/images/home/donate5.jpg",
+      "isBackground": false
+    },
+    {
+      "src": "https://sevadeep.org/assets/img/donation/donate6.jpg",
+      "alt": "",
+      "localPath": "/images/home/donate6.jpg",
+      "isBackground": false
+    },
+    {
+      "src": "https://sevadeep.org/assets/icons/quote_icon.png",
+      "alt": "Testimonial Icon",
+      "localPath": "/images/home/quote_icon.png",
+      "isBackground": false
+    },
+    {
+      "src": "https://sevadeep.org/assets/img/images/First%20Act%20Of%20Compassion%20Award.jpeg",
+      "alt": "",
+      "localPath": "/images/home/First%20Act%20Of%20Compassion%20Award.jpeg",
+      "isBackground": false
+    },
+    {
+      "src": "https://sevadeep.org/assets/img/images/SevaSadan%20NGO%20Visit%201.jpeg",
+      "alt": "",
+      "localPath": "/images/home/SevaSadan%20NGO%20Visit%201.jpeg",
+      "isBackground": false
+    },
+    {
+      "src": "https://sevadeep.org/assets/img/images/Award%20for%20Tribal%20Housing%20Project.jpg",
+      "alt": "",
+      "localPath": "/images/home/Award%20for%20Tribal%20Housing%20Project.jpg",
+      "isBackground": false
+    },
+    {
+      "src": "https://sevadeep.org/assets/img/images/anna-hajare.webp",
+      "alt": "",
+      "localPath": "/images/home/anna-hajare.webp",
+      "isBackground": false
+    },
+    {
+      "src": "https://sevadeep.org/",
+      "alt": "",
+      "localPath": "/images/home/img_19.png",
+      "isBackground": false
+    },
+    {
+      "src": "https://sevadeep.org/assets/icons/touch_icon.png",
+      "alt": "Step Icon",
+      "localPath": "/images/home/touch_icon.png",
+      "isBackground": false
+    },
+    {
+      "src": "https://sevadeep.org/assets/icons/donate_hand_icon.png",
+      "alt": "Step Icon",
+      "localPath": "/images/home/donate_hand_icon.png",
+      "isBackground": false
+    },
+    {
+      "src": "https://sevadeep.org/assets/icons/location_icon2.png",
+      "alt": "Step Icon",
+      "localPath": "/images/home/location_icon2.png",
+      "isBackground": false
+    },
+    {
+      "src": "https://sevadeep.org/assets/icons/prey_hand_icon.png",
+      "alt": "Step Icon",
+      "localPath": "/images/home/prey_hand_icon.png",
+      "isBackground": false
+    },
+    {
+      "src": "https://sevadeep.org/assets/img/missionman.jpg",
+      "alt": "",
+      "localPath": "/images/home/missionman.jpg",
+      "isBackground": false
+    },
+    {
+      "src": "https://sevadeep.org/download_app_BG.8475c83ce6af097b544d.jpg",
+      "alt": "",
+      "localPath": "/images/home/download_app_BG.8475c83ce6af097b544d.jpg",
+      "isBackground": true
+    },
+    {
+      "src": "https://sevadeep.org/Join_Relfor_1.8f8e55b65fbef71e4422.jpg",
+      "alt": "",
+      "localPath": "/images/home/Join_Relfor_1.8f8e55b65fbef71e4422.jpg",
+      "isBackground": true
+    }
+  ]
+}

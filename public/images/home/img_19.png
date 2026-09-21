@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <base href="/" />
+    <link rel="manifest" href="./assets/manifest.json" />
+    <meta charset="utf-8" />
+    <link
+      rel="apple-touch-icon"
+      sizes="76x76"
+      href="./assets/img/fab_icon.png"
+    />
+    <link rel="icon" type="image/png" href="./assets/img/fab_icon.png" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="robots" content="index,follow" />
+    <meta name="googlebot" content="index,follow" />
+    <link rel="canonical" href="https://sevadeep.org/" />
+    <title>Connecting Donors with NGOs</title>
+    <meta
+      name="keywords"
+      content="Sevadeep Donation Platform, Donate Old Items, Donate Clothes, Donate Food, Donate Shoes, Donate Toys, Donate Stationery, Donate Furniture, Donate Electronics, NGOs Near Me."
+    />
+    <meta
+      name="description"
+      content=" Help poor and needy by Donating your old clothes, furnitures, appliances, toys, books, bicycles etc to NGOs near you. Register your donations online and sevadeep volunteers will assist you in finding the right NGO for your donations."
+    />
+
+    <meta
+      property="og:site_name"
+      content="SevaDeep – Connecting Donors with NGOs"
+    />
+    <meta property="og:title" content="Connecting Donors with NGOs" />
+    <meta
+      property="og:description"
+      content="Help poor and needy by Donating your old clothes, furnitures, appliances, toys, books, bicycles etc to NGOs near you. Register your donations online and sevadeep volunteers will assist you in finding the right NGO for your donations."
+    />
+    <meta
+      property="og:image"
+      itemprop="image"
+      content="https://sevadeep.org/assets/img/logo-big.png"
+    />
+    <meta property="og:type" content="website" />
+    <meta
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+      name="viewport"
+    />
+    <meta name="viewport" content="width=device-width" />
+
+    <!--     Fonts and icons     -->
+    <link
+      href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <!-- <meta name="google-signin-scope" content="profile email">-->
+    <meta name="google-signin-client_id" content="**********" />
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <!-- Google Tag Manager -->
+    <script>
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != "dataLayer" ? "&l=" + l : "";
+        j.async = true;
+        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, "script", "dataLayer", "GTM-W8TMX6F");
+    </script>
+    <!-- End Google Tag Manager -->
+
+    <!-- Facebook Pixel Code -->
+    <script>
+      !(function (f, b, e, v, n, t, s) {
+        if (f.fbq) return;
+        n = f.fbq = function () {
+          n.callMethod
+            ? n.callMethod.apply(n, arguments)
+            : n.queue.push(arguments);
+        };
+        if (!f._fbq) f._fbq = n;
+        n.push = n;
+        n.loaded = !0;
+        n.version = "2.0";
+        n.queue = [];
+        t = b.createElement(e);
+        t.async = !0;
+        t.src = v;
+        s = b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t, s);
+      })(
+        window,
+        document,
+        "script",
+        "https://connect.facebook.net/en_US/fbevents.js"
+      );
+      fbq("init", "{457156069332545}");
+      fbq("track", "PageView");
+    </script>
+    <noscript>
+      <img
+        height="1"
+        width="1"
+        style="display: none"
+        src="https://www.facebook.com/tr?id={457156069332545}&ev=PageView&noscript=1"
+      />
+    </noscript>
+    <!-- End Facebook Pixel Code -->
+
+    <!-- Start Page Track code for the summer campaign-->
+    <script></script>
+    <!-- Start Page Track code for the summer campaign-->
+
+    <style>
+      .modal {
+        margin-top: 50px !important;
+      }
+      @media only screen and (max-width: 768px) {
+        .star.half {
+          --halfMargin: -29px !important;
+        }
+      }
+
+      .search-ngo-city .mat-select-trigger {
+        padding-bottom: 3px !important;
+      }
+
+      .mat-form-field-appearance-legacy .mat-form-field-label {
+        transform: perspective(100px) !important;
+      }
+
+      .verify-otp .btn-outline-info {
+        padding: 7px !important;
+      }
+
+      .inputSize {
+        font-size: 16px !important;
+      }
+
+      .inputSize input[type="text"],
+      .inputSize input[type="email"],
+      .inputSize input[type="search"],
+      .inputSize input[type="password"],
+      .inputSize textarea {
+        font-size: 16px !important;
+      }
+
+      .card-template .card .card-header {
+        z-index: 1 !important;
+      }
+
+      .perfect-scrollbar-on .sidebar,
+      .perfect-scrollbar-on .main-panel {
+        /* height: calc(100% - 50px) !important; */
+      }
+
+      .donation-bucket .multiselect-dropdown .dropdown-btn {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        border: none !important;
+        border-bottom: 1px solid #adadad !important;
+        border-radius: 0 !important;
+      }
+
+      .multiselect-dropdown .dropdown-btn .dropdown-down {
+        display: inline-block;
+        top: 0px !important;
+        font-size: 0px !important;
+        width: 0 !important;
+        height: 0 !important;
+        border-top: 5px solid #adadad !important;
+        border-left: 5px solid transparent !important;
+        border-right: 5px solid transparent !important;
+      }
+
+      .donation-bucket .multiselect-dropdown .dropdown-btn .selected-item {
+        border: none !important;
+        margin-right: 4px !important;
+        background: transparent !important;
+        padding: 0 !important;
+        color: inherit !important;
+        border-radius: 0 !important;
+        float: left !important;
+
+        white-space: nowrap;
+        width: calc(90% - 25px);
+        overflow: hidden;
+        text-overflow: ellipsis;
+        border: 1px solid #000000;
+      }
+
+      .donation-bucket .multiselect-dropdown .dropdown-btn.selected-item:hover {
+        box-shadow: 1px 1px transparent !important;
+      }
+
+      .donation-bucket
+        .multiselect-dropdown
+        .dropdown-btn
+        .selected-item:hover {
+        box-shadow: 1px 1px transparent !important;
+      }
+
+      .multiselect-dropdown .dropdown-btn .dropdown-up {
+        display: inline-block;
+        width: 0;
+        height: 0;
+        border-bottom: 5px solid #adadad !important;
+        border-left: 5px solid transparent !important;
+        border-right: 5px solid transparent !important;
+      }
+
+      .multidropdown span.selected-item a {
+        display: none !important;
+      }
+
+      .profile-present a {
+        border-radius: 50% !important;
+      }
+
+      .profile-present .ngx-gallery-preview-icons .ngx-gallery-icon {
+        margin-top: 60px !important;
+      }
+
+      .dropdown-list {
+        margin-top: -35px !important;
+        padding-bottom: 10px !important;
+        z-index: 8 !important;
+      }
+
+      ul.item2 {
+        max-height: 335px !important;
+      }
+
+      li.multiselect-item-checkbox.ng-star-inserted {
+        color: #000000;
+        font-weight: 500;
+      }
+
+      .mat-tab-labels div#mat-tab-label-0-0 {
+        font-size: 16px;
+        color: #ffffff;
+        background-color: #000000;
+        padding: 0.46875rem 1rem !important;
+        border-color: #000000;
+        margin-right: 1px;
+        height: auto !important;
+        min-width: 100px !important;
+      }
+
+      .mat-tab-label {
+        opacity: 0.4 !important;
+      }
+
+      .mat-tab-labels .mat-tab-label.tab-opacity {
+        opacity: 1 !important;
+      }
+
+      .mat-tab-labels div#mat-tab-label-0-1 {
+        font-size: 16px;
+        color: #ffffff;
+        background-color: #dc3f1e;
+        padding: 0.46875rem 1rem !important;
+        border-color: #dc3f1e;
+        margin-right: 1px;
+        height: auto !important;
+        min-width: 100px !important;
+      }
+
+      .mat-tab-labels div#mat-tab-label-0-2 {
+        font-size: 16px;
+        color: #ffffff;
+        background-color: #315e89;
+        padding: 0.46875rem 1rem !important;
+        margin-right: 1px;
+        height: auto !important;
+        min-width: 100px !important;
+      }
+
+      .mat-tab-group.mat-primary .mat-ink-bar {
+        background-color: red !important;
+      }
+      .ngx-gallery-arrow-wrapper {
+        z-index: 8 !important;
+      }
+    </style>
+    <link rel="manifest" href="manifest.json" />
+    <meta name="theme-color" content="#1976d2" />
+  <link rel="stylesheet" href="styles.d161a6979f8d2f909da2.css"></head>
+  <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript
+      ><iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-W8TMX6F"
+        height="0"
+        width="0"
+        style="display: none; visibility: hidden"
+      ></iframe
+    ></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <div>
+      <!-- class="container-fluid" -->
+      <app-root>
+        <div class="loader">
+          <svg class="circular" viewBox="25 25 50 50">
+            <circle
+              class="path"
+              cx="50"
+              cy="50"
+              r="20"
+              fill="none"
+              stroke-width="2"
+              stroke-miterlimit="10"
+            />
+          </svg>
+        </div>
+      </app-root>
+    </div>
+  <script type="text/javascript" src="runtime.10a287fd4e2e45aed469.js"></script><script type="text/javascript" src="polyfills.7f304f1fb975d3833856.js"></script><script type="text/javascript" src="scripts.f4943e3b52122d039e84.js"></script><script type="text/javascript" src="main.c4277ad7e88cc83e81ba.js"></script></body>
+</html>

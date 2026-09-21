@@ -1,0 +1,303 @@
+{
+  "route": "/ngos",
+  "meta": {
+    "title": "NGO List",
+    "metaDescription": " Help poor and needy by Donating your old clothes, furnitures, appliances, toys, books, bicycles etc to NGOs near you. Register your donations online and sevadeep volunteers will assist you in finding the right NGO for your donations.",
+    "metaKeywords": "Sevadeep Donation Platform, Donate Old Items, Donate Clothes, Donate Food, Donate Shoes, Donate Toys, Donate Stationery, Donate Furniture, Donate Electronics, NGOs Near Me.",
+    "ogTitle": "NGO list",
+    "ogDescription": "A passion to help. The ability to deliver",
+    "ogImage": "https://sevadeep.org/assets/img/logo-big.png"
+  },
+  "sections": [
+    {
+      "tag": "DIV",
+      "className": "",
+      "heading": "Lift For Upliftment",
+      "headings": [
+        {
+          "tag": "H1",
+          "text": "Lift For Upliftment"
+        }
+      ],
+      "paragraphs": [
+        "\"NGO started by Students of BJ Medical College, working to Uplift needy section of the society by Free Coaching of NEET(National Entrance cum Eligiblity Test) for admissions into MBBS and other Medical Cources.\" Since 2012, over 2,900 deserving students have been provided with educational assistance through the Lift for Upliftment Project.t: MMF supports an NGO run by the students at BJ Government College, Pune, that offers free coaching to underprivileged students for NEET (Medical Entrance Examinations). The programme consists of a regular lecture series and weekly practice conducted at the Bal Vikas Shikshan Sanstha Prathamik Shala, Pune."
+      ],
+      "buttons": [],
+      "lists": [],
+      "imgAlts": [],
+      "fullText": "Lift For Upliftment\nSomwar Peth, Pune\n\n\"NGO started by Students of BJ Medical College, working to Uplift needy section of the society by Free Coaching of NEET(National Entrance cum Eligiblity Test) for admissions into MBBS and other Medical Cources.\" Since 2012, over 2,900 deserving students have been provided with educational assistance through the Lift for Upliftment Project.t: MMF supports an NGO run by the students at BJ Government College, Pune, that offers free coaching to underprivileged students for NEET (Medical Entrance Examinations). The programme consists of a regular lecture series and weekly practice conducted at the Bal Vikas Shikshan Sanstha Prathamik Shala, Pune.\n\nRead More",
+      "role": "content"
+    },
+    {
+      "tag": "DIV",
+      "className": "",
+      "heading": "Bhagyashali Bhavishya",
+      "headings": [
+        {
+          "tag": "H1",
+          "text": "Bhagyashali Bhavishya"
+        }
+      ],
+      "paragraphs": [
+        "After School Program teaching Math & English with special emphasis on Art"
+      ],
+      "buttons": [],
+      "lists": [],
+      "imgAlts": [],
+      "fullText": "Bhagyashali Bhavishya\nLohegaon, Pune\n\nAfter School Program teaching Math & English with special emphasis on Art\n\nRead More",
+      "role": "content"
+    },
+    {
+      "tag": "DIV",
+      "className": "",
+      "heading": "Paalvia Foundation",
+      "headings": [
+        {
+          "tag": "H1",
+          "text": "Paalvia Foundation"
+        }
+      ],
+      "paragraphs": [
+        "We believe that art and literature bring out the best in people—helping them grow with joy in their personal lives, and with confidence in their professional journeys. Paalvia doesn’t just talk about change—it paints it, writes it, sings it, and celebrates it. Through art, we help communities find voice, identity, and meaning."
+      ],
+      "buttons": [],
+      "lists": [],
+      "imgAlts": [],
+      "fullText": "Paalvia Foundation\nViman Nagar, Pune\n\nWe believe that art and literature bring out the best in people—helping them grow with joy in their personal lives, and with confidence in their professional journeys. Paalvia doesn’t just talk about change—it paints it, writes it, sings it, and celebrates it. Through art, we help communities find voice, identity, and meaning.\n\nRead More",
+      "role": "content"
+    },
+    {
+      "tag": "DIV",
+      "className": "",
+      "heading": "Matimand Nivasi Vidyalay",
+      "headings": [
+        {
+          "tag": "H1",
+          "text": "Matimand Nivasi Vidyalay"
+        }
+      ],
+      "paragraphs": [
+        "Our School Special Children Educational and Residential School."
+      ],
+      "buttons": [],
+      "lists": [],
+      "imgAlts": [],
+      "fullText": "Matimand Nivasi Vidyalay\nManjri, Pune\n\nOur School Special Children Educational and Residential School.\n\nRead More",
+      "role": "content"
+    },
+    {
+      "tag": "DIV",
+      "className": "",
+      "heading": "Bharat Vikas Parishad",
+      "headings": [
+        {
+          "tag": "H1",
+          "text": "Bharat Vikas Parishad"
+        }
+      ],
+      "paragraphs": [
+        "Bharat Vikas Parishad is a voluntary organization where citizens from all walks of life join to work for the development and growth of our country in all fields of human endeavour through promoting a sense of patriotism, national unity and integrity and culminating in Swasth-Samarth-Sanskarit Bharat i.e. physically, economically and morally strong India. Our work can be broadly categoried into Service (sewa) and Educational (sanskar). Serving the Divyang by manufacturing and providing them artificial limbs, taking up integrated village development of over 65 villages all over the country (providing tube-wells for water supply, toilets, constructing / renovating ponds, pathways, drains, class rooms, temples and even common crematoria), helping the tribal brethren, protecting environment by planting trees, organising health checkup and yoga camps, blood donation, setting up super specialty hospital and diagnostic centres, and whenever there is a national calamity, provide necessary help and undertake relief measures are some of the important Service projects. Our social compaigns include Beti Bachao – Beti Padhao and Nasha Mukti."
+      ],
+      "buttons": [],
+      "lists": [],
+      "imgAlts": [],
+      "fullText": "Bharat Vikas Parishad\nYerawada, Pune\n\nBharat Vikas Parishad is a voluntary organization where citizens from all walks of life join to work for the development and growth of our country in all fields of human endeavour through promoting a sense of patriotism, national unity and integrity and culminating in Swasth-Samarth-Sanskarit Bharat i.e. physically, economically and morally strong India. Our work can be broadly categoried into Service (sewa) and Educational (sanskar). Serving the Divyang by manufacturing and providing them artificial limbs, taking up integrated village development of over 65 villages all over the country (providing tube-wells for water supply, toilets, constructing / renovating ponds, pathways, drains, class rooms, temples and even common crematoria), helping the tribal brethren, protecting environment by planting trees, organising health checkup and yoga camps, blood donation, setting up super specialty hospital and diagnostic centres, and whenever there is a national calamity, provide necessary help and undertake relief measures are some of the important Service projects. Our social compaigns include Beti Bachao – Beti Padhao and Nasha Mukti.\n\nRead More",
+      "role": "content"
+    },
+    {
+      "tag": "DIV",
+      "className": "",
+      "heading": "Dr Sams Health Assistant and Research Foundation",
+      "headings": [
+        {
+          "tag": "H1",
+          "text": "Dr Sams Health Assistant and Research Foundation"
+        }
+      ],
+      "paragraphs": [
+        "WORKING TO PROVIDE DISCOUNTED HEALTHCARE SERVICES, WOMENS HEALTH, PRMOTION OF GOVERNMENT SCHEMES"
+      ],
+      "buttons": [],
+      "lists": [],
+      "imgAlts": [],
+      "fullText": "Dr Sams Health Assistant and Research Foundation\nPhursungi, Pune\n\nWORKING TO PROVIDE DISCOUNTED HEALTHCARE SERVICES, WOMENS HEALTH, PRMOTION OF GOVERNMENT SCHEMES\n\nRead More",
+      "role": "content"
+    },
+    {
+      "tag": "DIV",
+      "className": "",
+      "heading": "Bodhisattva",
+      "headings": [
+        {
+          "tag": "H1",
+          "text": "Bodhisattva"
+        }
+      ],
+      "paragraphs": [
+        "Bodhisattva is an NGO for Animal Welfare and Human Welfare. We want to reduce suffering and help all sentient beings."
+      ],
+      "buttons": [],
+      "lists": [],
+      "imgAlts": [],
+      "fullText": "Bodhisattva\nYerwada, Pune\n\nBodhisattva is an NGO for Animal Welfare and Human Welfare. We want to reduce suffering and help all sentient beings.\n\nRead More",
+      "role": "content"
+    },
+    {
+      "tag": "DIV",
+      "className": "",
+      "heading": "Good luck charitable trust",
+      "headings": [
+        {
+          "tag": "H1",
+          "text": "Good luck charitable trust"
+        }
+      ],
+      "paragraphs": [
+        "Childhood distribution animal food distribution and girls in hygiene awareness activity Pune City for slum media"
+      ],
+      "buttons": [],
+      "lists": [],
+      "imgAlts": [],
+      "fullText": "Good luck charitable trust\nYerawada, Pune\n\nChildhood distribution animal food distribution and girls in hygiene awareness activity Pune City for slum media\n\nRead More",
+      "role": "content"
+    },
+    {
+      "tag": "DIV",
+      "className": "",
+      "heading": "Tejaswini Samajik Sanstha",
+      "headings": [
+        {
+          "tag": "H1",
+          "text": "Tejaswini Samajik Sanstha"
+        }
+      ],
+      "paragraphs": [
+        "Tejaswini Samajik Sanstha is a non-profit, registered charitable trust which was registered on 16th April 2014. The objective of the society is to provide education, social awareness, and values-based education to underprivileged women in urban & rural areas."
+      ],
+      "buttons": [],
+      "lists": [],
+      "imgAlts": [],
+      "fullText": "Tejaswini Samajik Sanstha\nWagholi, Pune\n\nTejaswini Samajik Sanstha is a non-profit, registered charitable trust which was registered on 16th April 2014. The objective of the society is to provide education, social awareness, and values-based education to underprivileged women in urban & rural areas.\n\nRead More",
+      "role": "content"
+    },
+    {
+      "tag": "DIV",
+      "className": "",
+      "heading": "Badlaav Social Reform Foundation",
+      "headings": [
+        {
+          "tag": "H1",
+          "text": "Badlaav Social Reform Foundation"
+        }
+      ],
+      "paragraphs": [
+        "At Badlaav, we work to empower marginalized communities by focusing on menstrual and sexual health education, sustainable menstrual hygiene management, and fostering gender equity through social action programs. Our aim is to drive long-term social and environmental impact."
+      ],
+      "buttons": [],
+      "lists": [],
+      "imgAlts": [],
+      "fullText": "Badlaav Social Reform Foundation\nLulla Nagar, Pune\n\nAt Badlaav, we work to empower marginalized communities by focusing on menstrual and sexual health education, sustainable menstrual hygiene management, and fostering gender equity through social action programs. Our aim is to drive long-term social and environmental impact.\n\nRead More",
+      "role": "content"
+    }
+  ],
+  "forms": [
+    {
+      "action": "https://sevadeep.org/ngos",
+      "fields": [
+        {
+          "tag": "INPUT",
+          "type": "search",
+          "name": "search",
+          "placeholder": "Search By NGO Name",
+          "label": "",
+          "required": false,
+          "options": []
+        }
+      ]
+    }
+  ],
+  "links": [
+    {
+      "href": "tel:+919175099256",
+      "text": ""
+    },
+    {
+      "href": "https://sevadeep.org",
+      "text": ""
+    },
+    {
+      "href": "tel:+919175099256",
+      "text": "+91-9175099256"
+    },
+    {
+      "href": "/donor-login",
+      "text": "Home"
+    },
+    {
+      "href": "/ngo-login",
+      "text": "NGO Registration/Login"
+    }
+  ],
+  "images": [
+    {
+      "src": "https://firebasestorage.googleapis.com/v0/b/sevadeep-prod.appspot.com/o/uploads%2FERPwqIhbgcBHMgVb8lp1%2Fpic1757215956976.jpg?alt=media&token=f9fba962-c96e-44a1-84c8-8593eda50af4",
+      "alt": "",
+      "localPath": "/images/ngos/uploads%2FERPwqIhbgcBHMgVb8lp1%2Fpic1757215956976.jpg",
+      "isBackground": false
+    },
+    {
+      "src": "https://firebasestorage.googleapis.com/v0/b/sevadeep-prod.appspot.com/o/uploads%2Fpic1756206071057.jpg?alt=media&token=3f648d61-dc2f-4ace-a1e5-da4ca6fa7140",
+      "alt": "",
+      "localPath": "/images/ngos/uploads%2Fpic1756206071057.jpg",
+      "isBackground": false
+    },
+    {
+      "src": "https://firebasestorage.googleapis.com/v0/b/sevadeep-prod.appspot.com/o/uploads%2Fpic1756120601217.jpg?alt=media&token=b6af032b-dcdb-4617-b5dc-7f3d3c3563bf",
+      "alt": "",
+      "localPath": "/images/ngos/uploads%2Fpic1756120601217.jpg",
+      "isBackground": false
+    },
+    {
+      "src": "https://firebasestorage.googleapis.com/v0/b/sevadeep-prod.appspot.com/o/uploads%2Fpic1744784503929.jpg?alt=media&token=e997cfaf-48df-41f9-9625-214036b249db",
+      "alt": "",
+      "localPath": "/images/ngos/uploads%2Fpic1744784503929.jpg",
+      "isBackground": false
+    },
+    {
+      "src": "https://sevadeep.org/assets/img/fab_icon.png",
+      "alt": "",
+      "localPath": "/images/ngos/fab_icon.png",
+      "isBackground": false
+    },
+    {
+      "src": "https://firebasestorage.googleapis.com/v0/b/sevadeep-prod.appspot.com/o/uploads%2Fpic1739811374695.jpg?alt=media&token=b9536e59-cccc-4b20-a069-7ebb91fab5b0",
+      "alt": "",
+      "localPath": "/images/ngos/uploads%2Fpic1739811374695.jpg",
+      "isBackground": false
+    },
+    {
+      "src": "https://firebasestorage.googleapis.com/v0/b/sevadeep-prod.appspot.com/o/uploads%2Fpic1729949387767.jpg?alt=media&token=48a659b3-ab30-41ce-8dbd-1c83a28d81ff",
+      "alt": "",
+      "localPath": "/images/ngos/uploads%2Fpic1729949387767.jpg",
+      "isBackground": false
+    },
+    {
+      "src": "https://firebasestorage.googleapis.com/v0/b/sevadeep-prod.appspot.com/o/uploads%2Fpic1729320856450.jpg?alt=media&token=22605a1b-18f6-47cd-8ef9-95b1779c8068",
+      "alt": "",
+      "localPath": "/images/ngos/uploads%2Fpic1729320856450.jpg",
+      "isBackground": false
+    },
+    {
+      "src": "https://firebasestorage.googleapis.com/v0/b/sevadeep-prod.appspot.com/o/uploads%2Fpic1728384133100.jpg?alt=media&token=a743e01d-d7cd-4778-95ef-68838e311790",
+      "alt": "",
+      "localPath": "/images/ngos/uploads%2Fpic1728384133100.jpg",
+      "isBackground": false
+    },
+    {
+      "src": "https://sevadeep.org/assets/img/sevadeep-r-logo.png",
+      "alt": "",
+      "localPath": "/images/ngos/sevadeep-r-logo.png",
+      "isBackground": false
+    }
+  ]
+}

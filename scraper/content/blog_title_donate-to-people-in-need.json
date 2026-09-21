@@ -1,0 +1,134 @@
+{
+  "route": "/blog/title/donate-to-people-in-need",
+  "meta": {
+    "title": "Donate Used Items | Donate Old Items | SevaDeep | Nonprofit Organization",
+    "metaDescription": "SevaDeep is now making it easier than ever to donate to an NGO near you! You can now donate to individuals on the platform. Donate Old & Used Items. Call 9657932355.",
+    "metaKeywords": "Donate to NGO near me, Donate to Charity, Donate Old Items, Donate Used Items, Donate to old age homes, donate to orphanage homes, donate old clothes, donat food, donate old blankets, donate furniture, donate toys.",
+    "ogTitle": "Donate Used Items | Donate Old Items | SevaDeep | Nonprofit Organization ",
+    "ogDescription": "SevaDeep is now making it easier than ever to donate to an NGO near you! You can now donate to individuals on the platform. Donate Old & Used Items. Call 9657932355.",
+    "ogImage": "https://firebasestorage.googleapis.com/v0/b/sevadeep-prod.appspot.com/o/assets%2Fitemcategories%2Fpic1599107568377.jpg?alt=media&token=a44690e1-f5d5-4bc1-8589-57dd7181e8ef"
+  },
+  "sections": [
+    {
+      "tag": "H2",
+      "className": "blog-title",
+      "heading": "",
+      "headings": [],
+      "paragraphs": [],
+      "buttons": [],
+      "lists": [],
+      "imgAlts": [],
+      "fullText": "Want To Donate To Individuals? SevaDeep Is Here For You!",
+      "role": "content"
+    },
+    {
+      "tag": "P",
+      "className": "",
+      "heading": "",
+      "headings": [],
+      "paragraphs": [],
+      "buttons": [],
+      "lists": [],
+      "imgAlts": [],
+      "fullText": "BY ADMIN | AUG 27, 2020 | DONATIONS",
+      "role": "content"
+    },
+    {
+      "tag": "P",
+      "className": "",
+      "heading": "",
+      "headings": [],
+      "paragraphs": [
+        "We are constantly working to improve our platform and make donations more accessible to those who need them the most. Over the last year, we have focused on addressing the needs of NGOs, foundations and organisations that extend a helping hand to the segments of society that need help the most. Today, we are proud to announce that you can now donate to individuals!",
+        "The efficiency of the SevaDeep platform has proven itself by bringing NGOs and Donors closer together. We have registered over 400 NGOs and completed over 800 donations. The donors on the platform have donated items ranging from toys and clothes to furniture and helped thousands of people in need.",
+        "During the Nisarg Cyclone that hit Mumbai, we managed to provide relief in the form of grocery kits, solar lamps, roof covers and clothes. The COVID 19 lockdown that left thousands of people stranded also proved to be a challenging period. Our donation kits supported hundreds of stranded individuals in Maharashtra and helped uphold the unorganized labour sector.",
+        "As a result of these events, we realised that many individuals cannot access the framework of an NGO or a foundation. This encouraged us to launch the Individual Donations Platform on SevaDeep. Under this segment of the platform, you may view the needs of individuals in different cities. You may also search for individual requirements by categories. When you schedule a donation, our team will visit you to collect your donation and deliver it safely to the concerned individual.",
+        "We are working round the clock to create an ecosystem of giving, in a way that bridges the gap between needs and fulfilment. Remember to look for the “NGO near me” on the SeveDeep platform and schedule your donation today.",
+        "Be sure to follow us on Facebook for more news and updates."
+      ],
+      "buttons": [],
+      "lists": [],
+      "imgAlts": [],
+      "fullText": "We are constantly working to improve our platform and make donations more accessible to those who need them the most. Over the last year, we have focused on addressing the needs of NGOs, foundations and organisations that extend a helping hand to the segments of society that need help the most. Today, we are proud to announce that you can now donate to individuals!\n\nThe efficiency of the SevaDeep platform has proven itself by bringing NGOs and Donors closer together. We have registered over 400 NGOs and completed over 800 donations. The donors on the platform have donated items ranging from toys and clothes to furniture and helped thousands of people in need.\n\nDuring the Nisarg Cyclone that hit Mumbai, we managed to provide relief in the form of grocery kits, solar lamps, roof covers and clothes. The COVID 19 lockdown that left thousands of people stranded also proved to be a challenging period. Our donation kits supported hundreds of stranded individuals in Maharashtra and helped uphold the unorganized labour sector.\n\nAs a result of these events, we realised that many individuals cannot access the framework of an NGO or a foundation. This encouraged us to launch the Individual Donations Platform on SevaDeep. Under this segment of the platform, you may view the needs of individuals in different cities. You may also search for individual requirements by categories. When you schedule a donation, our team will visit you to collect your donation and deliver it safely to the concerned individual.\n\nWe are working round the clock to create an ecosystem of giving, in a way that bridges the gap between needs and fulfilment. Remember to look for the “NGO near me” on the SeveDeep platform and schedule your donation today.\n\nBe sure to follow us on Facebook for more news and updates.",
+      "role": "content"
+    },
+    {
+      "tag": "SECTION",
+      "className": "",
+      "heading": "Recent Comments",
+      "headings": [
+        {
+          "tag": "H4",
+          "text": "Recent Comments"
+        },
+        {
+          "tag": "H4",
+          "text": "Submit a Comment"
+        }
+      ],
+      "paragraphs": [
+        "0 Comments",
+        "Your email address will not be published. Required fields are marked *"
+      ],
+      "buttons": [
+        {
+          "text": "SUBMIT COMMENT",
+          "href": ""
+        }
+      ],
+      "lists": [],
+      "imgAlts": [],
+      "fullText": "Recent Comments\n\n0 Comments\n\nSubmit a Comment\n\nYour email address will not be published. Required fields are marked *\n\nComment*\nSUBMIT COMMENT",
+      "role": "content"
+    }
+  ],
+  "forms": [],
+  "links": [
+    {
+      "href": "tel:+919175099256",
+      "text": ""
+    },
+    {
+      "href": "https://app.sevadeep.com/personal-need-list",
+      "text": "Individual Donations Platform"
+    },
+    {
+      "href": "http://www.sevadeep.com/",
+      "text": "NGO near me"
+    },
+    {
+      "href": "https://www.facebook.com/SevaDeep",
+      "text": "Facebook"
+    },
+    {
+      "href": "https://sevadeep.org",
+      "text": ""
+    },
+    {
+      "href": "tel:+919175099256",
+      "text": "+91-9175099256"
+    },
+    {
+      "href": "/donor-login",
+      "text": "Home"
+    },
+    {
+      "href": "/ngo-login",
+      "text": "NGO Registration/Login"
+    }
+  ],
+  "images": [
+    {
+      "src": "https://firebasestorage.googleapis.com/v0/b/sevadeep-prod.appspot.com/o/assets%2Fitemcategories%2Fpic1599107568377.jpg?alt=media&token=a44690e1-f5d5-4bc1-8589-57dd7181e8ef",
+      "alt": "",
+      "localPath": "/images/blog_title_donate-to-people-in-need/assets%2Fitemcategories%2Fpic1599107568377.jpg",
+      "isBackground": false
+    },
+    {
+      "src": "https://sevadeep.org/assets/img/sevadeep-r-logo.png",
+      "alt": "",
+      "localPath": "/images/blog_title_donate-to-people-in-need/sevadeep-r-logo.png",
+      "isBackground": false
+    }
+  ]
+}

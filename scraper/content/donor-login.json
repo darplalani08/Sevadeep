@@ -1,0 +1,136 @@
+{
+  "route": "/donor-login",
+  "meta": {
+    "title": "Donor Login- The Best Way to Donate the Needy",
+    "metaDescription": " Help poor and needy by Donating your old clothes, furnitures, appliances, toys, books, bicycles etc to NGOs near you. Register your donations online and sevadeep volunteers will assist you in finding the right NGO for your donations.",
+    "metaKeywords": "Sevadeep Donation Platform, Donate Old Items, Donate Clothes, Donate Food, Donate Shoes, Donate Toys, Donate Stationery, Donate Furniture, Donate Electronics, NGOs Near Me.",
+    "ogTitle": "Donor Login- The Best Way to Donate the Needy",
+    "ogDescription": "Sevadeep is a donor login site that allows you to donate to the needy directly. Donate to the needy now. Read this blog to find out how you can help the poor",
+    "ogImage": "https://sevadeep.org/assets/img/logo-big.png"
+  },
+  "sections": [
+    {
+      "tag": "DIV",
+      "className": "",
+      "heading": "Connecting Donors with NGO's",
+      "headings": [
+        {
+          "tag": "H1",
+          "text": "Connecting Donors with NGO's"
+        }
+      ],
+      "paragraphs": [],
+      "buttons": [],
+      "lists": [],
+      "imgAlts": [],
+      "fullText": "Connecting Donors with NGO's\nKnow more about us",
+      "role": "content"
+    },
+    {
+      "tag": "DIV",
+      "className": "",
+      "heading": "",
+      "headings": [],
+      "paragraphs": [],
+      "buttons": [
+        {
+          "text": "Search NGO",
+          "href": ""
+        },
+        {
+          "text": "View NGO Needs",
+          "href": ""
+        }
+      ],
+      "lists": [],
+      "imgAlts": [],
+      "fullText": "Search NGO\nView NGO Needs",
+      "role": "content"
+    },
+    {
+      "tag": "DIV",
+      "className": "",
+      "heading": "",
+      "headings": [
+        {
+          "tag": "H5",
+          "text": "You can donate using"
+        },
+        {
+          "tag": "H5",
+          "text": "By Continuing you agree to our terms and conditions"
+        }
+      ],
+      "paragraphs": [
+        "You can donate using"
+      ],
+      "buttons": [
+        {
+          "text": "Donate",
+          "href": ""
+        },
+        {
+          "text": "GOOGLE",
+          "href": ""
+        },
+        {
+          "text": "PHONE",
+          "href": ""
+        }
+      ],
+      "lists": [],
+      "imgAlts": [],
+      "fullText": "Donate\n\nYou can donate using\n\nGOOGLEPHONE\nBy Continuing you agree to our terms and conditions",
+      "role": "content"
+    }
+  ],
+  "forms": [],
+  "links": [
+    {
+      "href": "tel:+919175099256",
+      "text": ""
+    },
+    {
+      "href": "https://sevadeep.org",
+      "text": ""
+    },
+    {
+      "href": "tel:+919175099256",
+      "text": "+91-9175099256"
+    },
+    {
+      "href": "/donor-login",
+      "text": "Home"
+    },
+    {
+      "href": "/ngo-login",
+      "text": "NGO Registration/Login"
+    }
+  ],
+  "images": [
+    {
+      "src": "https://sevadeep.org/assets/img/SDLogo1024_New.png",
+      "alt": "",
+      "localPath": "/images/donor-login/SDLogo1024_New.png",
+      "isBackground": false
+    },
+    {
+      "src": "https://sevadeep.org/assets/img/psuccess.png",
+      "alt": "",
+      "localPath": "/images/donor-login/psuccess.png",
+      "isBackground": false
+    },
+    {
+      "src": "https://sevadeep.org/assets/img/pfailed.png",
+      "alt": "",
+      "localPath": "/images/donor-login/pfailed.png",
+      "isBackground": false
+    },
+    {
+      "src": "https://sevadeep.org/assets/img/sevadeep-r-logo.png",
+      "alt": "",
+      "localPath": "/images/donor-login/sevadeep-r-logo.png",
+      "isBackground": false
+    }
+  ]
+}

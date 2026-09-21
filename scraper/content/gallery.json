@@ -1,0 +1,116 @@
+{
+  "route": "/gallery",
+  "meta": {
+    "title": "Connecting Donors with NGOs",
+    "metaDescription": " Help poor and needy by Donating your old clothes, furnitures, appliances, toys, books, bicycles etc to NGOs near you. Register your donations online and sevadeep volunteers will assist you in finding the right NGO for your donations.",
+    "metaKeywords": "Sevadeep Donation Platform, Donate Old Items, Donate Clothes, Donate Food, Donate Shoes, Donate Toys, Donate Stationery, Donate Furniture, Donate Electronics, NGOs Near Me.",
+    "ogTitle": "Connecting Donors with NGOs",
+    "ogDescription": "Help poor and needy by Donating your old clothes, furnitures, appliances, toys, books, bicycles etc to NGOs near you. Register your donations online and sevadeep volunteers will assist you in finding the right NGO for your donations.",
+    "ogImage": "https://sevadeep.org/assets/img/logo-big.png"
+  },
+  "sections": [
+    {
+      "tag": "DIV",
+      "className": "mat-tab-label mat-ripple mat-tab-label-active ng-star-inserted",
+      "heading": "",
+      "headings": [],
+      "paragraphs": [],
+      "buttons": [],
+      "lists": [],
+      "imgAlts": [],
+      "fullText": "Narayanseva",
+      "role": "content"
+    },
+    {
+      "tag": "DIV",
+      "className": "mat-tab-label mat-ripple ng-star-inserted",
+      "heading": "",
+      "headings": [],
+      "paragraphs": [],
+      "buttons": [],
+      "lists": [],
+      "imgAlts": [],
+      "fullText": "Covid Initiative",
+      "role": "content"
+    },
+    {
+      "tag": "DIV",
+      "className": "mat-tab-label mat-ripple ng-star-inserted",
+      "heading": "",
+      "headings": [],
+      "paragraphs": [],
+      "buttons": [],
+      "lists": [],
+      "imgAlts": [],
+      "fullText": "Inkind Donations",
+      "role": "content"
+    }
+  ],
+  "forms": [],
+  "links": [
+    {
+      "href": "tel:+919175099256",
+      "text": ""
+    },
+    {
+      "href": "https://sevadeep.org",
+      "text": ""
+    },
+    {
+      "href": "tel:+919175099256",
+      "text": "+91-9175099256"
+    },
+    {
+      "href": "/donor-login",
+      "text": "Home"
+    },
+    {
+      "href": "/ngo-login",
+      "text": "NGO Registration/Login"
+    }
+  ],
+  "images": [
+    {
+      "src": "https://sevadeep.org/assets/img/donation/seva1.jpg",
+      "alt": "",
+      "localPath": "/images/gallery/seva1.jpg",
+      "isBackground": false
+    },
+    {
+      "src": "https://sevadeep.org/assets/img/donation/seva2.jpg",
+      "alt": "",
+      "localPath": "/images/gallery/seva2.jpg",
+      "isBackground": false
+    },
+    {
+      "src": "https://sevadeep.org/assets/img/donation/seva3.jpg",
+      "alt": "",
+      "localPath": "/images/gallery/seva3.jpg",
+      "isBackground": false
+    },
+    {
+      "src": "https://sevadeep.org/assets/img/donation/seva4.jpg",
+      "alt": "",
+      "localPath": "/images/gallery/seva4.jpg",
+      "isBackground": false
+    },
+    {
+      "src": "https://sevadeep.org/assets/img/donation/seva5.jpg",
+      "alt": "",
+      "localPath": "/images/gallery/seva5.jpg",
+      "isBackground": false
+    },
+    {
+      "src": "https://sevadeep.org/assets/img/donation/seva.jpg",
+      "alt": "",
+      "localPath": "/images/gallery/seva.jpg",
+      "isBackground": false
+    },
+    {
+      "src": "https://sevadeep.org/assets/img/sevadeep-r-logo.png",
+      "alt": "",
+      "localPath": "/images/gallery/sevadeep-r-logo.png",
+      "isBackground": false
+    }
+  ]
+}

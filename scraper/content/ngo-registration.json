@@ -1,0 +1,171 @@
+{
+  "route": "/ngo-registration",
+  "meta": {
+    "title": "NGO Sign Up | Sevadeep",
+    "metaDescription": " Help poor and needy by Donating your old clothes, furnitures, appliances, toys, books, bicycles etc to NGOs near you. Register your donations online and sevadeep volunteers will assist you in finding the right NGO for your donations.",
+    "metaKeywords": "Sevadeep Donation Platform, Donate Old Items, Donate Clothes, Donate Food, Donate Shoes, Donate Toys, Donate Stationery, Donate Furniture, Donate Electronics, NGOs Near Me.",
+    "ogTitle": "NGO Sign Up | Sevadeep",
+    "ogDescription": "Sevadeep is a platform that connects donors with NGOs. It helps donors make contributions to the cause they support & also helps NGOs in raising money",
+    "ogImage": "https://sevadeep.org/assets/img/logo-big.png"
+  },
+  "sections": [
+    {
+      "tag": "DIV",
+      "className": "row user-profile",
+      "heading": "",
+      "headings": [
+        {
+          "tag": "H5",
+          "text": "No data available"
+        },
+        {
+          "tag": "H5",
+          "text": "No data available"
+        }
+      ],
+      "paragraphs": [],
+      "buttons": [],
+      "lists": [
+        [
+          "Andaman and Nicobar Islands",
+          "Andhra Pradesh",
+          "Arunachal Pradesh",
+          "Assam",
+          "Bihar",
+          "Chandigarh",
+          "Chhattisgarh",
+          "Dadra and Nagar Haveli",
+          "Delhi",
+          "Goa",
+          "Gujarat",
+          "Haryana",
+          "Himachal Pradesh",
+          "Jammu and Kashmir",
+          "Jharkhand",
+          "Karnataka",
+          "Kerala",
+          "Madhya Pradesh",
+          "Maharashtra",
+          "Manipur",
+          "Meghalaya",
+          "Mizoram",
+          "Nagaland",
+          "Odisha",
+          "Puducherry",
+          "Punjab",
+          "Rajasthan",
+          "Sikkim",
+          "Tamil Nadu",
+          "Telangana",
+          "Tripura",
+          "Uttar Pradesh",
+          "Uttarakhand",
+          "West Bengal"
+        ],
+        [
+          "No data available"
+        ],
+        [
+          "No data available"
+        ],
+        [
+          "Select All"
+        ],
+        [
+          "Art & Culture",
+          "Animal Care",
+          "CSR",
+          "Childcare",
+          "Differently-Abled",
+          "Education",
+          "Environment",
+          "Healthcare",
+          "Hospitals & Blood Banks",
+          "Old Age",
+          "Others",
+          "Rural",
+          "Skill Development",
+          "Tribal Development",
+          "Volunteer Org",
+          "Women Empowerment",
+          "Youth-Dev"
+        ]
+      ],
+      "imgAlts": [],
+      "fullText": "Name *\nEmail *\nMobile (Login Id) *\nAlternate Mobile\nState\nSelect\nCity\nSelect\nCity-Area\nSelect\nIf area not available, click here\nAddress\nPlease Enter Address\nAwards & Recognition\nPlease Enter Awards\nDescription *\nPlease Enter Description\nNGO Category *\nSelect\nTrustee Name\nRegistration Number\nWebsite\nCertifications\n12 A\n80 G\nFCRA\nCSR-1\nPickup Available",
+      "role": "content"
+    },
+    {
+      "tag": "DIV",
+      "className": "row",
+      "heading": "",
+      "headings": [],
+      "paragraphs": [],
+      "buttons": [],
+      "lists": [],
+      "imgAlts": [],
+      "fullText": "Drop Locations\nAdd Location",
+      "role": "content"
+    },
+    {
+      "tag": "DIV",
+      "className": "row user-profile",
+      "heading": "",
+      "headings": [],
+      "paragraphs": [],
+      "buttons": [],
+      "lists": [],
+      "imgAlts": [],
+      "fullText": "Images",
+      "role": "content"
+    },
+    {
+      "tag": "DIV",
+      "className": "row user-profile",
+      "heading": "",
+      "headings": [],
+      "paragraphs": [],
+      "buttons": [
+        {
+          "text": "SUBMIT",
+          "href": ""
+        }
+      ],
+      "lists": [],
+      "imgAlts": [],
+      "fullText": "Gallery\nSUBMIT",
+      "role": "content"
+    }
+  ],
+  "forms": [],
+  "links": [
+    {
+      "href": "tel:+919175099256",
+      "text": ""
+    },
+    {
+      "href": "https://sevadeep.org",
+      "text": ""
+    },
+    {
+      "href": "tel:+919175099256",
+      "text": "+91-9175099256"
+    },
+    {
+      "href": "/donor-login",
+      "text": "Home"
+    },
+    {
+      "href": "/ngo-login",
+      "text": "NGO Registration/Login"
+    }
+  ],
+  "images": [
+    {
+      "src": "https://sevadeep.org/assets/img/sevadeep-r-logo.png",
+      "alt": "",
+      "localPath": "/images/ngo-registration/sevadeep-r-logo.png",
+      "isBackground": false
+    }
+  ]
+}
