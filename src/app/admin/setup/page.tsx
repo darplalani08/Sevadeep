@@ -8,7 +8,7 @@ import type { Metadata } from "next";
 import { redirect } from "next/navigation";
 
 import { Container, Section } from "@/components/common/container";
-import { adminCount } from "@/server/db/admins";
+import { countAccounts } from "@/server/db/accounts";
 import { MIN_PASSWORD_LENGTH } from "@/server/auth/password";
 import { SetupForm } from "./setup-form";
 
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
 export const dynamic = "force-dynamic";
 
 export default async function AdminSetupPage() {
-  if (adminCount() > 0) redirect("/admin/login");
+  if ((await countAccounts("admin")) > 0) redirect("/admin/login");
 
   return (
     <Section className="pt-10">

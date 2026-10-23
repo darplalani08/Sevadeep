@@ -1,11 +1,10 @@
-// Data access for student enrolment applications.
+// Student enrolment applications — Postgres.
 //
-// Every write goes through a transaction so the reference counter, the application row and its
-// first status event are committed together. Reads are split into two shapes deliberately:
-// `PublicApplicationStatus` (what the tracking page may see) and `AdminApplication` (what a
-// signed-in administrator sees). Nothing in between.
+// Reads are split into two shapes deliberately: `PublicApplicationStatus` (what the tracking page
+// may see — status and dates, never contact details) and `AdminApplication` (what a signed-in
+// administrator sees). Nothing in between.
 
-import { getDb, transaction } from "./client";
+import { getSql, queryOne } from "./sql.ts";
 import {
   dedupeHash,
   generateTrackingCode,
@@ -14,8 +13,8 @@ import {
   normaliseReference,
   normaliseTrackingCode,
   verifyTrackingCode,
-} from "./references";
-import { applicationStatuses, type ApplicationStatus } from "@content/education";
+} from "./references.ts";
+import { applicationStatuses, type ApplicationStatus } from "../../../content/education.ts";
 
 export type ApplicationInput = {
   studentName: string;
@@ -27,24 +26,6 @@ export type ApplicationInput = {
   city: string;
   supportNeeded: string[];
   notes?: string;
-};
-
-export type ApplicationRow = {
-  id: number;
-  reference: string;
-  track_code_hash: string;
-  student_name: string;
-  guardian_name: string;
-  contact_number: string;
-  email: string | null;
-  student_age: number | null;
-  student_class: string;
-  city: string | null;
-  support_needed: string;
-  notes: string | null;
-  status: ApplicationStatus;
-  created_at: string;
-  updated_at: string;
 };
 
 export type AdminApplication = {
@@ -84,48 +65,66 @@ export type PublicApplicationStatus = {
 };
 
 /**
- * Duplicate window for accidental resubmission. Identical details submitted inside the same
- * 10-minute bucket collapse onto one UNIQUE dedupe_hash and the second request is rejected;
- * a genuine re-application later gets a different bucket and succeeds.
+ * Duplicate window for accidental resubmission. Identical details inside the same 10-minute
+ * bucket collapse onto one UNIQUE dedupe_hash; a genuine re-application later gets a different
+ * bucket and succeeds.
  */
 const DEDUPE_WINDOW_MS = 10 * 60 * 1000;
 
+type ApplicationRow = {
+  id: string | number;
+  reference: string;
+  track_code_hash: string;
+  student_name: string;
+  guardian_name: string;
+  contact_number: string;
+  email: string | null;
+  student_age: number | null;
+  student_class: string;
+  city: string | null;
+  support_needed: string[];
+  notes: string | null;
+  status: ApplicationStatus;
+  created_at: string | Date;
+  updated_at: string | Date;
+};
+
+const iso = (value: string | Date) => new Date(value).toISOString();
+
 function toAdmin(row: ApplicationRow): AdminApplication {
   return {
-    id: row.id,
+    id: Number(row.id),
     reference: row.reference,
     studentName: row.student_name,
     guardianName: row.guardian_name,
     contactNumber: row.contact_number,
     email: row.email,
-    studentAge: row.student_age,
+    studentAge: row.student_age === null ? null : Number(row.student_age),
     studentClass: row.student_class,
     city: row.city,
-    supportNeeded: safeParseArray(row.support_needed),
+    supportNeeded: row.support_needed ?? [],
     notes: row.notes,
     status: row.status,
-    createdAt: row.created_at,
-    updatedAt: row.updated_at,
+    createdAt: iso(row.created_at),
+    updatedAt: iso(row.updated_at),
   };
 }
 
-function safeParseArray(value: string): string[] {
-  try {
-    const parsed = JSON.parse(value);
-    return Array.isArray(parsed) ? parsed.filter((v) => typeof v === "string") : [];
-  } catch {
-    return [];
-  }
-}
-
 export type CreateApplicationResult =
-  | { ok: true; reference: string; trackingCode: string; status: ApplicationStatus; submittedAt: string }
+  | {
+      ok: true;
+      reference: string;
+      trackingCode: string;
+      status: ApplicationStatus;
+      submittedAt: string;
+    }
   | { ok: false; code: "duplicate"; reference: string };
 
-export function createApplication(
+export async function createApplication(
   input: ApplicationInput,
   now = new Date()
-): CreateApplicationResult {
+): Promise<CreateApplicationResult> {
+  const sql = await getSql();
   const bucket = Math.floor(now.getTime() / DEDUPE_WINDOW_MS);
   const fingerprint = dedupeHash([
     "application",
@@ -136,28 +135,26 @@ export function createApplication(
     bucket,
   ]);
 
-  const existing = getDb()
-    .prepare(`SELECT reference FROM applications WHERE dedupe_hash = ?`)
-    .get(fingerprint) as { reference: string } | undefined;
-  if (existing) {
-    return { ok: false, code: "duplicate", reference: existing.reference };
-  }
+  const existing = await queryOne<{ reference: string }>(
+    sql,
+    `select reference from public.applications where dedupe_hash = $1`,
+    [fingerprint]
+  );
+  if (existing) return { ok: false, code: "duplicate", reference: existing.reference };
 
   const trackingCode = generateTrackingCode();
-  const iso = now.toISOString();
 
   try {
-    return transaction((db) => {
-      const reference = nextReferenceWithin(db, "application", now);
-      const result = db
-        .prepare(
-          `INSERT INTO applications (
-             reference, track_code_hash, student_name, guardian_name, contact_number, email,
-             student_age, student_class, city, support_needed, notes, status, dedupe_hash,
-             created_at, updated_at
-           ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'Submitted', ?, ?, ?)`
-        )
-        .run(
+    return await sql.transaction(async (tx) => {
+      const reference = await nextReferenceWithin(tx, "application", now);
+
+      const rows = await tx.query<{ id: string | number; created_at: string | Date }>(
+        `insert into public.applications
+           (reference, track_code_hash, student_name, guardian_name, contact_number, email,
+            student_age, student_class, city, support_needed, notes, status, dedupe_hash)
+         values ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,'Submitted',$12)
+         returning id, created_at`,
+        [
           reference,
           hashTrackingCode(reference, trackingCode),
           input.studentName,
@@ -167,76 +164,84 @@ export function createApplication(
           input.studentAge,
           input.studentClass,
           input.city,
-          JSON.stringify(input.supportNeeded),
+          input.supportNeeded,
           input.notes ?? null,
           fingerprint,
-          iso,
-          iso
-        );
+        ]
+      );
 
-      db.prepare(
-        `INSERT INTO application_events (application_id, from_status, to_status, note, actor, created_at)
-         VALUES (?, NULL, 'Submitted', ?, 'applicant', ?)`
-      ).run(Number(result.lastInsertRowid), "Application received.", iso);
+      await tx.query(
+        `insert into public.application_events (application_id, from_status, to_status, note, actor)
+         values ($1, null, 'Submitted', $2, 'applicant')`,
+        [rows[0].id, "Application received."]
+      );
 
       return {
         ok: true as const,
         reference,
         trackingCode,
         status: "Submitted" as ApplicationStatus,
-        submittedAt: iso,
+        submittedAt: iso(rows[0].created_at),
       };
     });
   } catch (error) {
     // Two identical submissions racing each other both pass the pre-check; the UNIQUE index
     // settles it and the loser is reported as the duplicate it is.
-    const again = getDb()
-      .prepare(`SELECT reference FROM applications WHERE dedupe_hash = ?`)
-      .get(fingerprint) as { reference: string } | undefined;
+    const again = await queryOne<{ reference: string }>(
+      sql,
+      `select reference from public.applications where dedupe_hash = $1`,
+      [fingerprint]
+    );
     if (again) return { ok: false, code: "duplicate", reference: again.reference };
     throw error;
   }
 }
 
-export function getPublicStatus(
-  reference: string,
-  code: string
-): PublicApplicationStatus | null {
-  const ref = normaliseReference(reference);
-  const row = getDb()
-    .prepare(`SELECT * FROM applications WHERE reference = ?`)
-    .get(ref) as ApplicationRow | undefined;
-  if (!row) return null;
-  if (!verifyTrackingCode(ref, normaliseTrackingCode(code), row.track_code_hash)) return null;
-
-  const events = getDb()
-    .prepare(
-      `SELECT from_status, to_status, note, created_at
-         FROM application_events
-        WHERE application_id = ?
-        ORDER BY created_at ASC, id ASC`
-    )
-    .all(row.id) as {
+async function eventsFor(applicationId: number): Promise<ApplicationEvent[]> {
+  const sql = await getSql();
+  const rows = await sql.query<{
     from_status: ApplicationStatus | null;
     to_status: ApplicationStatus;
     note: string | null;
-    created_at: string;
-  }[];
+    created_at: string | Date;
+  }>(
+    `select from_status, to_status, note, created_at
+       from public.application_events
+      where application_id = $1
+      order by created_at, id`,
+    [applicationId]
+  );
+  return rows.map((e) => ({
+    status: e.to_status,
+    previousStatus: e.from_status,
+    note: e.note,
+    at: iso(e.created_at),
+  }));
+}
+
+export async function getPublicStatus(
+  reference: string,
+  code: string
+): Promise<PublicApplicationStatus | null> {
+  const sql = await getSql();
+  const ref = normaliseReference(reference);
+  const row = await queryOne<ApplicationRow>(
+    sql,
+    `select * from public.applications where reference = $1`,
+    [ref]
+  );
+  if (!row) return null;
+  if (!verifyTrackingCode(ref, normaliseTrackingCode(code), row.track_code_hash)) return null;
 
   return {
     reference: row.reference,
     studentFirstName: row.student_name.trim().split(/\s+/)[0] ?? "",
     studentClass: row.student_class,
-    supportNeeded: safeParseArray(row.support_needed),
+    supportNeeded: row.support_needed ?? [],
     status: row.status,
-    submittedAt: row.created_at,
-    updatedAt: row.updated_at,
-    history: events.map((e) => ({
-      status: e.to_status,
-      previousStatus: e.from_status,
-      note: e.note,
-      at: e.created_at,
-    })),
+    submittedAt: iso(row.created_at),
+    updatedAt: iso(row.updated_at),
+    history: await eventsFor(Number(row.id)),
   };
 }
 
@@ -247,104 +252,100 @@ export type ApplicationListOptions = {
   offset?: number;
 };
 
-export function listApplications(options: ApplicationListOptions = {}): {
-  items: AdminApplication[];
-  total: number;
-} {
+export async function listApplications(
+  options: ApplicationListOptions = {}
+): Promise<{ items: AdminApplication[]; total: number }> {
+  const sql = await getSql();
   const { status = "all", search, limit = 50, offset = 0 } = options;
 
   const where: string[] = [];
-  const params: (string | number)[] = [];
+  const params: unknown[] = [];
 
-  if (status !== "all" && applicationStatuses.includes(status)) {
-    where.push("status = ?");
+  if (status !== "all" && (applicationStatuses as readonly string[]).includes(status)) {
     params.push(status);
+    where.push(`status = $${params.length}`);
   }
   if (search && search.trim()) {
-    const like = `%${search.trim().toLowerCase()}%`;
+    params.push(`%${search.trim().toLowerCase()}%`);
+    const p = `$${params.length}`;
     where.push(
-      `(LOWER(reference) LIKE ? OR LOWER(student_name) LIKE ? OR LOWER(guardian_name) LIKE ?
-        OR contact_number LIKE ? OR LOWER(COALESCE(email,'')) LIKE ? OR LOWER(COALESCE(city,'')) LIKE ?)`
+      `(lower(reference) like ${p} or lower(student_name) like ${p} or lower(guardian_name) like ${p}
+        or contact_number like ${p} or lower(coalesce(email,'')) like ${p}
+        or lower(coalesce(city,'')) like ${p})`
     );
-    params.push(like, like, like, like, like, like);
   }
 
-  const clause = where.length ? `WHERE ${where.join(" AND ")}` : "";
-  const db = getDb();
+  const clause = where.length ? `where ${where.join(" and ")}` : "";
 
-  const { total } = db
-    .prepare(`SELECT COUNT(*) AS total FROM applications ${clause}`)
-    .get(...params) as { total: number };
+  const totalRows = await sql.query<{ count: string }>(
+    `select count(*)::text as count from public.applications ${clause}`,
+    params
+  );
 
-  const rows = db
-    .prepare(
-      `SELECT * FROM applications ${clause} ORDER BY datetime(created_at) DESC, id DESC LIMIT ? OFFSET ?`
-    )
-    .all(...params, Math.min(Math.max(limit, 1), 200), Math.max(offset, 0)) as ApplicationRow[];
+  params.push(Math.min(Math.max(limit, 1), 200), Math.max(offset, 0));
+  const rows = await sql.query<ApplicationRow>(
+    `select * from public.applications ${clause}
+      order by created_at desc, id desc
+      limit $${params.length - 1} offset $${params.length}`,
+    params
+  );
 
-  return { items: rows.map(toAdmin), total };
+  return { items: rows.map(toAdmin), total: Number(totalRows[0].count) };
 }
 
-export function getApplicationByReference(reference: string): AdminApplication | null {
-  const row = getDb()
-    .prepare(`SELECT * FROM applications WHERE reference = ?`)
-    .get(normaliseReference(reference)) as ApplicationRow | undefined;
+export async function getApplicationByReference(
+  reference: string
+): Promise<AdminApplication | null> {
+  const sql = await getSql();
+  const row = await queryOne<ApplicationRow>(
+    sql,
+    `select * from public.applications where reference = $1`,
+    [normaliseReference(reference)]
+  );
   return row ? toAdmin(row) : null;
 }
 
-export function getApplicationEvents(applicationId: number): ApplicationEvent[] {
-  const rows = getDb()
-    .prepare(
-      `SELECT from_status, to_status, note, created_at FROM application_events
-        WHERE application_id = ? ORDER BY created_at ASC, id ASC`
-    )
-    .all(applicationId) as {
-    from_status: ApplicationStatus | null;
-    to_status: ApplicationStatus;
-    note: string | null;
-    created_at: string;
-  }[];
-  return rows.map((e) => ({
-    status: e.to_status,
-    previousStatus: e.from_status,
-    note: e.note,
-    at: e.created_at,
-  }));
-}
+export const getApplicationEvents = eventsFor;
 
 export type UpdateStatusResult =
   | { ok: true; application: AdminApplication }
   | { ok: false; code: "not_found" | "invalid_status" | "unchanged" };
 
-export function updateApplicationStatus(
+export async function updateApplicationStatus(
   reference: string,
   status: ApplicationStatus,
   actor: string,
-  note?: string,
-  now = new Date()
-): UpdateStatusResult {
-  if (!applicationStatuses.includes(status)) return { ok: false, code: "invalid_status" };
+  note?: string
+): Promise<UpdateStatusResult> {
+  if (!(applicationStatuses as readonly string[]).includes(status)) {
+    return { ok: false, code: "invalid_status" };
+  }
 
+  const sql = await getSql();
   const ref = normaliseReference(reference);
-  const current = getDb()
-    .prepare(`SELECT id, status FROM applications WHERE reference = ?`)
-    .get(ref) as { id: number; status: ApplicationStatus } | undefined;
-  if (!current) return { ok: false, code: "not_found" };
-  if (current.status === status) return { ok: false, code: "unchanged" };
 
-  const iso = now.toISOString();
-  transaction((db) => {
-    db.prepare(`UPDATE applications SET status = ?, updated_at = ? WHERE id = ?`).run(
-      status,
-      iso,
-      current.id
+  return sql.transaction(async (tx) => {
+    // Lock the row so two administrators clicking at once cannot interleave and write two
+    // history entries for the same transition.
+    const current = await queryOne<{ id: string | number; status: ApplicationStatus }>(
+      tx,
+      `select id, status from public.applications where reference = $1 for update`,
+      [ref]
     );
-    db.prepare(
-      `INSERT INTO application_events (application_id, from_status, to_status, note, actor, created_at)
-       VALUES (?, ?, ?, ?, ?, ?)`
-    ).run(current.id, current.status, status, note?.trim() || null, actor, iso);
-  });
+    if (!current) return { ok: false as const, code: "not_found" as const };
+    if (current.status === status) return { ok: false as const, code: "unchanged" as const };
 
-  const updated = getApplicationByReference(ref);
-  return updated ? { ok: true, application: updated } : { ok: false, code: "not_found" };
+    const rows = await tx.query<ApplicationRow>(
+      `update public.applications set status = $2 where id = $1 returning *`,
+      [current.id, status]
+    );
+
+    await tx.query(
+      `insert into public.application_events (application_id, from_status, to_status, note, actor)
+       values ($1, $2, $3, $4, $5)`,
+      [current.id, current.status, status, note?.trim() || null, actor]
+    );
+
+    return { ok: true as const, application: toAdmin(rows[0]) };
+  });
 }

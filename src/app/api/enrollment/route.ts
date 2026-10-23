@@ -33,7 +33,7 @@ export async function POST(request: NextRequest) {
   const values = parsed.data;
 
   try {
-    const result = createApplication({
+    const result = await createApplication({
       studentName: values.studentName,
       guardianName: values.guardianName,
       contactNumber: values.contactNumber,

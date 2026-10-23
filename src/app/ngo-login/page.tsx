@@ -4,7 +4,7 @@ import Link from "next/link";
 
 import { Container, Section } from "@/components/common/container";
 import { buttonVariants } from "@/components/ui/button";
-import { PhoneLoginForm } from "@/components/sections/phone-login-form";
+import { AccountForm } from "@/components/auth/account-form";
 import { cn } from "@/lib/utils";
 import { siteConfig } from "@content/site";
 
@@ -27,7 +27,7 @@ export default function NgoLoginPage() {
           <p className="text-sm text-muted-foreground">{siteConfig.tagline}</p>
           <h2 className="mt-6 font-heading text-lg font-semibold text-foreground">NGO Login</h2>
           <div className="mt-6 text-left">
-            <PhoneLoginForm role="NGO" />
+            <AccountForm role="ngo" />
           </div>
           <p className="mt-6 text-sm text-muted-foreground">Not registered yet?</p>
           <div className="mt-3 flex justify-center gap-3">

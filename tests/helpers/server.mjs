@@ -9,15 +9,17 @@ export const TEST_PORT = Number(process.env.SEVADEEP_TEST_PORT ?? 3177);
 export const BASE_URL = `http://127.0.0.1:${TEST_PORT}`;
 
 const projectRoot = path.resolve(import.meta.dirname, "..", "..");
-export const TEST_DB_PATH = path.join(projectRoot, "data", "test-integration.db");
+// A file-backed PGlite database, owned by the spawned Next server process. The test process
+// never opens it directly — it only speaks HTTP — so there is no cross-process sharing problem,
+// and the server exercises the real Postgres schema and the real migrations.
+export const TEST_DB_PATH = path.join(projectRoot, "data", "test-pg");
+const TEST_DATABASE_URL = `pglite://${TEST_DB_PATH}`;
 
 export function removeTestDatabase() {
-  for (const suffix of ["", "-wal", "-shm"]) {
-    try {
-      fs.rmSync(`${TEST_DB_PATH}${suffix}`, { force: true });
-    } catch {
-      /* nothing to remove */
-    }
+  try {
+    fs.rmSync(TEST_DB_PATH, { force: true, recursive: true });
+  } catch {
+    /* nothing to remove */
   }
 }
 
@@ -37,7 +39,11 @@ export async function buildOnce() {
   await new Promise((resolve, reject) => {
     const build = spawn("npx", ["next", "build"], {
       cwd: projectRoot,
-      env: { ...process.env, SEVADEEP_DB_PATH: TEST_DB_PATH },
+      env: {
+        ...process.env,
+        DATABASE_URL: TEST_DATABASE_URL,
+        SEVADEEP_AUTO_MIGRATE: "1",
+      },
       stdio: ["ignore", "pipe", "pipe"],
     });
     const output = [];
@@ -60,7 +66,11 @@ export async function startServer({ fresh = false, mode = "dev" } = {}) {
 
   child = spawn("npx", args, {
     cwd: projectRoot,
-    env: { ...process.env, SEVADEEP_DB_PATH: TEST_DB_PATH },
+    env: {
+      ...process.env,
+      DATABASE_URL: TEST_DATABASE_URL,
+      SEVADEEP_AUTO_MIGRATE: "1",
+    },
     stdio: ["ignore", "pipe", "pipe"],
   });
 

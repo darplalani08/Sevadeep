@@ -22,7 +22,7 @@ export async function GET(request: NextRequest) {
     const limit = Number(params.get("limit") ?? 100);
     const offset = Number(params.get("offset") ?? 0);
 
-    const { items, total } = listVolunteers({
+    const { items, total } = await listVolunteers({
       status,
       skill: params.get("skill") ?? undefined,
       availability: params.get("availability") ?? undefined,

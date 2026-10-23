@@ -301,16 +301,37 @@ alter table public.volunteer_matches  enable row level security;
 alter table public.settings           enable row level security;
 
 -- Least privilege: the browser-facing roles are given nothing at all.
-revoke all on all tables    in schema public from anon, authenticated;
-revoke all on all sequences in schema public from anon, authenticated;
-revoke all on all functions in schema public from anon, authenticated;
-revoke execute on function public.reserve_reference(text, integer) from public, anon, authenticated;
--- ...but the application must still be able to call it.
-grant execute on function public.reserve_reference(text, integer) to service_role;
+--
+-- Wrapped in a role-existence check so this same file also runs against a plain Postgres (the
+-- test harness uses PGlite, which has no anon/authenticated/service_role). On Supabase all three
+-- exist and every statement below applies.
+do $$
+begin
+  if exists (select 1 from pg_roles where rolname = 'anon') then
+    revoke all on all tables    in schema public from anon;
+    revoke all on all sequences in schema public from anon;
+    revoke all on all functions in schema public from anon;
+    alter default privileges in schema public revoke all on tables    from anon;
+    alter default privileges in schema public revoke all on sequences from anon;
+    alter default privileges in schema public revoke all on functions from anon;
+  end if;
 
--- Tables added by later migrations must not silently inherit the usual anon/authenticated grants.
-alter default privileges in schema public revoke all on tables    from anon, authenticated;
-alter default privileges in schema public revoke all on sequences from anon, authenticated;
-alter default privileges in schema public revoke all on functions from anon, authenticated;
+  if exists (select 1 from pg_roles where rolname = 'authenticated') then
+    revoke all on all tables    in schema public from authenticated;
+    revoke all on all sequences in schema public from authenticated;
+    revoke all on all functions in schema public from authenticated;
+    alter default privileges in schema public revoke all on tables    from authenticated;
+    alter default privileges in schema public revoke all on sequences from authenticated;
+    alter default privileges in schema public revoke all on functions from authenticated;
+  end if;
+
+  revoke execute on function public.reserve_reference(text, integer) from public;
+
+  -- ...but the application must still be able to call it.
+  if exists (select 1 from pg_roles where rolname = 'service_role') then
+    grant execute on function public.reserve_reference(text, integer) to service_role;
+  end if;
+end
+$$;
 
 commit;

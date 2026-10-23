@@ -34,7 +34,8 @@ export function SetupForm() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          name: String(data.get("name") ?? ""),
+          displayName: String(data.get("displayName") ?? ""),
+          username: String(data.get("username") ?? ""),
           email: String(data.get("email") ?? ""),
           password,
         }),
@@ -73,11 +74,29 @@ export function SetupForm() {
 
       <div className="space-y-2">
         <Label htmlFor="setup-name">Full name</Label>
-        <Input id="setup-name" name="name" required autoComplete="name" />
+        <Input id="setup-name" name="displayName" required autoComplete="name" />
       </div>
       <div className="space-y-2">
-        <Label htmlFor="setup-email">Email</Label>
-        <Input id="setup-email" name="email" type="email" required autoComplete="username" />
+        <Label htmlFor="setup-username">Username</Label>
+        <Input
+          id="setup-username"
+          name="username"
+          required
+          minLength={3}
+          maxLength={32}
+          autoComplete="username"
+          autoCapitalize="none"
+          spellCheck={false}
+          placeholder="e.g. sevaadmin"
+        />
+        <p className="text-xs text-muted-foreground">
+          3–32 characters: letters, digits, dots, hyphens and underscores. This is what you sign
+          in with.
+        </p>
+      </div>
+      <div className="space-y-2">
+        <Label htmlFor="setup-email">Email (optional)</Label>
+        <Input id="setup-email" name="email" type="email" autoComplete="email" />
       </div>
       <div className="space-y-2">
         <Label htmlFor="setup-password">Password</Label>

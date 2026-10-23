@@ -1,7 +1,8 @@
-// POST /api/admin/login — administrator sign-in.
+// POST /api/admin/login — administrator sign-in with username and password.
 //
-// Failures are counted in SQLite per email+client so the limit survives a server restart, and
-// the response never distinguishes "unknown email" from "wrong password".
+// Failures are counted in Postgres per username+client so the limit survives a restart and is
+// shared across serverless instances. The response never distinguishes an unknown username from
+// a wrong password, a suspended account or a non-administrator account.
 
 import type { NextRequest } from "next/server";
 import { z } from "zod";
@@ -10,15 +11,16 @@ import {
   authenticate,
   clearLoginFailures,
   isRateLimited,
+  normaliseUsername,
   recordLoginFailure,
-} from "@/server/db/admins";
+} from "@/server/db/accounts";
 import { startSession } from "@/server/auth/session";
 import { clientKey, json, parseJsonBody, serverError, validate } from "@/server/http";
 
 export const dynamic = "force-dynamic";
 
 const loginSchema = z.object({
-  email: z.email("Enter a valid email address"),
+  username: z.string().trim().min(1, "Enter your username").max(64),
   password: z.string().min(1, "Enter your password").max(200),
 });
 
@@ -26,25 +28,28 @@ export async function POST(request: NextRequest) {
   const parsed = validate(loginSchema, await parseJsonBody(request));
   if (!parsed.ok) return parsed.response;
 
-  const scope = `login:${parsed.data.email.toLowerCase()}:${clientKey(request)}`;
+  const username = normaliseUsername(parsed.data.username);
+  const scope = `login:admin:${username}:${clientKey(request)}`;
 
   try {
-    if (isRateLimited(scope)) {
+    if (await isRateLimited(scope)) {
       return json(
         { error: "Too many failed sign-in attempts. Please try again in a few minutes." },
         { status: 429, headers: { "Retry-After": "600" } }
       );
     }
 
-    const admin = await authenticate(parsed.data.email, parsed.data.password);
-    if (!admin) {
-      recordLoginFailure(scope);
-      return json({ error: "Incorrect email or password." }, { status: 401 });
+    const account = await authenticate(username, parsed.data.password, "admin");
+    if (!account) {
+      await recordLoginFailure(scope);
+      return json({ error: "Incorrect username or password." }, { status: 401 });
     }
 
-    clearLoginFailures(scope);
-    await startSession(admin.id);
-    return json({ admin });
+    await clearLoginFailures(scope);
+    await startSession(account.id);
+    return json({
+      account: { username: account.username, displayName: account.displayName, role: account.role },
+    });
   } catch (error) {
     console.error("[admin/login] failed", error);
     return serverError();

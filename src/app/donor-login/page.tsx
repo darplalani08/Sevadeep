@@ -5,7 +5,7 @@ import { ListChecks, Search } from "lucide-react";
 
 import { Container, Section } from "@/components/common/container";
 import { buttonVariants } from "@/components/ui/button";
-import { PhoneLoginForm } from "@/components/sections/phone-login-form";
+import { AccountForm } from "@/components/auth/account-form";
 import { cn } from "@/lib/utils";
 import { siteConfig } from "@content/site";
 
@@ -38,9 +38,9 @@ export default function DonorLoginPage() {
 
         <div className="rounded-2xl border border-border bg-card p-8 shadow-sm">
           <h2 className="font-heading text-lg font-semibold text-foreground">Donor Login</h2>
-          <p className="mt-1 text-sm text-muted-foreground">You can donate using Google or your phone number.</p>
+          <p className="mt-1 text-sm text-muted-foreground">Sign in or create a donor account to track your donations.</p>
           <div className="mt-6">
-            <PhoneLoginForm role="Donor" />
+            <AccountForm role="donor" />
           </div>
           <p className="mt-6 text-center text-xs text-muted-foreground">
             By continuing you agree to our terms and conditions.

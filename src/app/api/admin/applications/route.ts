@@ -24,7 +24,7 @@ export async function GET(request: NextRequest) {
     const limit = Number(params.get("limit") ?? 100);
     const offset = Number(params.get("offset") ?? 0);
 
-    const { items, total } = listApplications({
+    const { items, total } = await listApplications({
       status,
       search: params.get("search") ?? undefined,
       limit: Number.isFinite(limit) ? limit : 100,

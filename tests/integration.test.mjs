@@ -21,9 +21,18 @@ import {
 } from "./helpers/server.mjs";
 
 const ADMIN = {
-  name: "Demo Administrator",
+  displayName: "Demo Administrator",
+  username: "sevaadmin",
   email: "admin@sevadeep.test",
   password: "SevaDeep-Demo-2026!",
+};
+
+const DONOR = {
+  displayName: "TEST Donor",
+  username: "test.donor",
+  password: "Donor-Pass-2026!",
+  confirmPassword: "Donor-Pass-2026!",
+  role: "donor",
 };
 
 const applicant = (overrides = {}) => ({
@@ -145,7 +154,8 @@ describe("3. first-administrator bootstrap", () => {
   it("creates the first administrator and issues an httpOnly session cookie", async () => {
     const { status, body, headers } = await admin.post("/api/admin/setup", ADMIN);
     assert.equal(status, 201);
-    assert.equal(body.admin.email, ADMIN.email);
+    assert.equal(body.account.username, ADMIN.username);
+    assert.equal(body.account.role, "admin");
     assert.ok(!JSON.stringify(body).includes(ADMIN.password), "the password is never echoed");
 
     const setCookie = (headers.getSetCookie?.() ?? [headers.get("set-cookie")]).join(";");
@@ -159,8 +169,8 @@ describe("3. first-administrator bootstrap", () => {
     assert.equal(needs.body.needsSetup, false);
 
     const second = await anon.post("/api/admin/setup", {
-      name: "Intruder",
-      email: "intruder@example.test",
+      displayName: "Intruder",
+      username: "intruder",
       password: "Another-Strong-Pass-1!",
     });
     assert.equal(second.status, 409);
@@ -169,7 +179,8 @@ describe("3. first-administrator bootstrap", () => {
   it("recognises the session", async () => {
     const { status, body } = await admin.get("/api/admin/session");
     assert.equal(status, 200);
-    assert.equal(body.admin.email, ADMIN.email);
+    assert.equal(body.admin.username, ADMIN.username);
+    assert.equal(body.admin.role, "admin");
   });
 });
 
@@ -501,16 +512,22 @@ describe("8. volunteer registration and matching", () => {
   });
 
   it("lets an administrator move a volunteer through the follow-up workflow", async () => {
-    const { status, body } = await admin.patch(
+    const underReview = await admin.patch(
       `/api/admin/volunteers/${state.volunteerReference}`,
-      { status: "Contacted" }
+      { status: "Under Review" }
     );
-    assert.equal(status, 200);
-    assert.equal(body.volunteer.status, "Contacted");
+    assert.equal(underReview.status, 200);
+    assert.equal(underReview.body.volunteer.status, "Under Review");
+
+    const approved = await admin.patch(
+      `/api/admin/volunteers/${state.volunteerReference}`,
+      { status: "Approved" }
+    );
+    assert.equal(approved.body.volunteer.status, "Approved");
 
     const overview = await admin.get("/api/admin/overview");
     assert.equal(overview.body.volunteers.pending, 0);
-    assert.equal(overview.body.volunteers.byStatus.Contacted, 1);
+    assert.equal(overview.body.volunteers.byStatus.Approved, 1);
   });
 });
 
@@ -650,32 +667,34 @@ describe("11. administrator accounts", () => {
     const { status, body } = await admin.get("/api/admin/admins");
     assert.equal(status, 200);
     assert.equal(body.admins.length, 1);
+    assert.equal(body.admins[0].username, ADMIN.username);
     assert.ok(!JSON.stringify(body).includes("scrypt$"));
+    assert.ok(!JSON.stringify(body).includes("password"));
   });
 
   it("adds a second administrator who can then sign in", async () => {
     const created = await admin.post("/api/admin/admins", {
-      name: "Second Admin",
-      email: "second@sevadeep.test",
+      displayName: "Second Admin",
+      username: "second.admin",
       password: "Another-Strong-Pass-1!",
     });
     assert.equal(created.status, 201);
 
     const duplicate = await admin.post("/api/admin/admins", {
-      name: "Second Admin",
-      email: "second@sevadeep.test",
+      displayName: "Second Admin",
+      username: "second.admin",
       password: "Another-Strong-Pass-2!",
     });
     assert.equal(duplicate.status, 400);
 
     const second = createClient();
     const login = await second.post("/api/admin/login", {
-      email: "second@sevadeep.test",
+      username: "second.admin",
       password: "Another-Strong-Pass-1!",
     });
     assert.equal(login.status, 200);
     const session = await second.get("/api/admin/session");
-    assert.equal(session.body.admin.email, "second@sevadeep.test");
+    assert.equal(session.body.admin.username, "second.admin");
   });
 });
 
@@ -683,28 +702,28 @@ describe("12. login, logout and brute-force protection", () => {
   it("rejects a wrong password with the same message as an unknown email", async () => {
     const client = createClient();
     const wrongPassword = await client.post("/api/admin/login", {
-      email: ADMIN.email,
+      username: ADMIN.username,
       password: "Wrong-Password-123!",
     });
-    const unknownEmail = await client.post("/api/admin/login", {
-      email: "nobody@sevadeep.test",
+    const unknownUser = await client.post("/api/admin/login", {
+      username: "nobody",
       password: "Wrong-Password-123!",
     });
 
     assert.equal(wrongPassword.status, 401);
-    assert.equal(unknownEmail.status, 401);
-    assert.equal(wrongPassword.body.error, unknownEmail.body.error);
+    assert.equal(unknownUser.status, 401);
+    assert.equal(wrongPassword.body.error, unknownUser.body.error);
     assert.equal(client.cookies.size, 0);
   });
 
   it("rate limits repeated failures", async () => {
     const client = createClient();
-    const email = "bruteforce@sevadeep.test";
+    const username = "bruteforce";
     let sawRateLimit = false;
 
     for (let attempt = 0; attempt < 12; attempt += 1) {
       const { status } = await client.post("/api/admin/login", {
-        email,
+        username,
         password: `Wrong-Password-${attempt}!`,
       });
       if (status === 429) {
@@ -717,7 +736,7 @@ describe("12. login, logout and brute-force protection", () => {
 
   it("destroys the session on logout, so the cookie is useless afterwards", async () => {
     const client = createClient();
-    await client.post("/api/admin/login", { email: ADMIN.email, password: ADMIN.password });
+    await client.post("/api/admin/login", { username: ADMIN.username, password: ADMIN.password });
     const cookie = client.cookies.get("sevadeep_admin_session");
     assert.ok(cookie);
 
@@ -736,7 +755,121 @@ describe("12. login, logout and brute-force protection", () => {
   });
 });
 
-describe("13. persistence across a server restart", () => {
+describe("13. donor and NGO accounts (username + password, no OTP)", () => {
+  const donor = createClient();
+
+  it("rejects a registration whose passwords do not match", async () => {
+    const { status } = await anon.post("/api/auth/register", {
+      ...DONOR,
+      confirmPassword: "Something-Else-1!",
+    });
+    assert.equal(status, 400);
+  });
+
+  it("rejects a weak password and a malformed username", async () => {
+    assert.equal(
+      (await anon.post("/api/auth/register", { ...DONOR, password: "short", confirmPassword: "short" })).status,
+      400
+    );
+    assert.equal(
+      (await anon.post("/api/auth/register", { ...DONOR, username: "no" })).status,
+      400
+    );
+  });
+
+  it("registers a donor and signs them straight in", async () => {
+    const { status, body, headers } = await donor.post("/api/auth/register", DONOR);
+    assert.equal(status, 201);
+    assert.equal(body.account.username, DONOR.username);
+    assert.equal(body.account.role, "donor");
+    assert.ok(!JSON.stringify(body).includes(DONOR.password), "the password is never echoed");
+
+    const setCookie = (headers.getSetCookie?.() ?? [headers.get("set-cookie")]).join(";");
+    assert.match(setCookie, /sevadeep_admin_session=/);
+    assert.match(setCookie, /HttpOnly/i);
+
+    const session = await donor.get("/api/auth/session");
+    assert.equal(session.status, 200);
+    assert.equal(session.body.account.username, DONOR.username);
+  });
+
+  it("refuses a duplicate username", async () => {
+    const { status, body } = await anon.post("/api/auth/register", DONOR);
+    assert.equal(status, 400);
+    assert.match(body.error, /already taken/i);
+  });
+
+  it("signs in with the right password and refuses the wrong one", async () => {
+    const client = createClient();
+    assert.equal(
+      (await client.post("/api/auth/login", { username: DONOR.username, password: "nope", role: "donor" })).status,
+      401
+    );
+    const ok = await client.post("/api/auth/login", {
+      username: DONOR.username.toUpperCase(),
+      password: DONOR.password,
+      role: "donor",
+    });
+    assert.equal(ok.status, 200, "usernames are case-insensitive");
+  });
+
+  it("will not let a donor credential sign in on the NGO or administrator surface", async () => {
+    const asNgo = await createClient().post("/api/auth/login", {
+      username: DONOR.username,
+      password: DONOR.password,
+      role: "ngo",
+    });
+    assert.equal(asNgo.status, 401);
+
+    const asAdmin = await createClient().post("/api/admin/login", {
+      username: DONOR.username,
+      password: DONOR.password,
+    });
+    assert.equal(asAdmin.status, 401);
+  });
+
+  it("will not let a donor session reach administrator data", async () => {
+    for (const endpoint of ["/api/admin/overview", "/api/admin/applications", "/api/admin/volunteers"]) {
+      const { status, body } = await donor.get(endpoint);
+      assert.equal(status, 401, endpoint);
+      assert.ok(!JSON.stringify(body).includes("studentName"));
+    }
+  });
+
+  it("protects /account and redirects an anonymous visitor to the login page", async () => {
+    const anonymous = await anon.get("/account");
+    assert.ok([302, 303, 307].includes(anonymous.status), `got ${anonymous.status}`);
+    assert.match(anonymous.headers.get("location") ?? "", /\/donor-login$/);
+
+    const signedIn = await donor.get("/account");
+    assert.equal(signedIn.status, 200);
+    assert.ok(String(signedIn.body).includes(DONOR.username));
+  });
+
+  it("registers an NGO account independently", async () => {
+    const ngo = createClient();
+    const { status, body } = await ngo.post("/api/auth/register", {
+      displayName: "TEST NGO Contact",
+      username: "test.ngo",
+      password: "Ngo-Pass-2026!",
+      confirmPassword: "Ngo-Pass-2026!",
+      organisation: "TEST Sevasadan Society",
+      role: "ngo",
+    });
+    assert.equal(status, 201);
+    assert.equal(body.account.role, "ngo");
+
+    const session = await ngo.get("/api/auth/session");
+    assert.equal(session.body.account.organisation, "TEST Sevasadan Society");
+  });
+
+  it("signs out and invalidates the session", async () => {
+    await donor.post("/api/auth/logout", {});
+    assert.equal((await donor.get("/api/auth/session")).status, 401);
+  });
+});
+
+describe("14. persistence across a server restart", () => {
   it("keeps every record, reference counter and status after a restart", async () => {
     const beforeRestart = await admin.get("/api/admin/overview");
     const applicationsBefore = beforeRestart.body.applications;
@@ -754,7 +887,7 @@ describe("13. persistence across a server restart", () => {
     assert.equal(trackAfter.body.application.status, "Approved");
 
     const reauth = createClient();
-    await reauth.post("/api/admin/login", { email: ADMIN.email, password: ADMIN.password });
+    await reauth.post("/api/admin/login", { username: ADMIN.username, password: ADMIN.password });
     const afterRestart = await reauth.get("/api/admin/overview");
 
     assert.deepEqual(afterRestart.body.applications, applicationsBefore);

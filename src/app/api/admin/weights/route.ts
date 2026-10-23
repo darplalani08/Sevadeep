@@ -31,7 +31,7 @@ export async function GET() {
   if (!auth.ok) return auth.response;
 
   try {
-    return json({ weights: getMatchWeights() });
+    return json({ weights: await getMatchWeights() });
   } catch (error) {
     console.error("[admin/weights] read failed", error);
     return serverError();
@@ -47,7 +47,7 @@ export async function POST(request: NextRequest) {
 
   try {
     setMatchWeights(parsed.data);
-    return json({ weights: getMatchWeights() });
+    return json({ weights: await getMatchWeights() });
   } catch (error) {
     console.error("[admin/weights] write failed", error);
     return serverError();

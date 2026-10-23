@@ -1,15 +1,15 @@
-// Dashboard aggregation — every number below is a COUNT/GROUP BY over the real tables. There
-// are no hardcoded statistics anywhere in this file.
+// Dashboard aggregation — every number below is a COUNT/GROUP BY over the real tables. There are
+// no hardcoded statistics in this file.
+//
+// All five aggregates are fetched in one round trip: on serverless, six sequential queries is six
+// times the latency for no benefit.
 
-import { getDb } from "./client";
-import { applicationStatuses, type ApplicationStatus } from "@content/education";
-import { volunteerStatuses, type VolunteerStatus } from "./volunteers";
+import { getSql } from "./sql.ts";
+import { applicationStatuses, type ApplicationStatus } from "../../../content/education.ts";
+import { volunteerStatuses, type VolunteerStatus } from "./volunteers.ts";
 
 export type Overview = {
-  applications: {
-    total: number;
-    byStatus: Record<ApplicationStatus, number>;
-  };
+  applications: { total: number; byStatus: Record<ApplicationStatus, number> };
   volunteers: {
     total: number;
     byStatus: Record<VolunteerStatus, number>;
@@ -22,137 +22,91 @@ export type Overview = {
     applicationTrend: { date: string; value: number }[];
     volunteerSkills: { label: string; value: number }[];
   };
-  /** Max(updated_at) across the tables the dashboard renders — used to skip no-op re-renders. */
+  /** Max(updated_at) plus the counts — lets a client skip a no-op re-render. */
   version: string;
   generatedAt: string;
 };
 
 const TREND_DAYS = 14;
 
-function countApplicationsByStatus(): Record<ApplicationStatus, number> {
-  const rows = getDb()
-    .prepare(`SELECT status, COUNT(*) AS count FROM applications GROUP BY status`)
-    .all() as { status: ApplicationStatus; count: number }[];
-
-  const result = Object.fromEntries(
-    applicationStatuses.map((s) => [s, 0])
-  ) as Record<ApplicationStatus, number>;
-  for (const row of rows) {
-    if (row.status in result) result[row.status] = row.count;
-  }
-  return result;
+function zeroed<T extends string>(keys: readonly T[]): Record<T, number> {
+  return Object.fromEntries(keys.map((k) => [k, 0])) as Record<T, number>;
 }
 
-function countVolunteersByStatus(): Record<VolunteerStatus, number> {
-  const rows = getDb()
-    .prepare(`SELECT status, COUNT(*) AS count FROM volunteers GROUP BY status`)
-    .all() as { status: VolunteerStatus; count: number }[];
+export async function getOverview(now = new Date()): Promise<Overview> {
+  const sql = await getSql();
+  const since = new Date(now.getTime() - (TREND_DAYS - 1) * 86400000).toISOString().slice(0, 10);
 
-  const result = Object.fromEntries(
-    volunteerStatuses.map((s) => [s, 0])
-  ) as Record<VolunteerStatus, number>;
-  for (const row of rows) {
-    if (row.status in result) result[row.status] = row.count;
+  const [appStatus, volStatus, opps, trend, skills, version] = await Promise.all([
+    sql.query<{ status: ApplicationStatus; count: string }>(
+      `select status, count(*)::text as count from public.applications group by status`
+    ),
+    sql.query<{ status: VolunteerStatus; count: string }>(
+      `select status, count(*)::text as count from public.volunteers group by status`
+    ),
+    sql.query<{ total: string; active: string }>(
+      `select count(*)::text as total,
+              count(*) filter (where active)::text as active
+         from public.opportunities`
+    ),
+    sql.query<{ day: string; count: string }>(
+      `select to_char(created_at at time zone 'UTC', 'YYYY-MM-DD') as day, count(*)::text as count
+         from public.applications
+        where created_at >= $1::date
+        group by day`,
+      [since]
+    ),
+    // Skills are an array per volunteer; unnest turns the histogram into a plain GROUP BY.
+    sql.query<{ label: string; count: string }>(
+      `select skill as label, count(*)::text as count
+         from public.volunteers, unnest(skills) as skill
+        group by skill
+        order by count(*) desc, skill`
+    ),
+    sql.query<{ stamp: string | null }>(
+      `select greatest(
+                coalesce((select max(updated_at) from public.applications), 'epoch'::timestamptz),
+                coalesce((select max(updated_at) from public.volunteers),   'epoch'::timestamptz),
+                coalesce((select max(created_at) from public.application_events), 'epoch'::timestamptz)
+              )::text as stamp`
+    ),
+  ]);
+
+  const appsByStatus = zeroed(applicationStatuses);
+  let applicationTotal = 0;
+  for (const row of appStatus) {
+    if (row.status in appsByStatus) appsByStatus[row.status] = Number(row.count);
+    applicationTotal += Number(row.count);
   }
-  return result;
-}
 
-/** Applications per day for the last TREND_DAYS days, including days with none. */
-function applicationTrend(now = new Date()): { date: string; value: number }[] {
-  const rows = getDb()
-    .prepare(
-      `SELECT substr(created_at, 1, 10) AS day, COUNT(*) AS count
-         FROM applications
-        WHERE datetime(created_at) >= datetime(?)
-        GROUP BY day`
-    )
-    .all(new Date(now.getTime() - (TREND_DAYS - 1) * 86400000).toISOString()) as {
-    day: string;
-    count: number;
-  }[];
+  const volsByStatus = zeroed(volunteerStatuses);
+  let volunteerTotal = 0;
+  for (const row of volStatus) {
+    if (row.status in volsByStatus) volsByStatus[row.status] = Number(row.count);
+    volunteerTotal += Number(row.count);
+  }
 
-  const counts = new Map(rows.map((r) => [r.day, r.count]));
-  const out: { date: string; value: number }[] = [];
+  // Zero-fill the trend so a quiet day is a gap in the line, not a missing point.
+  const counts = new Map(trend.map((r) => [r.day, Number(r.count)]));
+  const applicationTrend: { date: string; value: number }[] = [];
   for (let i = TREND_DAYS - 1; i >= 0; i -= 1) {
     const day = new Date(now.getTime() - i * 86400000).toISOString().slice(0, 10);
-    out.push({ date: day, value: counts.get(day) ?? 0 });
+    applicationTrend.push({ date: day, value: counts.get(day) ?? 0 });
   }
-  return out;
-}
-
-/**
- * Skill distribution across volunteer registrations. Skills are stored as a JSON array per
- * volunteer, so the histogram is built in JS over the stored rows rather than in SQL.
- */
-function volunteerSkillDistribution(): { label: string; value: number }[] {
-  const rows = getDb().prepare(`SELECT skills FROM volunteers`).all() as { skills: string }[];
-  const tally = new Map<string, number>();
-
-  for (const row of rows) {
-    let skills: unknown;
-    try {
-      skills = JSON.parse(row.skills);
-    } catch {
-      continue;
-    }
-    if (!Array.isArray(skills)) continue;
-    for (const skill of skills) {
-      if (typeof skill !== "string" || !skill.trim()) continue;
-      tally.set(skill, (tally.get(skill) ?? 0) + 1);
-    }
-  }
-
-  return [...tally.entries()]
-    .map(([label, value]) => ({ label, value }))
-    .sort((a, b) => b.value - a.value || a.label.localeCompare(b.label));
-}
-
-export function getOverview(now = new Date()): Overview {
-  const db = getDb();
-
-  const appsByStatus = countApplicationsByStatus();
-  const volsByStatus = countVolunteersByStatus();
-
-  const { total: applicationTotal } = db
-    .prepare(`SELECT COUNT(*) AS total FROM applications`)
-    .get() as { total: number };
-  const { total: volunteerTotal } = db
-    .prepare(`SELECT COUNT(*) AS total FROM volunteers`)
-    .get() as { total: number };
-  const opportunityCounts = db
-    .prepare(`SELECT COUNT(*) AS total, SUM(active) AS active FROM opportunities`)
-    .get() as { total: number; active: number | null };
-
-  const version = db
-    .prepare(
-      `SELECT COALESCE(MAX(stamp), '0') AS version FROM (
-         SELECT MAX(updated_at) AS stamp FROM applications
-         UNION ALL SELECT MAX(updated_at) FROM volunteers
-         UNION ALL SELECT MAX(created_at) FROM application_events
-       )`
-    )
-    .get() as { version: string };
 
   return {
     applications: { total: applicationTotal, byStatus: appsByStatus },
-    volunteers: {
-      total: volunteerTotal,
-      byStatus: volsByStatus,
-      pending: volsByStatus.Pending,
-    },
-    opportunities: {
-      total: opportunityCounts.total,
-      active: opportunityCounts.active ?? 0,
-    },
+    volunteers: { total: volunteerTotal, byStatus: volsByStatus, pending: volsByStatus.Pending },
+    opportunities: { total: Number(opps[0].total), active: Number(opps[0].active) },
     charts: {
       applicationsByStatus: applicationStatuses.map((status) => ({
         label: status,
         value: appsByStatus[status],
       })),
-      applicationTrend: applicationTrend(now),
-      volunteerSkills: volunteerSkillDistribution(),
+      applicationTrend,
+      volunteerSkills: skills.map((s) => ({ label: s.label, value: Number(s.count) })),
     },
-    version: `${version.version}|${applicationTotal}|${volunteerTotal}`,
+    version: `${version[0].stamp ?? "0"}|${applicationTotal}|${volunteerTotal}`,
     generatedAt: now.toISOString(),
   };
 }

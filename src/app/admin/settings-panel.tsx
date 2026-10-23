@@ -17,7 +17,7 @@ import { fetchJson, useLiveData } from "@/lib/hooks/use-live-data";
 import type { MatchWeights } from "@/lib/matching/engine";
 import { POLL_INTERVAL_MS } from "./dashboard";
 
-type SettingsResponse = { admins: { id: number; email: string; name: string }[] };
+type SettingsResponse = { admins: { id: number; username: string; displayName: string; email: string | null }[] };
 
 export function SettingsPanel({
   active,
@@ -54,8 +54,8 @@ export function SettingsPanel({
                 key={admin.id}
                 className="flex flex-wrap items-baseline justify-between gap-2 rounded-xl border border-border bg-muted/30 px-3 py-2"
               >
-                <span className="text-foreground">{admin.name}</span>
-                <span className="text-xs text-muted-foreground">{admin.email}</span>
+                <span className="text-foreground">{admin.displayName}</span>
+                <span className="font-mono text-xs text-muted-foreground">@{admin.username}</span>
               </li>
             ))}
           </ul>
@@ -93,7 +93,8 @@ function AddAdminForm({
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          name: String(data.get("name") ?? ""),
+          displayName: String(data.get("displayName") ?? ""),
+          username: String(data.get("username") ?? ""),
           email: String(data.get("email") ?? ""),
           password: String(data.get("password") ?? ""),
         }),
@@ -134,13 +135,27 @@ function AddAdminForm({
           <Label htmlFor="new-admin-name" className="text-xs text-muted-foreground">
             Name
           </Label>
-          <Input id="new-admin-name" name="name" required />
+          <Input id="new-admin-name" name="displayName" required />
         </div>
         <div className="space-y-1.5">
-          <Label htmlFor="new-admin-email" className="text-xs text-muted-foreground">
-            Email
+          <Label htmlFor="new-admin-username" className="text-xs text-muted-foreground">
+            Username
           </Label>
-          <Input id="new-admin-email" name="email" type="email" required />
+          <Input
+            id="new-admin-username"
+            name="username"
+            required
+            minLength={3}
+            maxLength={32}
+            autoCapitalize="none"
+            spellCheck={false}
+          />
+        </div>
+        <div className="space-y-1.5 sm:col-span-2">
+          <Label htmlFor="new-admin-email" className="text-xs text-muted-foreground">
+            Email (optional)
+          </Label>
+          <Input id="new-admin-email" name="email" type="email" />
         </div>
       </div>
       <div className="space-y-1.5">

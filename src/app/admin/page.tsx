@@ -6,7 +6,7 @@
 import type { Metadata } from "next";
 import { redirect } from "next/navigation";
 
-import { adminCount } from "@/server/db/admins";
+import { countAccounts } from "@/server/db/accounts";
 import { getCurrentAdmin } from "@/server/auth/session";
 import { AdminDashboard } from "./dashboard";
 
@@ -18,10 +18,10 @@ export const metadata: Metadata = {
 export const dynamic = "force-dynamic";
 
 export default async function AdminPage() {
-  if (adminCount() === 0) redirect("/admin/setup");
+  if ((await countAccounts("admin")) === 0) redirect("/admin/setup");
 
   const admin = await getCurrentAdmin();
   if (!admin) redirect("/admin/login");
 
-  return <AdminDashboard admin={admin} />;
+  return <AdminDashboard admin={{ name: admin.displayName, username: admin.username }} />;
 }

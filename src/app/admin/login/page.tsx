@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { redirect } from "next/navigation";
 
 import { Container, Section } from "@/components/common/container";
-import { adminCount } from "@/server/db/admins";
+import { countAccounts } from "@/server/db/accounts";
 import { getCurrentAdmin } from "@/server/auth/session";
 import { LoginForm } from "./login-form";
 
@@ -15,7 +15,7 @@ export const dynamic = "force-dynamic";
 
 export default async function AdminLoginPage() {
   // No account yet → the one-time setup screen. Already signed in → straight to the dashboard.
-  if (adminCount() === 0) redirect("/admin/setup");
+  if ((await countAccounts("admin")) === 0) redirect("/admin/setup");
   if (await getCurrentAdmin()) redirect("/admin");
 
   return (

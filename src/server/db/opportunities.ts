@@ -1,57 +1,57 @@
-// Data access for the administrator-configurable volunteering opportunity catalogue.
+// Opportunity catalogue — Postgres.
 
-import { getDb, transaction } from "./client";
-import type { Opportunity } from "@/lib/matching/engine";
+import { getSql, queryOne } from "./sql.ts";
+import type { Opportunity } from "../../lib/matching/engine.ts";
+
+export type StoredOpportunity = Opportunity & { active: boolean; createdAt: string };
 
 type OpportunityRow = {
   id: string;
   title: string;
   summary: string;
-  required_skills: string;
-  interest_tags: string;
-  availability_needs: string;
+  required_skills: string[];
+  interest_tags: string[];
+  availability_needs: string[];
   location: string;
-  is_demo: number;
-  active: number;
-  created_at: string;
+  is_demo: boolean;
+  active: boolean;
+  created_at: string | Date;
 };
 
-function parseList(value: string): string[] {
-  try {
-    const parsed = JSON.parse(value);
-    return Array.isArray(parsed) ? parsed.filter((v) => typeof v === "string") : [];
-  } catch {
-    return [];
-  }
-}
-
-function toOpportunity(row: OpportunityRow): Opportunity & { active: boolean; createdAt: string } {
+function toOpportunity(row: OpportunityRow): StoredOpportunity {
   return {
     id: row.id,
     title: row.title,
     summary: row.summary,
-    requiredSkills: parseList(row.required_skills),
-    interestTags: parseList(row.interest_tags),
-    availabilityNeeds: parseList(row.availability_needs),
+    requiredSkills: row.required_skills ?? [],
+    interestTags: row.interest_tags ?? [],
+    availabilityNeeds: row.availability_needs ?? [],
     location: row.location,
-    isDemo: row.is_demo === 1,
-    active: row.active === 1,
-    createdAt: row.created_at,
+    isDemo: row.is_demo,
+    active: row.active,
+    createdAt: new Date(row.created_at).toISOString(),
   };
 }
 
-export function listOpportunities(options: { includeInactive?: boolean } = {}) {
-  const clause = options.includeInactive ? "" : "WHERE active = 1";
-  const rows = getDb()
-    .prepare(`SELECT * FROM opportunities ${clause} ORDER BY title ASC`)
-    .all() as OpportunityRow[];
+export async function listOpportunities(
+  options: { includeInactive?: boolean } = {}
+): Promise<StoredOpportunity[]> {
+  const sql = await getSql();
+  const rows = options.includeInactive
+    ? await sql.query<OpportunityRow>(`select * from public.opportunities order by title`)
+    : await sql.query<OpportunityRow>(
+        `select * from public.opportunities where active order by title`
+      );
   return rows.map(toOpportunity);
 }
 
-export function getOpportunity(id: string) {
-  const row = getDb().prepare(`SELECT * FROM opportunities WHERE id = ?`).get(id) as
-    | OpportunityRow
-    | undefined;
+export async function getOpportunity(id: string): Promise<StoredOpportunity | null> {
+  const sql = await getSql();
+  const row = await queryOne<OpportunityRow>(
+    sql,
+    `select * from public.opportunities where id = $1`,
+    [id]
+  );
   return row ? toOpportunity(row) : null;
 }
 
@@ -66,38 +66,39 @@ export type OpportunityInput = {
   isDemo: boolean;
 };
 
-export function upsertOpportunity(input: OpportunityInput, now = new Date()) {
-  transaction((db) => {
-    db.prepare(
-      `INSERT INTO opportunities
-         (id, title, summary, required_skills, interest_tags, availability_needs, location, is_demo, active, created_at)
-       VALUES (?, ?, ?, ?, ?, ?, ?, ?, 1, ?)
-       ON CONFLICT(id) DO UPDATE SET
-         title = excluded.title,
-         summary = excluded.summary,
-         required_skills = excluded.required_skills,
-         interest_tags = excluded.interest_tags,
-         availability_needs = excluded.availability_needs,
-         location = excluded.location,
-         is_demo = excluded.is_demo`
-    ).run(
+export async function upsertOpportunity(input: OpportunityInput): Promise<StoredOpportunity | null> {
+  const sql = await getSql();
+  await sql.query(
+    `insert into public.opportunities
+       (id, title, summary, required_skills, interest_tags, availability_needs, location, is_demo)
+     values ($1, $2, $3, $4, $5, $6, $7, $8)
+     on conflict (id) do update set
+       title = excluded.title,
+       summary = excluded.summary,
+       required_skills = excluded.required_skills,
+       interest_tags = excluded.interest_tags,
+       availability_needs = excluded.availability_needs,
+       location = excluded.location,
+       is_demo = excluded.is_demo`,
+    [
       input.id,
       input.title,
       input.summary,
-      JSON.stringify(input.requiredSkills),
-      JSON.stringify(input.interestTags),
-      JSON.stringify(input.availabilityNeeds),
+      input.requiredSkills,
+      input.interestTags,
+      input.availabilityNeeds,
       input.location,
-      input.isDemo ? 1 : 0,
-      now.toISOString()
-    );
-  });
+      input.isDemo,
+    ]
+  );
   return getOpportunity(input.id);
 }
 
-export function setOpportunityActive(id: string, active: boolean) {
-  const result = getDb()
-    .prepare(`UPDATE opportunities SET active = ? WHERE id = ?`)
-    .run(active ? 1 : 0, id);
-  return Number(result.changes) > 0;
+export async function setOpportunityActive(id: string, active: boolean): Promise<boolean> {
+  const sql = await getSql();
+  const rows = await sql.query<{ id: string }>(
+    `update public.opportunities set active = $2 where id = $1 returning id`,
+    [id, active]
+  );
+  return rows.length > 0;
 }

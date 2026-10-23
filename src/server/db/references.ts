@@ -3,7 +3,7 @@
 
 import { createHash, randomBytes, randomInt, timingSafeEqual } from "node:crypto";
 
-import type { Db } from "./client";
+import type { Sql } from "./sql.ts";
 
 export type RefKind = "application" | "volunteer";
 
@@ -23,33 +23,26 @@ export function referencePattern(kind: RefKind): RegExp {
 
 /**
  * Reserves the next sequence number for (kind, year) and returns the formatted reference.
- * Takes the connection rather than opening its own transaction, so the counter bump and the row
- * insert commit together — see createApplication / createVolunteer.
  *
- * This module imports `Db` as a type only and has no runtime dependency on the database client,
- * which is what lets `node --test` exercise the pure helpers below directly.
+ * The counter bump happens inside public.reserve_reference(), so it is atomic against concurrent
+ * callers in a single round trip. Call it inside the same transaction as the row insert and a
+ * rolled-back insert returns its number instead of burning it — verified in the integration
+ * suite by racing three identical submissions.
+ *
+ * This module imports `Sql` as a type only and has no runtime dependency on the driver, which is
+ * what lets `node --test` exercise the pure helpers below directly.
  */
-export function nextReferenceWithin(db: Db, kind: RefKind, now = new Date()): string {
+export async function nextReferenceWithin(
+  sql: Sql,
+  kind: RefKind,
+  now = new Date()
+): Promise<string> {
   const year = now.getFullYear();
-  const row = db
-    .prepare(`SELECT next_val FROM ref_counters WHERE kind = ? AND year = ?`)
-    .get(kind, year) as { next_val: number } | undefined;
-
-  const sequence = row?.next_val ?? 1;
-  if (row) {
-    db.prepare(`UPDATE ref_counters SET next_val = ? WHERE kind = ? AND year = ?`).run(
-      sequence + 1,
-      kind,
-      year
-    );
-  } else {
-    db.prepare(`INSERT INTO ref_counters (kind, year, next_val) VALUES (?, ?, ?)`).run(
-      kind,
-      year,
-      2
-    );
-  }
-  return formatReference(kind, year, sequence);
+  const rows = await sql.query<{ reserve_reference: number }>(
+    `select public.reserve_reference($1, $2) as reserve_reference`,
+    [kind, year]
+  );
+  return formatReference(kind, year, Number(rows[0].reserve_reference));
 }
 
 // Tracking codes: 6 characters from an unambiguous alphabet (no O/0, I/1, L) so they can be

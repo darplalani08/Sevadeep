@@ -32,7 +32,7 @@ export async function POST(request: NextRequest) {
   if (!parsed.ok) return parsed.response;
 
   try {
-    const status = getPublicStatus(parsed.data.reference, parsed.data.code);
+    const status = await getPublicStatus(parsed.data.reference, parsed.data.code);
     if (!status) {
       // One message for "no such reference" and "wrong code" alike, so the endpoint cannot be
       // used to discover which references exist.

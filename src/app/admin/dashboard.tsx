@@ -27,7 +27,7 @@ import type { Overview } from "@/server/db/analytics";
 
 export const POLL_INTERVAL_MS = 4000;
 
-export function AdminDashboard({ admin }: { admin: { name: string; email: string } }) {
+export function AdminDashboard({ admin }: { admin: { name: string; username: string } }) {
   const router = useRouter();
   const [tab, setTab] = React.useState("overview");
 
@@ -61,7 +61,7 @@ export function AdminDashboard({ admin }: { admin: { name: string; email: string
               Dashboard
             </h1>
             <p className="mt-1 text-sm text-muted-foreground">
-              Signed in as {admin.name} ({admin.email})
+              Signed in as {admin.name} (@{admin.username})
             </p>
           </div>
           <div className="flex items-center gap-3">

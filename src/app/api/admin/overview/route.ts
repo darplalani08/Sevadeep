@@ -12,7 +12,7 @@ export async function GET() {
   if (!auth.ok) return auth.response;
 
   try {
-    return json(getOverview());
+    return json(await getOverview());
   } catch (error) {
     console.error("[admin/overview] failed", error);
     return serverError();

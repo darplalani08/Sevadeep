@@ -25,13 +25,13 @@ export function proxy(request: NextRequest) {
   }
 
   if (!request.cookies.has(SESSION_COOKIE)) {
-    const url = new URL("/admin/login", request.url);
-    return NextResponse.redirect(url);
+    const destination = pathname.startsWith("/account") ? "/donor-login" : "/admin/login";
+    return NextResponse.redirect(new URL(destination, request.url));
   }
 
   return NextResponse.next();
 }
 
 export const config = {
-  matcher: ["/admin", "/admin/:path*"],
+  matcher: ["/admin", "/admin/:path*", "/account", "/account/:path*"],
 };

@@ -5,7 +5,18 @@ import type { z } from "zod";
 
 export const noStore = { "Cache-Control": "no-store" } as const;
 
-export function json(body: unknown, init?: { status?: number; headers?: HeadersInit }) {
+/**
+ * JSON response helper.
+ *
+ * The `body extends object ? ... : body` guard makes handing it a Promise a *type* error. Every
+ * repository is async now, and `json(getOverview())` silently serialises a Promise as `{}` —
+ * HTTP 200 with an empty body, no stack trace, no clue. That bug shipped once; the signature
+ * below is what stops it shipping again.
+ */
+export function json<T>(
+  body: T extends Promise<unknown> ? never : T,
+  init?: { status?: number; headers?: HeadersInit }
+) {
   return Response.json(body, {
     status: init?.status ?? 200,
     headers: { ...noStore, ...(init?.headers ?? {}) },

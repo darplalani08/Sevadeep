@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import { useRouter } from "next/navigation";
-import { AlertCircle } from "lucide-react";
+import { AlertCircle, Eye, EyeOff } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -12,6 +12,7 @@ export function LoginForm() {
   const router = useRouter();
   const [error, setError] = React.useState<string | null>(null);
   const [submitting, setSubmitting] = React.useState(false);
+  const [showPassword, setShowPassword] = React.useState(false);
 
   const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -26,7 +27,7 @@ export function LoginForm() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          email: String(data.get("email") ?? ""),
+          username: String(data.get("username") ?? ""),
           password: String(data.get("password") ?? ""),
         }),
       });
@@ -62,18 +63,38 @@ export function LoginForm() {
       )}
 
       <div className="space-y-2">
-        <Label htmlFor="admin-email">Email</Label>
-        <Input id="admin-email" name="email" type="email" required autoComplete="username" />
+        <Label htmlFor="admin-username">Username</Label>
+        <Input
+          id="admin-username"
+          name="username"
+          required
+          autoComplete="username"
+          autoCapitalize="none"
+          spellCheck={false}
+          placeholder="your username"
+        />
       </div>
       <div className="space-y-2">
         <Label htmlFor="admin-password">Password</Label>
-        <Input
-          id="admin-password"
-          name="password"
-          type="password"
-          required
-          autoComplete="current-password"
-        />
+        <div className="relative">
+          <Input
+            id="admin-password"
+            name="password"
+            type={showPassword ? "text" : "password"}
+            required
+            autoComplete="current-password"
+            className="pr-10"
+          />
+          <button
+            type="button"
+            onClick={() => setShowPassword((v) => !v)}
+            aria-label={showPassword ? "Hide password" : "Show password"}
+            aria-pressed={showPassword}
+            className="absolute inset-y-0 right-0 inline-flex w-10 items-center justify-center rounded-r-md text-muted-foreground transition-colors hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none"
+          >
+            {showPassword ? <EyeOff className="size-4" /> : <Eye className="size-4" />}
+          </button>
+        </div>
       </div>
 
       <Button type="submit" className="w-full rounded-full" disabled={submitting}>

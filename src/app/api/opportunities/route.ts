@@ -13,12 +13,18 @@ export const dynamic = "force-dynamic";
 export async function GET() {
   try {
     return json({
-      opportunities: listOpportunities().map(({ active, createdAt, ...rest }) => {
-        void active;
-        void createdAt;
-        return rest;
-      }),
-      weights: getMatchWeights(),
+      // Only the role definitions are public — never the active flag or internal timestamps.
+      opportunities: (await listOpportunities()).map((o) => ({
+        id: o.id,
+        title: o.title,
+        summary: o.summary,
+        requiredSkills: o.requiredSkills,
+        interestTags: o.interestTags,
+        availabilityNeeds: o.availabilityNeeds,
+        location: o.location,
+        isDemo: o.isDemo,
+      })),
+      weights: await getMatchWeights(),
     });
   } catch (error) {
     console.error("[opportunities] failed to load catalogue", error);

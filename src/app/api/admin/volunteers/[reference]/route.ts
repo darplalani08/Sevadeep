@@ -23,7 +23,7 @@ export async function PATCH(
 
   try {
     const { reference } = await params;
-    const volunteer = updateVolunteerStatus(reference, parsed.data.status);
+    const volunteer = await updateVolunteerStatus(reference, parsed.data.status);
     if (!volunteer) return json({ error: "Volunteer not found." }, { status: 404 });
     return json({ volunteer });
   } catch (error) {

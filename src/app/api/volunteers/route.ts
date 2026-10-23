@@ -32,7 +32,7 @@ export async function POST(request: NextRequest) {
   const values = parsed.data;
 
   try {
-    const result = createVolunteer({
+    const result = await createVolunteer({
       fullName: values.fullName,
       email: values.email,
       mobile: values.mobile,

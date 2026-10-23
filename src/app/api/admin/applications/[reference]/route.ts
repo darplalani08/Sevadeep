@@ -29,10 +29,10 @@ export async function GET(
 
   try {
     const { reference } = await params;
-    const application = getApplicationByReference(reference);
+    const application = await getApplicationByReference(reference);
     if (!application) return json({ error: "Application not found." }, { status: 404 });
 
-    return json({ application, history: getApplicationEvents(application.id) });
+    return json({ application, history: await getApplicationEvents(application.id) });
   } catch (error) {
     console.error("[admin/applications] fetch failed", error);
     return serverError();
@@ -51,10 +51,10 @@ export async function PATCH(
 
   try {
     const { reference } = await params;
-    const result = updateApplicationStatus(
+    const result = await updateApplicationStatus(
       reference,
       parsed.data.status,
-      auth.admin.email,
+      auth.account.username,
       parsed.data.note
     );
 
@@ -63,7 +63,7 @@ export async function PATCH(
         return json({ error: "Application not found." }, { status: 404 });
       }
       if (result.code === "unchanged") {
-        const application = getApplicationByReference(reference);
+        const application = await getApplicationByReference(reference);
         return json({ application, unchanged: true });
       }
       return json({ error: "That status is not valid." }, { status: 400 });
@@ -71,7 +71,7 @@ export async function PATCH(
 
     return json({
       application: result.application,
-      history: getApplicationEvents(result.application.id),
+      history: await getApplicationEvents(result.application.id),
     });
   } catch (error) {
     console.error("[admin/applications] status update failed", error);

@@ -44,8 +44,8 @@ export async function GET() {
 
   try {
     return json({
-      opportunities: listOpportunities({ includeInactive: true }),
-      weights: getMatchWeights(),
+      opportunities: await listOpportunities({ includeInactive: true }),
+      weights: await getMatchWeights(),
     });
   } catch (error) {
     console.error("[admin/opportunities] list failed", error);
@@ -61,7 +61,7 @@ export async function POST(request: NextRequest) {
   if (!parsed.ok) return parsed.response;
 
   try {
-    return json({ opportunity: upsertOpportunity(parsed.data) }, { status: 201 });
+    return json({ opportunity: await upsertOpportunity(parsed.data) }, { status: 201 });
   } catch (error) {
     console.error("[admin/opportunities] save failed", error);
     return serverError();
@@ -76,7 +76,7 @@ export async function PATCH(request: NextRequest) {
   if (!parsed.ok) return parsed.response;
 
   try {
-    const ok = setOpportunityActive(parsed.data.id, parsed.data.active);
+    const ok = await setOpportunityActive(parsed.data.id, parsed.data.active);
     if (!ok) return json({ error: "Opportunity not found." }, { status: 404 });
     return json({ ok: true });
   } catch (error) {

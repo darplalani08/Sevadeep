@@ -21,13 +21,13 @@ import { POLL_INTERVAL_MS } from "./dashboard";
 
 type ListResponse = { items: AdminVolunteer[]; total: number };
 
-const statuses: readonly VolunteerStatus[] = ["Pending", "Contacted", "Active", "Declined"];
+const statuses: readonly VolunteerStatus[] = ["Pending", "Under Review", "Approved", "Rejected"];
 
 const statusBadge: Record<VolunteerStatus, string> = {
   Pending: "bg-muted text-foreground",
-  Contacted: "bg-warning/20 text-foreground",
-  Active: "bg-success/15 text-success",
-  Declined: "bg-destructive/10 text-destructive",
+  "Under Review": "bg-warning/20 text-foreground",
+  Approved: "bg-success/15 text-success",
+  Rejected: "bg-destructive/10 text-destructive",
 };
 
 const ANY = "__any__";
