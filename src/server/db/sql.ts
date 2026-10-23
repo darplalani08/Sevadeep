@@ -102,7 +102,12 @@ async function createPostgres(url: string): Promise<Sql> {
       return client.begin(async (tx) => fn(wrap(tx as never))) as Promise<T>;
     },
     async exec(text: string) {
-      await handle.unsafe(text);
+      // The driver owns transaction control, so migration files must not carry their own
+      // begin/commit (it raises UNSAFE_TRANSACTION). Wrapping here keeps each migration atomic:
+      // a failure rolls the whole file back rather than leaving a half-built schema.
+      await client.begin(async (tx) => {
+        await tx.unsafe(text);
+      });
     },
     async close() {
       await client.end({ timeout: 5 });

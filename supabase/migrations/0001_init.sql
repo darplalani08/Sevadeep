@@ -21,7 +21,7 @@
 --   * check constraints mirror the application's enums so an invalid row cannot be written
 --     even if a future caller forgets to validate
 
-begin;
+-- (the migration runner wraps this file in a transaction — see src/server/db/sql.ts)
 
 -- ---------------------------------------------------------------------------
 -- accounts: one table for every human login (administrator, donor, NGO)
@@ -333,5 +333,3 @@ begin
   end if;
 end
 $$;
-
-commit;
