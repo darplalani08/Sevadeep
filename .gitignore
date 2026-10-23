@@ -43,7 +43,8 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# local SQLite database (never committed — holds applicant/volunteer records)
-/data/*.db
-/data/*.db-wal
-/data/*.db-shm
+# local SQLite database (never committed — holds applicant/volunteer records and the
+# administrator's password hash). The whole directory is ignored, not just *.db at the top
+# level, so snapshots and backups taken into subfolders cannot be published by accident.
+# The app recreates data/ on first run.
+/data/
