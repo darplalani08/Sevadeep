@@ -8,7 +8,7 @@ import { ChevronDown, Phone, X } from "lucide-react";
 
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { contact, ngoNavGroup, primaryNav, siteConfig } from "@content/site";
+import { contact, ngoNavGroup, primaryNav, siteConfig, studentNavGroup } from "@content/site";
 
 type MobileMenuProps = {
   open: boolean;
@@ -18,6 +18,7 @@ type MobileMenuProps = {
 
 export function MobileMenu({ open, onOpenChange, isActive }: MobileMenuProps) {
   const [ngoOpen, setNgoOpen] = React.useState(false);
+  const [studentOpen, setStudentOpen] = React.useState(false);
 
   React.useEffect(() => {
     if (!open) return;
@@ -85,6 +86,39 @@ export function MobileMenu({ open, onOpenChange, isActive }: MobileMenuProps) {
                     </Link>
                   </li>
                 ))}
+                <li>
+                  <button
+                    type="button"
+                    onClick={() => setStudentOpen((v) => !v)}
+                    className="flex w-full items-center justify-between rounded-lg px-3 py-3 text-base font-medium text-foreground hover:bg-muted"
+                    aria-expanded={studentOpen}
+                  >
+                    {studentNavGroup.label}
+                    <ChevronDown className={cn("size-4 transition-transform", studentOpen && "rotate-180")} />
+                  </button>
+                  <AnimatePresence initial={false}>
+                    {studentOpen && (
+                      <motion.ul
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        className="overflow-hidden pl-3"
+                      >
+                        {studentNavGroup.items.map((item) => (
+                          <li key={item.href}>
+                            <Link
+                              href={item.href}
+                              onClick={() => onOpenChange(false)}
+                              className="block rounded-lg px-3 py-2.5 text-sm text-muted-foreground hover:bg-muted hover:text-foreground"
+                            >
+                              {item.label}
+                            </Link>
+                          </li>
+                        ))}
+                      </motion.ul>
+                    )}
+                  </AnimatePresence>
+                </li>
                 <li>
                   <button
                     type="button"

@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Mail, MapPin, Phone } from "lucide-react";
 
 import { FacebookIcon, InstagramIcon, LinkedInIcon, XIcon } from "@/components/common/social-icons";
-import { contact, footerLinks, siteConfig, socialLinks } from "@content/site";
+import { contact, footerLinks, siteConfig, socialLinks, staffLink } from "@content/site";
 
 const socialIcons: Record<string, React.ComponentType<{ className?: string }>> = {
   Facebook: FacebookIcon,
@@ -16,7 +16,7 @@ export function Footer() {
   return (
     <footer className="mt-auto border-t border-border bg-secondary/40">
       <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
-        <div className="grid gap-10 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
+        <div className="grid gap-10 lg:grid-cols-[1.4fr_1fr_1fr_1fr_1fr]">
           <div>
             <Link href="/" className="flex items-center gap-2.5">
               <Image src={siteConfig.logo} alt={`${siteConfig.name} logo`} width={40} height={40} className="size-10" />
@@ -68,11 +68,17 @@ export function Footer() {
           <FooterColumn title="Get In Touch" links={footerLinks.company} />
           <FooterColumn title="Give & Get Help" links={footerLinks.get} />
           <FooterColumn title="Account" links={footerLinks.account} />
+          <FooterColumn title="Students" links={footerLinks.students} />
         </div>
 
         <div className="mt-12 flex flex-col items-center justify-between gap-3 border-t border-border pt-6 text-xs text-muted-foreground sm:flex-row">
           <p>&copy; {new Date().getFullYear()} {siteConfig.name}. A Relfor Foundation initiative.</p>
-          <p>Built with care in Pune, India.</p>
+          <div className="flex items-center gap-4">
+            <p>Built with care in Pune, India.</p>
+            <Link href={staffLink.href} className="transition-colors hover:text-primary">
+              {staffLink.label}
+            </Link>
+          </div>
         </div>
       </div>
     </footer>

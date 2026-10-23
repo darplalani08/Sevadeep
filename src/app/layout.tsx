@@ -7,6 +7,7 @@ import { Footer } from "@/components/layout/footer";
 import { ThemeProvider } from "@/components/layout/theme-provider";
 import { SmoothScrollProvider } from "@/components/layout/smooth-scroll-provider";
 import { Toaster } from "@/components/ui/sonner";
+import { ChatWidget } from "@/components/chatbot/chat-widget";
 import { DonationBucketProvider } from "@/lib/donation-bucket-context";
 import { contact, siteConfig } from "@content/site";
 
@@ -88,6 +89,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
               <main className="flex-1">{children}</main>
               <Footer />
             </SmoothScrollProvider>
+            <ChatWidget />
             <Toaster richColors position="top-center" />
           </DonationBucketProvider>
         </ThemeProvider>

@@ -1,9 +1,14 @@
 // Mock submission endpoints. Each simulates network latency and returns a typed result so
 // forms can be wired to a real backend (Firebase Functions, REST, etc.) later by editing only
 // this file.
+//
+// Volunteer registration no longer lives here: it posts to POST /api/volunteers, which validates
+// server-side, writes to SQLite and returns the computed opportunity matches. Student enrolment
+// and application tracking were added the same way (POST /api/enrollment, POST /api/track). The
+// functions below are still mocks — donations, NGO registration, OTP and meal sponsorship have
+// not been migrated.
 import type { DonationFormValues } from "@/lib/validations/donation";
 import type { NgoRegistrationValues } from "@/lib/validations/ngo-registration";
-import type { VolunteerValues } from "@/lib/validations/volunteer";
 
 function delay<T>(value: T, ms = 900): Promise<T> {
   return new Promise((resolve) => setTimeout(() => resolve(value), ms));
@@ -23,11 +28,6 @@ export async function submitDonation(values: DonationFormValues): Promise<Submis
 export async function submitNgoRegistration(values: NgoRegistrationValues): Promise<SubmissionResult> {
   void values;
   return delay({ success: true, referenceId: makeReferenceId("SD-NGO") });
-}
-
-export async function submitVolunteerApplication(values: VolunteerValues): Promise<SubmissionResult> {
-  void values;
-  return delay({ success: true, referenceId: makeReferenceId("SD-VOL") });
 }
 
 export async function requestOtp(phone: string): Promise<SubmissionResult> {

@@ -15,7 +15,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { cn } from "@/lib/utils";
-import { contact, ngoNavGroup, primaryNav, siteConfig } from "@content/site";
+import { contact, ngoNavGroup, primaryNav, siteConfig, studentNavGroup } from "@content/site";
 import { MobileMenu } from "./mobile-menu";
 import { ThemeToggle } from "./theme-toggle";
 
@@ -94,6 +94,21 @@ export function Navbar() {
                   )}
                 </Link>
               ))}
+              <DropdownMenu>
+                <DropdownMenuTrigger
+                  className={cn(
+                    "flex items-center gap-1 rounded-full px-3.5 py-2 text-sm font-medium text-foreground/80 transition-colors hover:text-foreground"
+                  )}
+                >
+                  {studentNavGroup.label}
+                  <ChevronDown className="size-3.5" />
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end">
+                  {studentNavGroup.items.map((item) => (
+                    <DropdownMenuItem key={item.href} render={<Link href={item.href}>{item.label}</Link>} />
+                  ))}
+                </DropdownMenuContent>
+              </DropdownMenu>
               <DropdownMenu>
                 <DropdownMenuTrigger
                   className={cn(

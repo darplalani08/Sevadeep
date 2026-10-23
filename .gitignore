@@ -33,6 +33,8 @@ yarn-error.log*
 
 # env files (can opt-in for committing if needed)
 .env*
+# ...but the template is documentation and holds no secrets, so it is tracked.
+!.env.example
 
 # vercel
 .vercel
@@ -40,3 +42,8 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# local SQLite database (never committed — holds applicant/volunteer records)
+/data/*.db
+/data/*.db-wal
+/data/*.db-shm

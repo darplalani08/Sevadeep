@@ -45,6 +45,16 @@ export const primaryNav = [
   { label: "Sponsor A Meal", href: "/narayan-seva" },
 ] as const;
 
+// Student-facing routes added by the SevaDeep platform build. Grouped into one dropdown so the
+// header gains a single trigger rather than two more top-level links.
+export const studentNavGroup = {
+  label: "Students",
+  items: [
+    { label: "Student Enrolment", href: "/enroll" },
+    { label: "Track Application", href: "/track" },
+  ],
+} as const;
+
 export const ngoNavGroup = {
   label: "NGO",
   items: [
@@ -74,7 +84,14 @@ export const footerLinks = {
     { label: "NGO Registration", href: "/ngo-registration" },
     { label: "Volunteer With Us", href: "/volunteer-register" },
   ],
+  students: [
+    { label: "Student Enrolment", href: "/enroll" },
+    { label: "Track Application", href: "/track" },
+  ],
 } as const;
+
+// Staff entry point, intentionally kept out of the header and the sitemap.
+export const staffLink = { label: "Staff Login", href: "/admin/login" } as const;
 
 export const donationCategories = [
   { id: "clothes", label: "Clothes", icon: "Shirt" },

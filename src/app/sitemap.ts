@@ -13,6 +13,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/donor-login",
     "/ngo-registration",
     "/volunteer-register",
+    "/enroll",
     "/narayan-seva",
     "/gallery",
   ].map((route) => ({
