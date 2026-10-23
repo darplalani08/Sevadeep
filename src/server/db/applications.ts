@@ -277,20 +277,30 @@ export async function listApplications(
 
   const clause = where.length ? `where ${where.join(" and ")}` : "";
 
-  const totalRows = await sql.query<{ count: string }>(
-    `select count(*)::text as count from public.applications ${clause}`,
-    params
-  );
-
+  // count(*) over() rides along with the page, so this is one round trip rather than a separate
+  // COUNT query. Worth it: the function runs a long way from the database.
   params.push(Math.min(Math.max(limit, 1), 200), Math.max(offset, 0));
-  const rows = await sql.query<ApplicationRow>(
-    `select * from public.applications ${clause}
+  const rows = await sql.query<ApplicationRow & { total_count: string }>(
+    `select *, count(*) over() as total_count from public.applications ${clause}
       order by created_at desc, id desc
       limit $${params.length - 1} offset $${params.length}`,
     params
   );
 
-  return { items: rows.map(toAdmin), total: Number(totalRows[0].count) };
+  // A zero-row page carries no window value, so fall back to a direct count only then.
+  const total =
+    rows.length > 0
+      ? Number(rows[0].total_count)
+      : Number(
+          (
+            await sql.query<{ count: string }>(
+              `select count(*)::text as count from public.applications ${clause}`,
+              params.slice(0, -2)
+            )
+          )[0].count
+        );
+
+  return { items: rows.map(toAdmin), total };
 }
 
 export async function getApplicationByReference(

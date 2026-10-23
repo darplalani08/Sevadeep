@@ -177,7 +177,8 @@ export async function clearLoginFailures(scopeKey: string): Promise<void> {
 export async function isRateLimited(scopeKey: string): Promise<boolean> {
   const sql = await getSql();
   const cutoff = new Date(Date.now() - ATTEMPT_WINDOW_MS).toISOString();
-  await sql.query(`delete from public.login_attempts where created_at < $1`, [cutoff]);
+  // Asynchronously prune expired attempts without blocking the latency-critical rate check
+  sql.query(`delete from public.login_attempts where created_at < $1`, [cutoff]).catch(() => {});
   const rows = await sql.query<{ count: string }>(
     `select count(*)::text as count from public.login_attempts
       where scope_key = $1 and created_at >= $2`,
@@ -189,6 +190,12 @@ export async function isRateLimited(scopeKey: string): Promise<boolean> {
 // ---------------------------------------------------------------------------
 // Authentication & sessions
 // ---------------------------------------------------------------------------
+
+// In-memory cache for resolved session tokens.
+// Eliminates 1 database round-trip on every live data poll and tab navigation.
+type CachedSession = { account: Account; cachedAt: number };
+const sessionCache = new Map<string, CachedSession>();
+const SESSION_CACHE_TTL_MS = 30_000; // 30 seconds
 
 // A structurally valid hash that no password matches, used to equalise login timing for unknown
 // usernames so the response cannot be used to discover which accounts exist.
@@ -217,32 +224,57 @@ export async function authenticate(
   // wrong-role-but-right-password both look identical from outside.
   if (!ok || row.status !== "active" || (role && row.role !== role)) return null;
 
-  await sql.query(`update public.accounts set last_login_at = now() where id = $1`, [row.id]);
+  // Asynchronously record last login timestamp without adding an extra blocking round-trip
+  sql.query(`update public.accounts set last_login_at = now() where id = $1`, [row.id]).catch(() => {});
   return toAccount(row);
 }
 
 export type Session = { token: string; expiresAt: Date };
 
-export async function createSession(accountId: number, userAgent?: string): Promise<Session> {
+export async function createSession(
+  accountId: number,
+  userAgent?: string,
+  clearScopeKey?: string
+): Promise<Session> {
   const sql = await getSql();
   const token = randomBytes(32).toString("base64url");
   const expiresAt = new Date(Date.now() + SESSION_TTL_MS);
+  const tokenHash = sha256(token);
 
-  await sql.query(
-    `insert into public.sessions (token_hash, account_id, expires_at, user_agent)
-     values ($1, $2, $3, $4)`,
-    [sha256(token), accountId, expiresAt.toISOString(), userAgent ?? null]
-  );
-  await sql.query(`delete from public.sessions where expires_at < now()`);
+  if (clearScopeKey) {
+    // Single round-trip: clear failure attempts and insert session together
+    await sql.query(
+      `with d as (
+         delete from public.login_attempts where scope_key = $1
+       )
+       insert into public.sessions (token_hash, account_id, expires_at, user_agent)
+       values ($2, $3, $4, $5)`,
+      [clearScopeKey, tokenHash, accountId, expiresAt.toISOString(), userAgent ?? null]
+    );
+  } else {
+    await sql.query(
+      `insert into public.sessions (token_hash, account_id, expires_at, user_agent)
+       values ($1, $2, $3, $4)`,
+      [tokenHash, accountId, expiresAt.toISOString(), userAgent ?? null]
+    );
+  }
+
+  // Non-blocking cleanup of expired sessions
+  sql.query(`delete from public.sessions where expires_at < now()`).catch(() => {});
 
   return { token, expiresAt };
 }
 
 export async function resolveSession(token: string | undefined): Promise<Account | null> {
   if (!token) return null;
-  const sql = await getSql();
   const hash = sha256(token);
 
+  const cached = sessionCache.get(hash);
+  if (cached && Date.now() - cached.cachedAt < SESSION_CACHE_TTL_MS) {
+    return cached.account;
+  }
+
+  const sql = await getSql();
   const row = await queryOne<AccountRow & { token_hash: string; status: string }>(
     sql,
     `select a.id, a.username, a.role, a.display_name, a.email, a.organisation, a.status,
@@ -252,25 +284,36 @@ export async function resolveSession(token: string | undefined): Promise<Account
       where s.token_hash = $1 and s.expires_at > now()`,
     [hash]
   );
-  if (!row || row.status !== "active") return null;
+  if (!row || row.status !== "active") {
+    sessionCache.delete(hash);
+    return null;
+  }
 
   // Constant-time compare on the stored hash as well, so a partial-match timing signal cannot be
   // used to probe session tokens.
   const a = Buffer.from(row.token_hash);
   const b = Buffer.from(hash);
-  if (a.length !== b.length || !timingSafeEqual(a, b)) return null;
+  if (a.length !== b.length || !timingSafeEqual(a, b)) {
+    sessionCache.delete(hash);
+    return null;
+  }
 
-  return toAccount(row);
+  const account = toAccount(row);
+  sessionCache.set(hash, { account, cachedAt: Date.now() });
+  return account;
 }
 
 export async function destroySession(token: string | undefined): Promise<void> {
   if (!token) return;
+  const hash = sha256(token);
+  sessionCache.delete(hash);
   const sql = await getSql();
-  await sql.query(`delete from public.sessions where token_hash = $1`, [sha256(token)]);
+  await sql.query(`delete from public.sessions where token_hash = $1`, [hash]);
 }
 
 /** Revokes every session for an account — used when a password changes. */
 export async function destroyAllSessions(accountId: number, sql?: Sql): Promise<void> {
+  sessionCache.clear();
   const db = sql ?? (await getSql());
   await db.query(`delete from public.sessions where account_id = $1`, [accountId]);
 }

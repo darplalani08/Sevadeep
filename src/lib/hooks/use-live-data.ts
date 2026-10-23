@@ -39,6 +39,8 @@ export type UseLiveDataOptions<T> = {
   fetcher: (signal: AbortSignal) => Promise<T>;
   intervalMs?: number;
   enabled?: boolean;
+  /** Initial data provided via server-side rendering to eliminate client loading waterfalls. */
+  initialData?: T;
   /** Change this to start over (e.g. a different search term). */
   resetKey?: string;
   /** Called when the server says the session is gone, so the shell can redirect. */
@@ -65,13 +67,13 @@ type Snapshot<T> = {
   failures: number;
 };
 
-function emptySnapshot<T>(key: string): Snapshot<T> {
+function emptySnapshot<T>(key: string, initialData?: T): Snapshot<T> {
   return {
     key,
-    data: null,
+    data: initialData ?? null,
     error: null,
-    loaded: false,
-    lastUpdatedAt: null,
+    loaded: initialData !== undefined,
+    lastUpdatedAt: initialData !== undefined ? new Date() : null,
     refreshing: false,
     failures: 0,
   };
@@ -81,10 +83,13 @@ export function useLiveData<T>({
   fetcher,
   intervalMs = 4000,
   enabled = true,
+  initialData,
   resetKey = "",
   onUnauthorized,
 }: UseLiveDataOptions<T>): LiveDataState<T> {
-  const [snapshot, setSnapshot] = React.useState<Snapshot<T>>(() => emptySnapshot<T>(resetKey));
+  const [snapshot, setSnapshot] = React.useState<Snapshot<T>>(() =>
+    emptySnapshot<T>(resetKey, initialData)
+  );
 
   // A new resetKey means a different query, so last time's payload is not ours to show. Derived
   // rather than reset with setState, so no render ever triggers another render.
@@ -103,6 +108,7 @@ export function useLiveData<T>({
 
   const [manualTick, setManualTick] = React.useState(0);
   const refresh = React.useCallback(() => setManualTick((tick) => tick + 1), []);
+  const initialUsedRef = React.useRef(false);
 
   React.useEffect(() => {
     if (!enabled) return;
@@ -112,7 +118,7 @@ export function useLiveData<T>({
     let controller: AbortController | null = null;
     let consecutiveFailures = 0;
     let inFlight = false;
-    let serialised: string | null = null;
+    let serialised: string | null = initialData !== undefined ? JSON.stringify(initialData) : null;
 
     /** Only ever called from a scheduled task, never during the effect itself. */
     const update = (patch: Partial<Snapshot<T>>) => {
@@ -192,9 +198,14 @@ export function useLiveData<T>({
       schedule(0);
     };
 
-    // Scheduled rather than awaited, so the first fetch — and its state updates — happen after
-    // this effect has returned.
-    schedule(0);
+    // If initialData was supplied (from SSR), the data is already fresh: start polling
+    // after the interval rather than immediately refetching on tick 0.
+    if (initialData !== undefined && !initialUsedRef.current) {
+      initialUsedRef.current = true;
+      schedule(intervalMs);
+    } else {
+      schedule(0);
+    }
     document.addEventListener("visibilitychange", onVisible);
 
     return () => {

@@ -25,9 +25,15 @@ import { OpportunitiesPanel } from "./opportunities-panel";
 import { SettingsPanel } from "./settings-panel";
 import type { Overview } from "@/server/db/analytics";
 
-export const POLL_INTERVAL_MS = 4000;
+export const POLL_INTERVAL_MS = 8000;
 
-export function AdminDashboard({ admin }: { admin: { name: string; username: string } }) {
+export function AdminDashboard({
+  admin,
+  initialData,
+}: {
+  admin: { name: string; username: string };
+  initialData?: Overview;
+}) {
   const router = useRouter();
   const [tab, setTab] = React.useState("overview");
 
@@ -38,13 +44,13 @@ export function AdminDashboard({ admin }: { admin: { name: string; username: str
   const overview = useLiveData<Overview>({
     fetcher: (signal) => fetchJson<Overview>("/api/admin/overview", { signal }),
     intervalMs: POLL_INTERVAL_MS,
+    initialData,
     onUnauthorized,
   });
 
   const signOut = async () => {
     await fetch("/api/admin/logout", { method: "POST" });
     router.replace("/admin/login");
-    router.refresh();
   };
 
   const data = overview.data;

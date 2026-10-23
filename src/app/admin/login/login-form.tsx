@@ -39,7 +39,6 @@ export function LoginForm() {
       }
 
       router.replace("/admin");
-      router.refresh();
     } catch {
       setError("Could not reach the server. Is the site running?");
     } finally {

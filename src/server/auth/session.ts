@@ -22,8 +22,8 @@ const baseCookieOptions = {
   secure: process.env.NODE_ENV === "production",
 };
 
-export async function startSession(accountId: number) {
-  const session = await createSession(accountId);
+export async function startSession(accountId: number, clearScopeKey?: string) {
+  const session = await createSession(accountId, undefined, clearScopeKey);
   const store = await cookies();
   store.set(SESSION_COOKIE, session.token, {
     ...baseCookieOptions,

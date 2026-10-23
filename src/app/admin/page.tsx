@@ -8,6 +8,7 @@ import { redirect } from "next/navigation";
 
 import { countAccounts } from "@/server/db/accounts";
 import { getCurrentAdmin } from "@/server/auth/session";
+import { getOverview } from "@/server/db/analytics";
 import { AdminDashboard } from "./dashboard";
 
 export const metadata: Metadata = {
@@ -18,10 +19,26 @@ export const metadata: Metadata = {
 export const dynamic = "force-dynamic";
 
 export default async function AdminPage() {
-  if ((await countAccounts("admin")) === 0) redirect("/admin/setup");
-
   const admin = await getCurrentAdmin();
-  if (!admin) redirect("/admin/login");
 
-  return <AdminDashboard admin={{ name: admin.displayName, username: admin.username }} />;
+  if (!admin) {
+    if ((await countAccounts("admin")) === 0) redirect("/admin/setup");
+    redirect("/admin/login");
+  }
+
+  // Pre-fetch the overview data during server render so the dashboard mounts with
+  // all statistics, charts and metrics already present on first paint (0s client waterfall).
+  let initialOverview = null;
+  try {
+    initialOverview = await getOverview();
+  } catch (error) {
+    console.error("[admin/page] failed to pre-fetch overview", error);
+  }
+
+  return (
+    <AdminDashboard
+      admin={{ name: admin.displayName, username: admin.username }}
+      initialData={initialOverview ?? undefined}
+    />
+  );
 }

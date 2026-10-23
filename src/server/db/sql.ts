@@ -83,11 +83,11 @@ async function createPostgres(url: string): Promise<Sql> {
   const { default: postgres } = await import("postgres");
 
   const client = postgres(url, {
-    // Supabase's transaction-mode pooler does not support prepared statements, and each Vercel
-    // invocation is short-lived, so keep the footprint tiny and never hold idle connections.
+    // Supabase's transaction-mode pooler does not support prepared statements.
+    // Keep max connections reasonable (10) to avoid queuing concurrent requests.
     prepare: false,
-    max: Number(process.env.DATABASE_POOL_MAX ?? 3),
-    idle_timeout: 20,
+    max: Number(process.env.DATABASE_POOL_MAX ?? 10),
+    idle_timeout: 60,
     connect_timeout: 15,
     ssl: url.includes("sslmode=disable") ? false : "require",
     onnotice: () => {},

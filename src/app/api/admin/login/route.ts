@@ -9,7 +9,6 @@ import { z } from "zod";
 
 import {
   authenticate,
-  clearLoginFailures,
   isRateLimited,
   normaliseUsername,
   recordLoginFailure,
@@ -45,8 +44,7 @@ export async function POST(request: NextRequest) {
       return json({ error: "Incorrect username or password." }, { status: 401 });
     }
 
-    await clearLoginFailures(scope);
-    await startSession(account.id);
+    await startSession(account.id, scope);
     return json({
       account: { username: account.username, displayName: account.displayName, role: account.role },
     });

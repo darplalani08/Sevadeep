@@ -351,23 +351,30 @@ export async function listVolunteers(
 
   const clause = where.length ? `where ${where.join(" and ")}` : "";
 
-  const totalRows = await sql.query<{ count: string }>(
-    `select count(*)::text as count from public.volunteers ${clause}`,
-    params
-  );
-
   params.push(Math.min(Math.max(limit, 1), 200), Math.max(offset, 0));
-  const rows = await sql.query<VolunteerRow>(
-    `select * from public.volunteers ${clause}
+  const rows = await sql.query<VolunteerRow & { total_count: string }>(
+    `select *, count(*) over() as total_count from public.volunteers ${clause}
       order by created_at desc, id desc
       limit $${params.length - 1} offset $${params.length}`,
     params
   );
 
+  const total =
+    rows.length > 0
+      ? Number(rows[0].total_count)
+      : Number(
+          (
+            await sql.query<{ count: string }>(
+              `select count(*)::text as count from public.volunteers ${clause}`,
+              params.slice(0, -2)
+            )
+          )[0].count
+        );
+
   const matches = await matchesFor(rows.map((r) => Number(r.id)));
   return {
     items: rows.map((r) => toAdminVolunteer(r, matches.get(Number(r.id)) ?? [])),
-    total: Number(totalRows[0].count),
+    total,
   };
 }
 
