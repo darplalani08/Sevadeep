@@ -1,124 +1,272 @@
-# SevaDeep — Rebuild
+# 🪔 SevaDeep — NGO Management Platform
 
-A modern, animated rebuild of [sevadeep.org](https://sevadeep.org) ("Connecting Donors with NGOs"), a Pune-based
-donation platform run by the Relfor Foundation. Same pages, sections and content as the original — upgraded to a
-production-grade Next.js frontend.
+### Connecting Donors, Empowering Communities
 
-See [`scraper/SITEMAP.md`](scraper/SITEMAP.md) for the full content audit this rebuild is based on.
+A modern, responsive NGO management platform developed to digitize SevaDeep's operations, simplify student enrollment, streamline volunteer coordination, and improve transparency through centralized application management.
 
-**The site is now also a working platform**, with a local database behind four features: an NGO assistance chatbot,
-student enrolment with secure application tracking, a session-protected admin dashboard with live analytics, and
-skill-based volunteer matching. It runs entirely on localhost — nothing is deployed and no paid service is used.
-Full write-up: [`SEVADEEP_TECHNICAL_DOCUMENTATION.md`](SEVADEEP_TECHNICAL_DOCUMENTATION.md).
-Demo walkthrough: [`DEMO_CHECKLIST.md`](DEMO_CHECKLIST.md).
+[![Live Website](https://img.shields.io/badge/Live_Website-Visit_SevaDeep-800020?style=for-the-badge)](https://sevadeep-two.vercel.app/)
+[![Next.js](https://img.shields.io/badge/Next.js-16-black?style=for-the-badge&logo=nextdotjs)](https://nextjs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![Vercel](https://img.shields.io/badge/Deployed_on-Vercel-black?style=for-the-badge&logo=vercel)](https://vercel.com/)
 
-## Tech stack
+**🌐 Live Website:** https://sevadeep-two.vercel.app/
 
-- **Next.js 16** (App Router, Turbopack) + **TypeScript**
-- **Tailwind CSS v4** (CSS-first `@theme` tokens) + **shadcn/ui** (Base UI primitives)
-- **Framer Motion** for component/scroll animation, **Lenis** for smooth scrolling
-- **React Hook Form + Zod** for every form
-- **next/image** for all photos (local, optimized, no remote hosts required)
-- Typed content in `/content`, a swappable data layer in `/src/lib/api`
-- **SQLite via `node:sqlite`** and **scrypt via `node:crypto`** for the platform features — both
-  from Node's standard library, so no new dependency and no native build step
+**🔐 Admin Login:** https://sevadeep-two.vercel.app/admin/login
 
-## Getting started
+---
+
+## 📌 About the Project
+
+SevaDeep is a Pune-based NGO initiative associated with the Relfor Foundation, connecting donors with verified NGOs and supporting community welfare through donations, food distribution, educational resources, and volunteering.
+
+This project extends the NGO's digital presence beyond a conventional informational website by introducing structured workflows for student applications, volunteering, and administration.
+
+### 🎯 Project Objectives
+
+- Digitize student enrollment and application management.
+- Provide transparent application status tracking.
+- Support volunteer registration and opportunity matching.
+- Centralize administrative operations.
+- Improve accessibility through a responsive web interface.
+- Provide interactive chatbot assistance for website users.
+
+---
+
+## ✨ Key Features
+
+### 🤖 Interactive NGO Chatbot
+
+- Rule-based intent recognition for common NGO-related queries.
+- Assistance with services, donations, volunteering, and navigation.
+- Lightweight implementation without dependence on a paid AI API.
+
+### 🎓 Student Enrollment & Application Tracking
+
+- Online enrollment form with input validation.
+- Unique application reference generation.
+- Application status tracking.
+- Administrator-controlled application review.
+
+**Application Lifecycle:**
+
+`Submitted → Under Review → Approved / Rejected`
+
+### 🛡️ Administrator Dashboard
+
+- Protected administrator authentication.
+- Centralized student application management.
+- Approval and rejection workflows.
+- Application statistics and analytics.
+- Volunteer information management.
+
+### 🤝 Skill-Based Volunteer Matching
+
+A weighted compatibility algorithm recommends volunteering opportunities based on three parameters.
+
+| Matching Parameter | Weight |
+|---|---:|
+| Skills | 50% |
+| Interests | 30% |
+| Availability | 20% |
+
+**Matching Formula:**
+
+`Match Score = 0.50 × Skills + 0.30 × Interests + 0.20 × Availability`
+
+This provides an explainable approach to ranking volunteering opportunities.
+
+### 📱 Responsive User Experience
+
+- Mobile-friendly interface.
+- Light and dark themes.
+- Animated UI components.
+- Accessible navigation and optimized images.
+
+---
+
+## 🏗️ System Architecture
+
+The application uses a layered architecture:
+
+```text
+                  USERS
+       Students | Volunteers | Donors
+               | Administrators
+                       |
+                       v
+             NEXT.JS FRONTEND
+          React + TypeScript + Tailwind
+                       |
+                       v
+              BACKEND API ROUTES
+        Validation | Auth | Business Logic
+                       |
+                       v
+                 DATA STORAGE
+           Persistent Application Records
+                       |
+                       v
+               SYSTEM OUTPUTS
+       Application Tracking | Dashboard
+        Volunteer Matching | Analytics
+```
+
+The database implementation and synchronization mechanism should be updated here to match the current production configuration.
+
+---
+
+## 🧰 Technology Stack
+
+| Layer | Technologies |
+|---|---|
+| Frontend | Next.js 16, React, TypeScript |
+| Styling | Tailwind CSS v4, shadcn/ui |
+| Animation | Framer Motion, Lenis |
+| Forms | React Hook Form, Zod |
+| Backend | Next.js API Route Handlers |
+| Chatbot | Rule-based intent recognition |
+| Volunteer Matching | Weighted scoring algorithm |
+| Version Control | Git, GitHub |
+| Deployment | Vercel |
+
+**Database:** Verify whether the current deployed version uses Supabase PostgreSQL or another persistence layer before listing it as the production database.
+
+---
+
+## 🌐 Live Deployment
+
+The SevaDeep website is available at:
+
+**https://sevadeep-two.vercel.app/**
+
+The deployment provides access to the public-facing platform through a browser.
+
+### 🔐 How to Access the Admin Panel
+
+1. Open the deployed website.
+2. Navigate directly to:
+
+   **https://sevadeep-two.vercel.app/admin/login**
+
+3. Enter the authorized administrator credentials.
+4. After successful authentication, access the administrator dashboard at `/admin`.
+
+**Security:** Administrator credentials are not published in this repository. Access is restricted to authorized users.
+
+> Note: Production administrator access depends on the authentication and database configuration deployed to Vercel.
+
+---
+
+## 💻 Getting Started Locally
+
+### Prerequisites
+
+- Node.js and npm
+- Git
+- Required environment variables for the active backend configuration
+
+### Installation
+
+Clone the repository:
+
+```bash
+git clone https://github.com/darplalani08/Sevadeep.git
+cd Sevadeep
+```
+
+Install dependencies:
 
 ```bash
 npm install
-npm run dev       # http://localhost:3000
 ```
 
-On first run, open `http://localhost:3000/admin/setup` to create the administrator account. The
-database (`data/sevadeep.db`) and the volunteering opportunity catalogue are created automatically;
-`next dev` prints `ExperimentalWarning: SQLite is an experimental feature`, which is Node's own
-notice about its built-in SQLite module.
-
-### Other scripts
+Start the development server:
 
 ```bash
-npm run lint         # ESLint (zero errors/warnings)
-npm run build        # production build (typechecks + prerenders every route)
-npm run start        # serve the production build locally
-
-npm test             # unit tests (matching engine, chatbot engine, security primitives)
-npm run test:api     # HTTP integration tests against a real server and a real SQLite file
-npm run test:browser # two-window Playwright test (public window + admin window)
-npm run test:all     # all three, in order
+npm run dev
 ```
 
-`test:api` and `test:browser` start their own server on port 3177 with a throwaway database, so
-they never touch `data/sevadeep.db`. Next 16 allows only one `next dev` per project directory —
-stop your own dev server before running them.
+Open:
 
-## Project structure
+`http://localhost:3000`
 
-```
-content/                 Typed content data (site config, home copy, NGOs, needs, blog posts)
-src/
-  app/                   Routes (App Router) — one folder per page in SITEMAP.md
-  components/
-    ui/                  shadcn/ui primitives (button, dialog, form, select, ...)
-    layout/              Navbar, MobileMenu, Footer, theme + smooth-scroll providers
-    common/               SectionHeading, StatCounter, Breadcrumbs, Pagination, skeletons, ...
-    cards/                NgoCard, NeedCard, BlogCard, CategoryCard
-    sections/             Home page sections (hero, stats, testimonials, awards, how-it-works, founder, ...)
-  lib/
-    api/                  Read-side data layer (getNgos, getNeeds, getBlogPosts, ...) plus the
-                           remaining mock submit handlers (donations, NGO registration, OTP,
-                           meal sponsorship). No UI component talks to `/content` directly.
-    chatbot/engine.ts     Rule-based intent recognition (pure, dependency-free)
-    matching/engine.ts    Weighted volunteer matching (pure, dependency-free)
-    hooks/use-live-data.ts  Polling hook behind every live view
-    validations/          Zod schemas for every form
-  server/
-    db/                   SQLite client, migrations, repositories, analytics
-    auth/                 scrypt password hashing and cookie sessions
-  proxy.ts                Pre-render redirect for /admin
-  app/api/                Route handlers (public + /api/admin/*, all session-protected)
-data/                     SQLite database (git-ignored — it holds applicant records)
-tests/                    Unit, HTTP integration and two-window browser tests
-public/images/            All images downloaded from the live site during the content audit
-scraper/                  The Playwright crawler used to audit sevadeep.org (not part of the app)
-qa/                       Before/after screenshots used for visual QA
-```
+### Available Commands
 
-## Design system
+| Command | Purpose |
+|---|---|
+| `npm run dev` | Start development server |
+| `npm run build` | Build the application |
+| `npm run start` | Run production build locally |
+| `npm run lint` | Run ESLint |
+| `npm test` | Run unit tests |
+| `npm run test:api` | Run API integration tests |
+| `npm run test:browser` | Run browser tests |
+| `npm run test:all` | Run the complete test suite |
 
-- Brand palette follows what's actually live on sevadeep.org today (a maroon/crimson primary and
-  saffron/orange accent, evoking the diya-flame logo) rather than the `#1976d2` blue sometimes
-  associated with the brand — see the note at the top of `scraper/SITEMAP.md` for the reasoning.
-- Fonts: **Fraunces** (display/headings) + **Plus Jakarta Sans** (body), loaded via `next/font/google`.
-- Light and dark mode are both fully themed (`next-themes`, class strategy).
-- `prefers-reduced-motion` disables Lenis smooth scrolling and count-up/entrance animations.
+These commands reflect the existing repository documentation and should be checked against the current `package.json`.
 
-## Data layer
+---
 
-Everything under `/content` is real content captured from the live site (see the crawl in
-`/scraper`). `/src/lib/api` wraps it behind async functions shaped like a real backend call
-(`getNgos(filters)`, `getBlogPost(slug)`, `submitDonation(values)`, ...), so swapping in Firebase
-or a REST API later means editing the functions in `src/lib/api/*.ts` only — no component changes.
+## 🧪 Testing and Quality Assurance
 
-## Deployment
+The project includes testing for:
 
-This build is **localhost-only and is not deployed**. The platform features write to a local
-SQLite file and the admin area has no HTTPS or CSRF protection, so it is not ready to be exposed
-publicly — see the Security section of
-[`SEVADEEP_TECHNICAL_DOCUMENTATION.md`](SEVADEEP_TECHNICAL_DOCUMENTATION.md) for exactly what would
-need to change first.
+- Form validation and input handling.
+- Chatbot response logic.
+- Volunteer matching calculations.
+- Application persistence and status management.
+- Administrator authentication.
+- API integration.
+- Browser-based application workflows.
 
-The original content site has no such constraint; if only that were deployed, Vercel would
-auto-detect Next.js and need no configuration.
+The original local implementation documented 67 unit tests, 51 HTTP integration tests, and a 19-step browser test. These are historical results and should be rerun against the current code before being reported as current verification.
 
-## QA
+---
 
-- `npm run lint`, `npx tsc --noEmit` and `npm run build` all pass with zero errors and warnings.
-- Every route in `scraper/SITEMAP.md` exists and renders (see `qa/new-screenshots` for visual
-  captures at 1440px and 390px, alongside the original site's screenshots in `scraper/screenshots`
-  for side-by-side comparison). `qa/platform-screenshots/regression/` holds the same captures taken
-  after the platform work, for before/after comparison.
-- Every form validates with Zod **twice** — in the browser and again in the route handler, so
-  client-side validation is never the only gate.
-- `npm run test:all` runs 67 unit tests, 51 HTTP integration tests and a 19-step two-window browser
-  test. The integration suite includes a server restart to prove the data persists.
+## 🌟 Novelty and Value Addition
+
+**1. Explainable Volunteer Recommendations**
+
+Uses weighted compatibility scoring rather than only collecting volunteer information.
+
+**2. End-to-End Application Workflow**
+
+Connects enrollment, administrator review, and applicant tracking.
+
+**3. Integrated NGO Operations**
+
+Brings multiple NGO-related services together within one digital platform.
+
+**4. Reduced Manual Coordination**
+
+Supports structured records, centralized administration, and transparent application processing.
+
+---
+
+## 👨‍💻 Project Contributors
+
+**Rachit Doshi**  
+**Darp Lalani**
+
+Symbiosis Institute of Technology, Pune  
+Department of Computer Science and Engineering  
+Batch: 2024–2028
+
+---
+
+## 📚 Project Documentation
+
+- [Technical Documentation](SEVADEEP_TECHNICAL_DOCUMENTATION.md)
+- [System Architecture](ARCHITECTURE.md)
+- [Demo Checklist](DEMO_CHECKLIST.md)
+- [Original Website Audit](scraper/SITEMAP.md)
+
+---
+
+## 🙏 Acknowledgement
+
+We thank SevaDeep and the Relfor Foundation for the opportunity to contribute to their community welfare initiatives through technical development and volunteering activities.
+
+---
+
+**SevaDeep — Connecting Donors, Empowering Communities.**
