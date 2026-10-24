@@ -48,3 +48,11 @@ next-env.d.ts
 # level, so snapshots and backups taken into subfolders cannot be published by accident.
 # The app recreates data/ on first run.
 /data/
+
+# AI assistant instructions
+CLAUDE.md
+AGENTS.md
+
+# MCP configuration
+mcp.json
+.mcp.json
